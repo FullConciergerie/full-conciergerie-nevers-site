@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 /**
@@ -29,35 +30,21 @@ export function Header() {
         className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3 sm:px-8"
         aria-label="Navigation principale"
       >
-        {/* Marque — typographie (pas d'image pour éviter les artefacts de fond) */}
+        {/* Logo + marque */}
         <Link
           href="/"
-          className="group flex items-center gap-3"
+          className="flex items-center gap-3"
           aria-label="Full Conciergerie Nevers — Accueil"
           onClick={close}
         >
-          {/* Petite clé décorative en SVG, hommage au logo */}
-          <svg
-            width="32"
-            height="32"
-            viewBox="0 0 32 32"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            className="hidden h-9 w-9 text-brand-700 transition-transform group-hover:rotate-12 sm:block"
-            aria-hidden="true"
-          >
-            {/* Cercle (anneau de la clé) */}
-            <circle cx="11" cy="11" r="6" />
-            {/* Tige */}
-            <line x1="15.5" y1="15.5" x2="26" y2="26" />
-            {/* Dents */}
-            <line x1="22" y1="22" x2="24" y2="20" />
-            <line x1="24" y1="24" x2="26" y2="22" />
-          </svg>
-
+          <Image
+            src="/logo.jpg"
+            alt="Full Conciergerie Nevers"
+            width={120}
+            height={120}
+            className="h-14 w-14 object-contain mix-blend-multiply sm:h-16 sm:w-16"
+            priority
+          />
           <span className="leading-tight">
             <span className="block font-serif text-lg font-medium text-brand-900 sm:text-xl">
               Full Conciergerie
