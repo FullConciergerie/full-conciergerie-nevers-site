@@ -175,32 +175,26 @@ export default function HomePage() {
 
           <div className="mt-14 grid gap-8 md:grid-cols-3">
             <ServiceCard
-              emoji="🧹"
               title="Ménage professionnel"
               description="Une équipe de prestataires expérimentés assure le ménage après chaque départ, avec un standard hôtelier."
             />
             <ServiceCard
-              emoji="👋"
               title="Accueil voyageurs"
               description="Communication 7j/7, instructions claires, support pendant le séjour. Vous ne décrochez plus jamais le téléphone."
             />
             <ServiceCard
-              emoji="📊"
               title="Optimisation des tarifs"
               description="Analyse du marché local et ajustement des prix selon la saison pour maximiser vos revenus."
             />
             <ServiceCard
-              emoji="📸"
               title="Photos professionnelles"
               description="Mise en valeur de votre logement avec des photos qui attirent les meilleurs voyageurs."
             />
             <ServiceCard
-              emoji="🛏️"
               title="Location de linge & blanchisserie"
               description="Linge de qualité hôtelière (draps, serviettes) en location. Blanchisserie en interne pour maîtriser les coûts. Plus de stock à gérer pour vous."
             />
             <ServiceCard
-              emoji="🔧"
               title="Petites interventions"
               description="Espaces verts, dépannage, livraison d&apos;extras voyageurs — nos partenaires s&apos;occupent de tout."
             />
@@ -430,21 +424,24 @@ function Stat({ number, label }: { number: string; label: string }) {
 }
 
 function ServiceCard({
-  emoji,
   title,
   description,
 }: {
-  emoji: string;
   title: string;
   description: string;
 }) {
   return (
-    <div className="group rounded-2xl border border-brand-100 bg-sand-50 p-6 transition-shadow hover:shadow-lg hover:shadow-brand-900/5">
-      <div className="text-3xl">{emoji}</div>
-      <h3 className="mt-4 font-serif text-xl font-medium text-brand-900">
+    <div className="group rounded-2xl border border-brand-100 bg-sand-50 p-7 transition-shadow hover:shadow-lg hover:shadow-brand-900/5">
+      {/* Filet doré décoratif (rappel du footer + plaque) */}
+      <span
+        aria-hidden="true"
+        className="block h-px w-10 bg-gold-400 transition-all group-hover:w-16"
+      />
+
+      <h3 className="mt-5 font-serif text-xl font-medium text-brand-900">
         {title}
       </h3>
-      <p className="mt-2 text-sm leading-relaxed text-brand-800/80">
+      <p className="mt-3 text-sm leading-relaxed text-brand-800/80">
         {description}
       </p>
     </div>
