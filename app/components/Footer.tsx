@@ -70,6 +70,14 @@ export function Footer() {
                 Devenir prestataire →
               </Link>
             </li>
+            <li>
+              <Link
+                href="/lancer-une-conciergerie"
+                className="font-medium text-sand-100 hover:text-sand-200"
+              >
+                Lancer votre conciergerie →
+              </Link>
+            </li>
           </ul>
         </div>
 

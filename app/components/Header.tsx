@@ -18,6 +18,7 @@ const NAV_LINKS = [
   { href: '/a-propos', label: 'À propos' },
   { href: '/contact', label: 'Contact' },
   { href: '/devenir-prestataire', label: 'Recrutement' },
+  { href: '/lancer-une-conciergerie', label: 'Entrepreneurs' },
 ] as const;
 
 export function Header() {
