@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!--
+    Favicon Full Conciergerie Nevers — la clé du logo, version simplifiée
+    pour être lisible à 16×16 px dans l'onglet du navigateur.
+  -->
+
+  <!-- Fond crème arrondi (la "pastille" du favicon) -->
+  <rect width="64" height="64" rx="14" fill="#faf7f1"/>
+
+  <!-- Anneau de la clé (cercle ouvert) -->
+  <circle
+    cx="23" cy="23" r="11"
+    fill="none"
+    stroke="#2e4c35"
+    stroke-width="4"
+  />
+
+  <!-- Quatre points décoratifs dans l'anneau (rappel du motif 4 pétales du logo) -->
+  <circle cx="23" cy="18" r="1.6" fill="#2e4c35"/>
+  <circle cx="23" cy="28" r="1.6" fill="#2e4c35"/>
+  <circle cx="18" cy="23" r="1.6" fill="#2e4c35"/>
+  <circle cx="28" cy="23" r="1.6" fill="#2e4c35"/>
+
+  <!-- Tige de la clé (diagonale) + dents -->
+  <g fill="none" stroke="#2e4c35" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <line x1="31" y1="31" x2="52" y2="52"/>
+    <!-- Dent du milieu -->
+    <line x1="43" y1="43" x2="47" y2="39"/>
+    <!-- Dent du bout -->
+    <line x1="48" y1="48" x2="52" y2="44"/>
+  </g>
+</svg>
