@@ -26,6 +26,7 @@ export async function submitPrestataireForm(
   const status = String(formData.get('status') ?? '').trim();
   const availability = String(formData.get('availability') ?? '').trim();
   const vehicle = String(formData.get('vehicle') ?? '').trim();
+  const referrer = String(formData.get('referrer') ?? '').trim();
   const experience = String(formData.get('experience') ?? '').trim();
   const motivation = String(formData.get('motivation') ?? '').trim();
 
@@ -81,6 +82,15 @@ export async function submitPrestataireForm(
         ${availability ? `<li><strong>Disponibilités :</strong> ${safeHtml(availability)}</li>` : ''}
         ${vehicle ? `<li><strong>Véhicule :</strong> ${safeHtml(vehicle)}</li>` : ''}
       </ul>
+
+      ${
+        referrer
+          ? `<div style="margin-top: 24px; padding: 16px; background: #fdf4d8; border-left: 4px solid #c8a464; border-radius: 4px;">
+              <strong style="color: #2e4c35;">🎁 Parrainage</strong> — Recommandé·e par : <strong>${safeHtml(referrer)}</strong>
+              <br/><span style="font-size: 13px; color: #57534e;">→ Verser 50 € à ${safeHtml(referrer)} si ${safeHtml(firstName)} valide sa première mission.</span>
+            </div>`
+          : ''
+      }
 
       ${
         experience

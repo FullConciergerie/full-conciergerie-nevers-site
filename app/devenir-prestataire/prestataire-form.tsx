@@ -120,6 +120,12 @@ export function PrestataireForm() {
         />
       </div>
 
+      <Field
+        label="Qui vous a recommandé ? (facultatif)"
+        name="referrer"
+        placeholder="Nom de votre parrain·marraine, s'il y en a un·e"
+      />
+
       <TextareaField
         label="Expérience pertinente (facultatif)"
         name="experience"

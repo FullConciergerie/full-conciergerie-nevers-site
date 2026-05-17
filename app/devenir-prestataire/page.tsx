@@ -132,6 +132,38 @@ export default function DevenirPrestatairePage() {
         <PrestataireForm />
       </div>
 
+      {/* ──────── Parrainage ──────── */}
+      <div className="mt-20 overflow-hidden rounded-3xl border-2 border-gold-400 bg-gradient-to-br from-sand-100 to-sand-50 p-8 sm:p-12">
+        <div className="flex items-start gap-5">
+          <span
+            aria-hidden="true"
+            className="hidden h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gold-400 font-serif text-2xl text-brand-900 sm:flex"
+          >
+            🎁
+          </span>
+          <div>
+            <p className="font-cursive text-xl text-brand-700">
+              Programme de parrainage
+            </p>
+            <h2 className="mt-1 font-serif text-2xl font-medium text-brand-900 sm:text-3xl">
+              50 € offerts pour chaque filleul·e qui démarre.
+            </h2>
+            <p className="mt-4 max-w-2xl leading-relaxed text-brand-800/85">
+              Vous connaissez quelqu&apos;un qui pourrait nous rejoindre&nbsp;?
+              Pour chaque personne que vous nous recommandez et qui valide sa
+              première mission, vous touchez{' '}
+              <strong>50&nbsp;€ en bon d&apos;achat ou virement</strong>.
+              Cumulable, sans limite.
+            </p>
+            <p className="mt-3 max-w-2xl text-sm text-brand-800/70">
+              Demandez à votre filleul·e d&apos;indiquer votre nom dans le
+              champ «&nbsp;Qui vous a recommandé&nbsp;?&nbsp;» du formulaire
+              ci-dessous. C&apos;est tout.
+            </p>
+          </div>
+        </div>
+      </div>
+
       {/* ──────── FAQ courte ──────── */}
       <div className="mt-20">
         <h2 className="font-serif text-2xl font-medium text-brand-900 sm:text-3xl">
