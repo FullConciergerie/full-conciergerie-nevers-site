@@ -62,6 +62,14 @@ export function Footer() {
                 Contact
               </Link>
             </li>
+            <li className="pt-3 mt-3 border-t border-sand-200/15">
+              <Link
+                href="/devenir-prestataire"
+                className="font-medium text-sand-100 hover:text-sand-200"
+              >
+                Devenir prestataire →
+              </Link>
+            </li>
           </ul>
         </div>
 
