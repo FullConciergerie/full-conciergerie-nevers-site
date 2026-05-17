@@ -15,7 +15,7 @@ const localBusinessJsonLd = {
   name: 'Full Conciergerie Nevers',
   legalName: 'Full Nevers Conciergerie',
   description:
-    "Conciergerie haut de gamme à Nevers. Gestion complète d'Airbnb : ménage, accueil voyageurs, photos professionnelles, optimisation des tarifs, blanchisserie en interne.",
+    "Conciergerie haut de gamme à Nevers. Gestion complète d'Airbnb : ménage, accueil voyageurs, photos professionnelles, optimisation des tarifs, location de linge et blanchisserie en interne.",
   url: 'https://full-nevers-conciergerie.fr',
   telephone: '+33-3-76-15-02-29',
   email: 'contact@full-nevers-conciergerie.fr',
@@ -55,6 +55,7 @@ const localBusinessJsonLd = {
     'Ménage professionnel',
     'Accueil voyageurs',
     'Optimisation tarifaire',
+    'Location de linge',
     'Blanchisserie',
   ],
   openingHours: 'Mo-Su 09:00-19:00',
@@ -173,8 +174,8 @@ export default function HomePage() {
             />
             <ServiceCard
               emoji="🛏️"
-              title="Linge & blanchisserie"
-              description="Gestion intégralement en interne pour maîtriser les coûts et garantir une qualité hôtelière — toujours propre, toujours prêt."
+              title="Location de linge & blanchisserie"
+              description="Linge de qualité hôtelière (draps, serviettes) en location. Blanchisserie en interne pour maîtriser les coûts. Plus de stock à gérer pour vous."
             />
             <ServiceCard
               emoji="🔧"

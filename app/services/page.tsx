@@ -55,8 +55,8 @@ export default function ServicesPage() {
           intro="Toute la communication voyageur, de la première question avant réservation jusqu'aux dernières instructions de départ. Nous parlons en votre nom, dans le ton de votre marque."
           items={[
             {
-              benefit: 'Communication 7j/7 dans 4 langues',
-              detail: 'Français, anglais, espagnol, allemand — sans plages horaires.',
+              benefit: 'Communication 7j/7, voyageurs français et étrangers',
+              detail: 'Réponse rapide à toute heure, dans la langue du voyageur.',
             },
             {
               benefit: 'Instructions d\'arrivée 100% automatisées',
@@ -122,25 +122,25 @@ export default function ServicesPage() {
         />
 
         <ServiceSection
-          title="Linge & blanchisserie en interne"
-          tagline="Pas de sous-traitance. Coûts maîtrisés."
-          intro="Service de blanchisserie géré intégralement dans nos locaux. Là où nos concurrents sous-traitent (et marges en cascade), nous internalisons. Vous payez le juste prix, la qualité reste constante."
+          title="Location & blanchisserie de linge"
+          tagline="Pas de stock à gérer. Du linge premium, toujours prêt."
+          intro="Nous vous louons un linge de qualité hôtelière (draps, serviettes, peignoirs) et nous nous occupons de tout le cycle : récupération, lavage en interne, livraison du linge propre. Vous n'achetez plus de linge, vous n'en stockez plus, vous ne le lavez plus."
           items={[
             {
-              benefit: 'Récupération du linge sale après chaque départ',
-              detail: 'Inclus dans le forfait ménage, sans surcoût caché.',
+              benefit: 'Location de linge de qualité hôtelière',
+              detail: 'Draps coton percale, serviettes éponges épaisses — renouvellement régulier inclus.',
             },
             {
-              benefit: 'Lavage à 60°C + repassage hôtelier',
-              detail: 'Draps, serviettes, peignoirs — pliage uniforme.',
+              benefit: 'Blanchisserie en interne, pas de sous-traitance',
+              detail: 'Lavage à 60°C dans nos locaux. Coûts maîtrisés, qualité constante.',
             },
             {
-              benefit: 'Livraison du linge propre le lendemain',
-              detail: 'Pas de stress pour le check-in suivant.',
+              benefit: 'Récupération et livraison entre chaque séjour',
+              detail: 'Inclus dans le forfait, sans surcoût caché.',
             },
             {
-              benefit: 'Gestion du stock à votre place',
-              detail: 'On vous prévient quand il faut renouveler.',
+              benefit: 'Aucun stock à gérer pour vous',
+              detail: 'Plus de placards qui débordent, plus de linge à racheter.',
             },
           ]}
         />
