@@ -118,21 +118,53 @@ export default function HomePage() {
           </div>
 
           <div className="relative">
-            <div className="aspect-square rounded-[3rem] bg-gradient-to-br from-brand-100 via-sand-100 to-brand-50 p-8">
-              <div className="relative flex h-full items-center justify-center rounded-[2.5rem] border-2 border-brand-300/40">
-                <Image
-                  src="/logo.jpg"
-                  alt="Logo Full Conciergerie Nevers"
-                  width={600}
-                  height={600}
-                  className="h-full w-full object-contain p-8 mix-blend-multiply"
-                  priority
-                />
+            {/* Photo Delil — carte fondateur */}
+            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-2xl shadow-brand-900/20">
+              <Image
+                src="/delil.jpg"
+                alt="Delil Torgursul, fondateur de Full Conciergerie Nevers, devant la cathédrale de Nevers"
+                fill
+                className="object-cover"
+                priority
+                sizes="(min-width: 1024px) 45vw, 100vw"
+              />
+
+              {/* Dégradé pour lisibilité texte en bas */}
+              <div
+                aria-hidden="true"
+                className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-brand-900/85 via-brand-900/40 to-transparent"
+              />
+
+              {/* Label fondateur en bas */}
+              <div className="absolute inset-x-0 bottom-0 p-6 text-sand-50 sm:p-8">
+                <p className="font-cursive text-2xl text-sand-200">
+                  Delil Torgursul
+                </p>
+                <p className="mt-1 text-sm uppercase tracking-wider text-sand-100/85">
+                  Fondateur · Nevers
+                </p>
+              </div>
+
+              {/* Badge note plateformes en haut à droite */}
+              <div className="absolute right-5 top-5 rounded-full bg-sand-50/95 px-3 py-1.5 text-xs font-semibold text-brand-800 shadow-lg backdrop-blur">
+                ★ 4,9/5 · 800+ avis
               </div>
             </div>
-            <p className="mt-6 text-center font-cursive text-xl text-brand-600">
-              Des services Full Options
-            </p>
+
+            {/* Logo + tagline en complément, sous la photo */}
+            <div className="mt-6 flex items-center justify-center gap-4">
+              <Image
+                src="/logo.jpg"
+                alt=""
+                width={80}
+                height={80}
+                className="h-14 w-14 object-contain mix-blend-multiply sm:h-16 sm:w-16"
+                aria-hidden="true"
+              />
+              <p className="font-cursive text-xl text-brand-600">
+                Des services Full Options
+              </p>
+            </div>
           </div>
         </div>
       </section>
@@ -273,11 +305,10 @@ export default function HomePage() {
         <div className="mx-auto grid max-w-6xl gap-10 px-6 sm:px-8 lg:grid-cols-2 lg:items-center lg:gap-16">
           <div className="relative aspect-[3/4] overflow-hidden rounded-3xl shadow-2xl shadow-brand-900/10">
             <Image
-              src="/delil.jpg"
+              src="/delil-portrait.jpg"
               alt="Delil Torgursul, fondateur de Full Conciergerie Nevers"
               fill
               className="object-cover"
-              priority
               sizes="(min-width: 1024px) 50vw, 100vw"
             />
           </div>

@@ -27,7 +27,7 @@ export default function AProposPage() {
       <div className="mt-12 grid gap-10 lg:grid-cols-2 lg:items-center lg:gap-16">
         <div className="relative aspect-[3/4] overflow-hidden rounded-3xl shadow-2xl shadow-brand-900/10">
           <Image
-            src="/delil.jpg"
+            src="/delil-portrait.jpg"
             alt="Delil Torgursul, fondateur de Full Conciergerie Nevers"
             fill
             className="object-cover"
