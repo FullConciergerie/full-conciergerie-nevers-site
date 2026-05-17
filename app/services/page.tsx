@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import type { Metadata } from 'next';
 
@@ -16,23 +17,38 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <div className="mx-auto max-w-5xl px-6 py-20 sm:px-8 sm:py-24">
-      {/* ──────── Hero ──────── */}
-      <p className="font-cursive text-xl text-brand-600">Nos services</p>
-      <h1 className="mt-2 font-serif text-4xl font-medium text-brand-900 sm:text-5xl">
-        Vous touchez vos revenus.{' '}
-        <span className="italic text-brand-700">
-          Nous gérons tout le reste.
-        </span>
-      </h1>
-      <p className="mt-6 max-w-2xl text-lg leading-relaxed text-brand-800/80">
-        Une prestation 100% locale, adaptée à votre logement. De la première
-        photo jusqu&apos;au dernier départ voyageur, chaque étape est prise en
-        charge par notre équipe nivernaise.
-      </p>
+    <div className="mx-auto max-w-6xl px-6 py-20 sm:px-8 sm:py-24">
+      {/* ──────── Hero — 2 colonnes ──────── */}
+      <div className="grid gap-10 lg:grid-cols-5 lg:items-center lg:gap-16">
+        <div className="lg:col-span-3">
+          <p className="font-cursive text-xl text-brand-600">Nos services</p>
+          <h1 className="mt-2 font-serif text-4xl font-medium text-brand-900 sm:text-5xl">
+            Vous touchez vos revenus.{' '}
+            <span className="italic text-brand-700">
+              Nous gérons tout le reste.
+            </span>
+          </h1>
+          <p className="mt-6 text-lg leading-relaxed text-brand-800/80">
+            Une prestation 100% locale, adaptée à votre logement. De la
+            première photo jusqu&apos;au dernier départ voyageur, chaque étape
+            est prise en charge par notre équipe nivernaise.
+          </p>
+        </div>
+
+        <div className="relative aspect-[2/3] overflow-hidden rounded-3xl shadow-2xl shadow-brand-900/15 lg:col-span-2">
+          <Image
+            src="/services-hero.jpg"
+            alt="L'équipe Full Conciergerie Nevers en action"
+            fill
+            className="object-cover"
+            priority
+            sizes="(min-width: 1024px) 40vw, 100vw"
+          />
+        </div>
+      </div>
 
       {/* ──────── 3 promesses chiffrées ──────── */}
-      <div className="mt-12 grid gap-6 sm:grid-cols-3">
+      <div className="mt-16 grid gap-6 sm:grid-cols-3">
         <Stat
           number="+15 à 30%"
           label="de revenus en moyenne grâce à l'optimisation tarifaire"
