@@ -1,10 +1,19 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-export const metadata = {
-  title: 'À propos — Full Conciergerie Nevers',
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'À propos · Notre équipe',
   description:
-    "Découvrez l'équipe de Full Conciergerie Nevers : Delil Torgursul et ses prestataires de confiance pour gérer votre Airbnb à Nevers.",
+    "Découvrez l'équipe de Full Conciergerie Nevers : Delil Torgursul, fondateur, et ses prestataires locaux de confiance pour gérer votre Airbnb à Nevers.",
+  alternates: { canonical: '/a-propos' },
+  openGraph: {
+    title: 'À propos — Full Conciergerie Nevers',
+    description:
+      'Une équipe nivernaise au service des propriétaires de logements en location courte durée.',
+    url: '/a-propos',
+  },
 };
 
 export default function AProposPage() {

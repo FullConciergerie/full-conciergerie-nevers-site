@@ -1,6 +1,10 @@
-export const metadata = {
-  title: 'Mentions légales — Full Conciergerie Nevers',
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Mentions légales',
   description: 'Mentions légales et conditions générales de Full Conciergerie Nevers.',
+  alternates: { canonical: '/cgv' },
+  robots: { index: false, follow: true }, // pas la peine d'indexer les CGV
 };
 
 const COMPANY = {

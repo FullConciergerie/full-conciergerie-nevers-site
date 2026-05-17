@@ -1,9 +1,16 @@
+import type { Metadata } from 'next';
 import { ContactForm } from './contact-form';
 
-export const metadata = {
-  title: 'Contact — Full Conciergerie Nevers',
+export const metadata: Metadata = {
+  title: 'Contact · Devis gratuit',
   description:
-    "Confiez votre logement à Full Conciergerie Nevers. Devis gratuit sous 24h. 03 76 15 02 29 ou contact@full-nevers-conciergerie.fr",
+    "Confiez votre logement à Full Conciergerie Nevers. Devis gratuit sous 24h. Téléphone : 03 76 15 02 29 — Email : contact@full-nevers-conciergerie.fr",
+  alternates: { canonical: '/contact' },
+  openGraph: {
+    title: 'Contact — Full Conciergerie Nevers',
+    description: 'Devis gratuit sous 24h pour la gestion de votre Airbnb à Nevers.',
+    url: '/contact',
+  },
 };
 
 export default function ContactPage() {

@@ -1,9 +1,18 @@
 import Link from 'next/link';
 
-export const metadata = {
-  title: 'Nos services — Full Conciergerie Nevers',
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Nos services',
   description:
-    "Découvrez tous nos services de conciergerie : ménage, accueil voyageurs, optimisation des tarifs, photos pro, linge, petites interventions.",
+    "Découvrez tous nos services de conciergerie à Nevers : ménage hôtelier, accueil voyageurs 7j/7, optimisation des tarifs, photos pro, blanchisserie en interne, petites interventions.",
+  alternates: { canonical: '/services' },
+  openGraph: {
+    title: 'Nos services — Full Conciergerie Nevers',
+    description:
+      'Une gestion complète de votre Airbnb à Nevers : ménage, accueil, optimisation, photos pro, linge.',
+    url: '/services',
+  },
 };
 
 export default function ServicesPage() {

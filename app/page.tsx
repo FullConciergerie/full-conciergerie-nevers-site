@@ -1,9 +1,81 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+/**
+ * Structured data Schema.org — LocalBusiness.
+ * Permet à Google d'afficher la fiche "business card" dans les résultats
+ * de recherche (adresse, téléphone, horaires, note, image…).
+ *
+ * À tester sur https://search.google.com/test/rich-results
+ */
+const localBusinessJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': 'https://full-nevers-conciergerie.fr/#business',
+  name: 'Full Conciergerie Nevers',
+  legalName: 'Full Nevers Conciergerie',
+  description:
+    "Conciergerie haut de gamme à Nevers. Gestion complète d'Airbnb : ménage, accueil voyageurs, photos professionnelles, optimisation des tarifs, blanchisserie en interne.",
+  url: 'https://full-nevers-conciergerie.fr',
+  telephone: '+33-3-76-15-02-29',
+  email: 'contact@full-nevers-conciergerie.fr',
+  image: 'https://full-nevers-conciergerie.fr/opengraph-image.jpg',
+  logo: 'https://full-nevers-conciergerie.fr/logo.jpg',
+  priceRange: '€€',
+  founder: {
+    '@type': 'Person',
+    name: 'Delil Torgursul',
+  },
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '16 Quai de Mantoue',
+    addressLocality: 'Nevers',
+    postalCode: '58000',
+    addressRegion: 'Bourgogne-Franche-Comté',
+    addressCountry: 'FR',
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 46.9911,
+    longitude: 3.1626,
+  },
+  areaServed: [
+    {
+      '@type': 'City',
+      name: 'Nevers',
+    },
+    {
+      '@type': 'AdministrativeArea',
+      name: 'Nièvre',
+    },
+  ],
+  serviceType: [
+    'Conciergerie Airbnb',
+    'Gestion location courte durée',
+    'Ménage professionnel',
+    'Accueil voyageurs',
+    'Optimisation tarifaire',
+    'Blanchisserie',
+  ],
+  openingHours: 'Mo-Su 09:00-19:00',
+  sameAs: [
+    // À compléter quand les réseaux sociaux seront créés
+    // 'https://www.facebook.com/fullconciergerienevers',
+    // 'https://www.instagram.com/fullconciergerienevers',
+  ],
+};
+
 export default function HomePage() {
   return (
     <>
+      {/* Structured data JSON-LD pour Google */}
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(localBusinessJsonLd),
+        }}
+      />
       {/* ──────────── HERO ──────────── */}
       <section className="relative overflow-hidden bg-sand-50">
         <div className="mx-auto grid max-w-6xl gap-10 px-6 py-20 sm:px-8 sm:py-28 lg:grid-cols-2 lg:items-center lg:gap-16">
