@@ -17,6 +17,7 @@ const NAV_LINKS = [
   { href: '/services', label: 'Services' },
   { href: '/a-propos', label: 'À propos' },
   { href: '/contact', label: 'Contact' },
+  { href: '/devenir-prestataire', label: 'Recrutement' },
 ] as const;
 
 export function Header() {
