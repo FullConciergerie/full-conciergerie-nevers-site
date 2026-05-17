@@ -122,6 +122,79 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ──────────── NEVERS — Galerie ville ──────────── */}
+      <section className="bg-white py-20 sm:py-24">
+        <div className="mx-auto max-w-6xl px-6 sm:px-8">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="font-cursive text-xl text-brand-600">
+              Notre territoire
+            </p>
+            <h2 className="mt-2 font-serif text-3xl font-medium text-brand-900 sm:text-4xl">
+              Nevers, perle ligérienne au cœur de la Nièvre.
+            </h2>
+            <p className="mt-4 text-brand-800/80">
+              Cité d&apos;art et d&apos;histoire au bord de la Loire, Nevers
+              séduit toute l&apos;année — pèlerins de Sainte-Bernadette,
+              cyclistes de la Loire à Vélo, amateurs de patrimoine, week-ends
+              gastronomiques. Une destination idéale pour la location courte
+              durée, et un terrain de jeu rêvé pour vos voyageurs.
+            </p>
+          </div>
+
+          {/* Galerie : grand format à gauche + 2 petits à droite */}
+          <div className="mt-14 grid gap-4 sm:grid-cols-3 sm:grid-rows-2">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-xl shadow-brand-900/10 sm:col-span-2 sm:row-span-2 sm:aspect-auto">
+              <Image
+                src="/nevers-pont-cathedrale.jpg"
+                alt="Pont sur la Loire et cathédrale Saint-Cyr-et-Sainte-Julitte à Nevers"
+                fill
+                className="object-cover"
+                sizes="(min-width: 640px) 66vw, 100vw"
+              />
+            </div>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-lg shadow-brand-900/10">
+              <Image
+                src="/nevers-loire.jpg"
+                alt="Vue sur la Loire depuis Nevers"
+                fill
+                className="object-cover"
+                sizes="(min-width: 640px) 33vw, 100vw"
+              />
+            </div>
+            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-lg shadow-brand-900/10">
+              <Image
+                src="/nevers-pont-vue.jpg"
+                alt="Le Pont de Loire et la vieille ville de Nevers"
+                fill
+                className="object-cover"
+                sizes="(min-width: 640px) 33vw, 100vw"
+              />
+            </div>
+          </div>
+
+          {/* Points forts du territoire */}
+          <div className="mt-14 grid gap-8 sm:grid-cols-3">
+            <Highlight
+              title="Patrimoine UNESCO"
+              text="Cathédrale du XIᵉ s., Palais ducal, vieille ville classée."
+            />
+            <Highlight
+              title="Loire à Vélo"
+              text="Étape majeure de l'itinéraire le plus fréquenté de France."
+            />
+            <Highlight
+              title="Sanctuaire Sainte-Bernadette"
+              text="Plus de 100 000 pèlerins chaque année, toute l'année."
+            />
+          </div>
+
+          {/* Crédit photos */}
+          <p className="mt-12 text-center text-xs text-brand-800/40">
+            Photos&nbsp;: Wikimedia Commons · CC-BY-SA
+          </p>
+        </div>
+      </section>
+
       {/* ──────────── À PROPOS — Photo Delil ──────────── */}
       <section className="bg-sand-100 py-20 sm:py-24">
         <div className="mx-auto grid max-w-6xl gap-10 px-6 sm:px-8 lg:grid-cols-2 lg:items-center lg:gap-16">
@@ -280,6 +353,17 @@ function ServiceCard({
       <p className="mt-2 text-sm leading-relaxed text-brand-800/80">
         {description}
       </p>
+    </div>
+  );
+}
+
+function Highlight({ title, text }: { title: string; text: string }) {
+  return (
+    <div className="text-center sm:text-left">
+      <h3 className="font-serif text-xl font-medium text-brand-900">
+        {title}
+      </h3>
+      <p className="mt-2 text-sm leading-relaxed text-brand-800/80">{text}</p>
     </div>
   );
 }
