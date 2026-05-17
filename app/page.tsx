@@ -151,20 +151,10 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Logo + tagline en complément, sous la photo */}
-            <div className="mt-6 flex items-center justify-center gap-4">
-              <Image
-                src="/logo.jpg"
-                alt=""
-                width={80}
-                height={80}
-                className="h-14 w-14 object-contain mix-blend-multiply sm:h-16 sm:w-16"
-                aria-hidden="true"
-              />
-              <p className="font-cursive text-xl text-brand-600">
-                Des services Full Options
-              </p>
-            </div>
+            {/* Tagline en complément, sous la photo */}
+            <p className="mt-6 text-center font-cursive text-2xl text-brand-600">
+              Des services Full Options
+            </p>
           </div>
         </div>
       </section>
