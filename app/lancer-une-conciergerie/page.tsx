@@ -34,9 +34,10 @@ export default function LancerConciergerioePage() {
         <p>
           Nous avons construit le modèle à <strong>Nevers</strong> — clients
           fidèles, équipe stable, méthode rodée. Nous accompagnons désormais
-          les <strong>entrepreneur·e·s</strong> qui veulent répliquer ce
-          modèle dans leur ville, avec notre marque, nos outils, et notre
-          retour d&apos;expérience.
+          les <strong>entrepreneur·e·s</strong>
+          {' '}
+          qui veulent répliquer ce modèle dans leur ville, avec notre marque,
+          nos outils, et notre retour d&apos;expérience.
         </p>
       </div>
 
