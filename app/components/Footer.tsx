@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import Image from 'next/image';
 
 /**
  * Footer global du site Full Conciergerie Nevers.
@@ -10,17 +9,21 @@ export function Footer() {
   return (
     <footer className="mt-20 border-t border-brand-200 bg-brand-700 text-sand-50">
       <div className="mx-auto grid max-w-6xl gap-10 px-6 py-12 sm:grid-cols-2 sm:px-8 lg:grid-cols-4">
-        {/* Bloc identité — logo + tagline */}
+        {/* Bloc identité — marque typographique + tagline */}
         <div className="sm:col-span-2">
-          <div className="inline-block rounded-2xl bg-sand-50 p-2">
-            <Image
-              src="/logo.jpg"
-              alt="Full Conciergerie Nevers"
-              width={100}
-              height={100}
-              className="h-20 w-20 object-contain"
-            />
-          </div>
+          {/* Marque en typographie — pas d'image, plus propre sur fond foncé */}
+          <p className="font-serif text-3xl font-medium leading-tight text-sand-50 sm:text-4xl">
+            Full Conciergerie
+            <br />
+            <span className="italic">Nevers</span>
+          </p>
+
+          {/* Filet doré */}
+          <span
+            aria-hidden="true"
+            className="mt-4 block h-px w-16 bg-gold-400/60"
+          />
+
           <p className="mt-4 max-w-sm font-cursive text-2xl text-sand-200">
             Des services Full Options
           </p>
