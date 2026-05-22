@@ -144,27 +144,30 @@ section { padding-top: var(--pad-section); padding-bottom: var(--pad-section); p
   border-bottom: 1px solid rgba(201, 168, 104, 0.18);
 }
 .nav .logo {
-  display: flex; align-items: center; gap: 12px;
+  display: flex; align-items: center; gap: 14px;
   font-family: var(--serif);
   font-size: 20px;
   letter-spacing: 0.01em;
 }
-.nav .logo-mark {
-  width: 36px; height: 36px;
-  border: 1px solid var(--or);
+/* Vrai logo dans la nav (remplacement du placeholder F) */
+.nav .logo-img-wrap {
+  width: 56px; height: 56px;
   display: grid; place-items: center;
-  font-family: var(--serif);
-  font-size: 16px;
-  color: var(--or);
-  position: relative;
+  border: 1px solid rgba(201,168,104,0.4);
+  background: rgba(245,241,232,0.06);
+  padding: 4px;
+  flex-shrink: 0;
 }
-.nav .logo-mark::before,
-.nav .logo-mark::after {
-  content: ""; position: absolute; background: var(--or);
+.nav .logo-img {
+  width: 100%; height: 100%;
+  object-fit: contain;
+  /* logo.jpg a un fond blanc — mix-blend pour s'intégrer sur fond sombre */
+  mix-blend-mode: screen;
 }
-.nav .logo-mark::before { top: 4px; left: 4px; width: 4px; height: 1px; }
-.nav .logo-mark::after { bottom: 4px; right: 4px; width: 4px; height: 1px; }
-.nav .logo-text { font-weight: 400; }
+.nav.scrolled .logo-img-wrap {
+  background: rgba(245,241,232,0.02);
+}
+.nav .logo-text { font-weight: 400; line-height: 1.1; }
 .nav .logo-text small {
   display: block;
   font-family: var(--mono);
@@ -175,9 +178,14 @@ section { padding-top: var(--pad-section); padding-bottom: var(--pad-section); p
   margin-top: 2px;
 }
 .nav-menu {
-  display: flex; gap: 36px; align-items: center;
+  display: flex; gap: 26px; align-items: center;
   font-size: 13px;
   letter-spacing: 0.04em;
+}
+/* Cache la nav sur écrans intermédiaires pour éviter le débordement avec
+   les 7 liens (Services, À propos, Avis, FAQ, Recrutement, Entrepreneurs, Contact) */
+@media (max-width: 1180px) {
+  .nav-menu { gap: 18px; font-size: 12px; }
 }
 .nav-menu a { opacity: 0.85; transition: opacity 200ms, color 200ms; position: relative; }
 .nav-menu a:hover { opacity: 1; color: var(--or); }
@@ -653,6 +661,39 @@ section { padding-top: var(--pad-section); padding-bottom: var(--pad-section); p
 }
 .footer-brand .logo { margin-bottom: 20px; }
 .footer-brand p { font-size: 14px; color: rgba(245,241,232,0.6); max-width: 32ch; line-height: 1.6; }
+/* Marque typographique du footer — fix l'ancien "FFull" collé */
+.footer-brand-name {
+  font-family: var(--serif);
+  font-size: 32px;
+  line-height: 1.1;
+  font-weight: 500;
+  color: var(--ivoire);
+  margin-bottom: 16px;
+}
+.footer-brand-italic {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--or);
+}
+.footer-rule {
+  display: block;
+  width: 64px; height: 1px;
+  background: var(--or);
+  margin: 0 0 16px;
+}
+.footer-tagline {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--or-soft);
+  margin-bottom: 14px;
+}
+.footer-pitch {
+  font-size: 14px;
+  color: rgba(245,241,232,0.6);
+  max-width: 32ch;
+  line-height: 1.6;
+}
 .footer-col h4 {
   font-family: var(--mono); font-size: 11px; letter-spacing: 0.22em;
   text-transform: uppercase; color: var(--or); font-weight: 500;

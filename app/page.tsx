@@ -67,6 +67,23 @@ const localBusinessJsonLd = {
   ],
 };
 
+/**
+ * JSON-LD complémentaire — WebSite avec SearchAction.
+ * Permet à Google d'afficher un encart "Searchbox" dans les résultats
+ * (utilisateur peut chercher directement depuis Google sans cliquer).
+ */
+const websiteJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': 'https://full-nevers-conciergerie.fr/#website',
+  url: 'https://full-nevers-conciergerie.fr',
+  name: 'Full Conciergerie Nevers',
+  inLanguage: 'fr-FR',
+  publisher: {
+    '@id': 'https://full-nevers-conciergerie.fr/#business',
+  },
+};
+
 export default function HomePage() {
   // ---------- NAV scroll state ----------
   useEffect(() => {
@@ -184,7 +201,7 @@ export default function HomePage() {
 
   return (
     <>
-      {/* Structured data JSON-LD pour Google */}
+      {/* Structured data JSON-LD pour Google — LocalBusiness + WebSite */}
       <script
         type="application/ld+json"
         // eslint-disable-next-line react/no-danger
@@ -192,11 +209,21 @@ export default function HomePage() {
           __html: JSON.stringify(localBusinessJsonLd),
         }}
       />
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(websiteJsonLd),
+        }}
+      />
 
       {/* ============ NAV ============ */}
       <nav className="nav" id="nav" data-screen-label="01 Nav">
         <a href="#" className="logo" aria-label="Full Conciergerie Nevers — accueil">
-          <span className="logo-mark">F</span>
+          {/* Vrai logo (en remplacement du placeholder F) */}
+          <span className="logo-img-wrap">
+            <img src="/logo.jpg" alt="Full Conciergerie Nevers" className="logo-img" />
+          </span>
           <span className="logo-text">
             Full Conciergerie
             <small>Nevers</small>
@@ -207,6 +234,8 @@ export default function HomePage() {
           <a href="#histoire">À propos</a>
           <a href="#temoignages">Avis</a>
           <a href="#faq">FAQ</a>
+          <a href="/devenir-prestataire">Recrutement</a>
+          <a href="/lancer-une-conciergerie">Entrepreneurs</a>
           <a href="#contact">Contact</a>
         </div>
         <div className="nav-cta">
@@ -367,7 +396,7 @@ export default function HomePage() {
               </svg>
               <h3 className="service-title">Ménage professionnel</h3>
               <p className="service-body">Une équipe de prestataires expérimentés assure le ménage après chaque départ, avec un standard hôtelier.</p>
-              <a href="#" className="service-more">En savoir plus <span className="service-arrow">→</span></a>
+
             </article>
             {/* 2 */}
             <article className="service-card reveal reveal-delay-1">
@@ -378,7 +407,7 @@ export default function HomePage() {
               </svg>
               <h3 className="service-title">Accueil voyageurs</h3>
               <p className="service-body">Communication 7j/7, instructions claires, support pendant le séjour. Vous ne décrochez plus jamais le téléphone.</p>
-              <a href="#" className="service-more">En savoir plus <span className="service-arrow">→</span></a>
+
             </article>
             {/* 3 */}
             <article className="service-card reveal reveal-delay-2">
@@ -390,7 +419,7 @@ export default function HomePage() {
               </svg>
               <h3 className="service-title">Optimisation des tarifs</h3>
               <p className="service-body">Analyse du marché local et ajustement des prix selon la saison pour maximiser vos revenus.</p>
-              <a href="#" className="service-more">En savoir plus <span className="service-arrow">→</span></a>
+
             </article>
             {/* 4 */}
             <article className="service-card reveal">
@@ -403,7 +432,7 @@ export default function HomePage() {
               </svg>
               <h3 className="service-title">Photos professionnelles</h3>
               <p className="service-body">Mise en valeur de votre logement avec des photos qui attirent les meilleurs voyageurs.</p>
-              <a href="#" className="service-more">En savoir plus <span className="service-arrow">→</span></a>
+
             </article>
             {/* 5 */}
             <article className="service-card reveal reveal-delay-1">
@@ -415,7 +444,7 @@ export default function HomePage() {
               </svg>
               <h3 className="service-title">Linge &amp; blanchisserie</h3>
               <p className="service-body">Linge de qualité hôtelière en location, blanchisserie en interne pour maîtriser les coûts. Plus de stock à gérer.</p>
-              <a href="#" className="service-more">En savoir plus <span className="service-arrow">→</span></a>
+
             </article>
             {/* 6 */}
             <article className="service-card reveal reveal-delay-2">
@@ -426,7 +455,7 @@ export default function HomePage() {
               </svg>
               <h3 className="service-title">Petites interventions</h3>
               <p className="service-body">Espaces verts, dépannage, livraison d&apos;extras voyageurs — nos partenaires s&apos;occupent de tout.</p>
-              <a href="#" className="service-more">En savoir plus <span className="service-arrow">→</span></a>
+
             </article>
           </div>
         </div>
@@ -738,7 +767,7 @@ export default function HomePage() {
           <img
             className="fill-image"
             src="/nevers-loire.jpg"
-            alt=""
+            alt="Bord de Loire à Nevers — paysage du Centre-Val de Loire"
             onError={hideOnError}
           />
           <div className="stripes"></div>
@@ -771,14 +800,15 @@ export default function HomePage() {
       <footer className="footer" data-screen-label="11 Footer">
         <div className="footer-grid">
           <div className="footer-brand">
-            <a href="#" className="logo" style={{ color: 'var(--ivoire)' }}>
-              <span className="logo-mark">F</span>
-              <span className="logo-text">
-                Full Conciergerie
-                <small>Nevers</small>
-              </span>
-            </a>
-            <p>
+            {/* Marque typographique propre — pas de F en placeholder pour éviter le collage "FFull" */}
+            <p className="footer-brand-name">
+              Full Conciergerie
+              <br />
+              <span className="footer-brand-italic">Nevers</span>
+            </p>
+            <span className="footer-rule" aria-hidden="true" />
+            <p className="footer-tagline">Des services Full Options</p>
+            <p className="footer-pitch">
               Conciergerie à Nevers et en région. Confiez votre Airbnb à des
               professionnels locaux passionnés.
             </p>
@@ -788,7 +818,7 @@ export default function HomePage() {
             <ul>
               <li><a href="tel:+33376150229">03 76 15 02 29</a></li>
               <li><a href="https://wa.me/33661753738">WhatsApp</a></li>
-              <li><a href="mailto:contact@full-nevers-conciergerie.fr">contact@full-nevers…</a></li>
+              <li><a href="mailto:contact@full-nevers-conciergerie.fr">contact@full-nevers-conciergerie.fr</a></li>
               <li>16 Quai de Mantoue<br/>58000 Nevers</li>
             </ul>
           </div>
@@ -798,7 +828,9 @@ export default function HomePage() {
               <li><a href="#services">Nos services</a></li>
               <li><a href="#histoire">À propos</a></li>
               <li><a href="#temoignages">Avis</a></li>
+              <li><a href="#faq">FAQ</a></li>
               <li><a href="#devis">Devis gratuit</a></li>
+              <li><a href="/contact">Page contact</a></li>
             </ul>
           </div>
           <div className="footer-col">
@@ -806,13 +838,16 @@ export default function HomePage() {
             <ul>
               <li><a href="/devenir-prestataire">Devenir prestataire →</a></li>
               <li><a href="/lancer-une-conciergerie">Lancer votre conciergerie →</a></li>
-              <li><a href="#">Instagram</a></li>
-              <li><a href="#">LinkedIn</a></li>
+              <li><a href="/services">Détail des services</a></li>
+              <li><a href="/a-propos">Notre histoire</a></li>
             </ul>
           </div>
         </div>
         <div className="footer-bot">
-          <small>© 2026 SAS Full Nevers Conciergerie · SIREN 915 379 226 · RCS Nevers · Mentions légales</small>
+          <small>
+            © 2026 SAS Full Nevers Conciergerie · SIREN 915&nbsp;379&nbsp;226 · RCS Nevers ·{' '}
+            <a href="/cgv" style={{ textDecoration: 'underline' }}>Mentions légales / CGV</a>
+          </small>
           <small className="made">— Des services Full Options</small>
         </div>
       </footer>
