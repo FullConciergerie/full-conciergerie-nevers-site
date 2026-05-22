@@ -254,7 +254,7 @@ export default function DevenirPrestatairePage() {
               />
               <FaqItem
                 q="Combien je peux espérer gagner ?"
-                a="Dépend du profil et du volume. Indicatif : 15-25 €/h en ménage, 20-40 €/h en petits travaux, selon votre statut et expérience. On en parle au téléphone."
+                a="La plupart de nos missions sont rémunérées au forfait (par exemple : un montant fixe par ménage selon la taille du logement), plus simple et plus prévisible qu'un taux horaire. Pour les missions plus longues ou non standard (petits travaux, espaces verts), on convient ensemble d'un tarif horaire ou forfaitaire. Ça dépend du profil, du volume et de votre statut — on en parle au téléphone."
               />
             </div>
           </div>
