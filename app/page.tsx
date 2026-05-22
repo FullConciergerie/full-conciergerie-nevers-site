@@ -1,5 +1,6 @@
-import Image from 'next/image';
-import Link from 'next/link';
+'use client';
+
+import { useEffect } from 'react';
 
 /**
  * Structured data Schema.org — LocalBusiness.
@@ -67,6 +68,120 @@ const localBusinessJsonLd = {
 };
 
 export default function HomePage() {
+  // ---------- NAV scroll state ----------
+  useEffect(() => {
+    const nav = document.getElementById('nav');
+    if (!nav) return;
+    let lastY = -1;
+    function onScroll() {
+      const y = window.scrollY || window.pageYOffset;
+      if ((y > 40) !== (lastY > 40)) {
+        nav!.classList.toggle('scrolled', y > 40);
+      }
+      lastY = y;
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // ---------- Scroll reveal ----------
+  useEffect(() => {
+    const els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach((e) => e.classList.add('in'));
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((en) => {
+          if (en.isIntersecting) {
+            en.target.classList.add('in');
+            io.unobserve(en.target);
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: '0px 0px -60px 0px' }
+    );
+    els.forEach((e) => io.observe(e));
+    return () => io.disconnect();
+  }, []);
+
+  // ---------- Parallax léger sur hero ----------
+  useEffect(() => {
+    const bg = document.querySelector<HTMLElement>('[data-parallax]');
+    if (!bg) return;
+    let ticking = false;
+    function update() {
+      const y = window.scrollY || 0;
+      if (y < window.innerHeight * 1.2) {
+        bg!.style.transform =
+          'translate3d(0,' + y * 0.18 + 'px,0) scale(' + (1 + y * 0.0002) + ')';
+      }
+      ticking = false;
+    }
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(update);
+        ticking = true;
+      }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  // ---------- FAQ accordéon ----------
+  useEffect(() => {
+    const items = document.querySelectorAll<HTMLElement>('.faq-item');
+    const handlers: Array<{ btn: HTMLElement; fn: () => void }> = [];
+    items.forEach((item) => {
+      const btn = item.querySelector<HTMLElement>('.faq-q');
+      if (!btn) return;
+      const fn = () => {
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll<HTMLElement>('.faq-item.open').forEach((other) => {
+          if (other !== item) {
+            other.classList.remove('open');
+            other.querySelector('.faq-q')?.setAttribute('aria-expanded', 'false');
+          }
+        });
+        item.classList.toggle('open', !isOpen);
+        btn.setAttribute('aria-expanded', String(!isOpen));
+      };
+      btn.addEventListener('click', fn);
+      handlers.push({ btn, fn });
+    });
+    return () => {
+      handlers.forEach(({ btn, fn }) => btn.removeEventListener('click', fn));
+    };
+  }, []);
+
+  // ---------- Smooth anchor scroll ----------
+  useEffect(() => {
+    const anchors = document.querySelectorAll<HTMLAnchorElement>('a[href^="#"]');
+    const handlers: Array<{ a: HTMLAnchorElement; fn: (e: Event) => void }> = [];
+    anchors.forEach((a) => {
+      const fn = (e: Event) => {
+        const id = a.getAttribute('href');
+        if (!id || id.length < 2) return;
+        const t = document.querySelector(id);
+        if (!t) return;
+        e.preventDefault();
+        const top = (t as HTMLElement).getBoundingClientRect().top + window.scrollY - 40;
+        window.scrollTo({ top, behavior: 'smooth' });
+      };
+      a.addEventListener('click', fn);
+      handlers.push({ a, fn });
+    });
+    return () => {
+      handlers.forEach(({ a, fn }) => a.removeEventListener('click', fn));
+    };
+  }, []);
+
+  const hideOnError = (e: React.SyntheticEvent<HTMLImageElement>) => {
+    e.currentTarget.style.display = 'none';
+  };
+
   return (
     <>
       {/* Structured data JSON-LD pour Google */}
@@ -77,427 +192,630 @@ export default function HomePage() {
           __html: JSON.stringify(localBusinessJsonLd),
         }}
       />
-      {/* ──────────── HERO ──────────── */}
-      <section className="relative overflow-hidden bg-sand-50">
-        <div className="mx-auto grid max-w-6xl gap-10 px-6 py-20 sm:px-8 sm:py-28 lg:grid-cols-2 lg:items-center lg:gap-16">
-          <div>
-            <p className="font-cursive text-2xl text-brand-600">
-              À votre service à Nevers
-            </p>
-            <h1 className="mt-3 font-serif text-4xl font-medium leading-tight text-brand-900 sm:text-5xl lg:text-6xl">
-              Confiez la gestion de votre Airbnb à des{' '}
-              <span className="italic text-brand-700">professionnels locaux</span>.
-            </h1>
-            <p className="mt-6 max-w-lg text-lg leading-relaxed text-brand-800/80">
-              De l&apos;accueil voyageur au ménage professionnel, en passant par
-              l&apos;optimisation des tarifs et la communication avec les
-              plateformes — nous prenons tout en charge pour que vous puissiez
-              profiter sereinement de vos revenus locatifs.
-            </p>
 
-            <div className="mt-8 flex flex-wrap gap-4">
-              <Link
-                href="/contact"
-                className="rounded-full bg-brand-700 px-6 py-3 text-sm font-medium text-sand-50 transition-colors hover:bg-brand-600"
-              >
-                Demander un devis gratuit
-              </Link>
-              <Link
-                href="/services"
-                className="rounded-full border-2 border-brand-700 px-6 py-3 text-sm font-medium text-brand-700 transition-colors hover:bg-brand-700 hover:text-sand-50"
-              >
-                Découvrir nos services
-              </Link>
-            </div>
+      {/* ============ NAV ============ */}
+      <nav className="nav" id="nav" data-screen-label="01 Nav">
+        <a href="#" className="logo" aria-label="Full Conciergerie Nevers — accueil">
+          <span className="logo-mark">F</span>
+          <span className="logo-text">
+            Full Conciergerie
+            <small>Nevers</small>
+          </span>
+        </a>
+        <div className="nav-menu" role="navigation">
+          <a href="#services">Services</a>
+          <a href="#histoire">À propos</a>
+          <a href="#temoignages">Avis</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div className="nav-cta">
+          <a href="#devis" className="btn btn-gold-outline">
+            <span className="cta-label">Devis gratuit</span>
+            <span className="arrow" aria-hidden="true">→</span>
+          </a>
+          <button className="nav-burger" aria-label="Menu">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </nav>
 
-            <div className="mt-10 grid grid-cols-3 gap-6 border-t border-brand-200/60 pt-8 sm:max-w-md">
-              <Stat number="30" label="logements gérés" />
-              <Stat number="100%" label="autonomie pour vous" />
-              <Stat number="800+" label="commentaires plateformes" />
-            </div>
+      {/* ============ HERO ============ */}
+      <header className="hero" data-screen-label="02 Hero">
+        <div className="hero-bg placeholder dark" data-parallax>
+          <img
+            className="fill-image"
+            src="/nevers-pont-vue.jpg"
+            alt="Pont de Loire et vieille ville de Nevers"
+            onError={hideOnError}
+          />
+          <div className="stripes"></div>
+        </div>
+
+        <div className="container hero-content">
+          <span className="hero-eyebrow eyebrow">À votre service à Nevers</span>
+          <h1 className="serif">
+            Confiez la gestion<br/>
+            de votre Airbnb à<br/>
+            <span className="or-word">des professionnels</span><br/>
+            locaux.
+          </h1>
+          <p className="lede">
+            De l&apos;accueil voyageur au ménage professionnel, en passant par l&apos;optimisation des tarifs
+            et la communication avec les plateformes — nous prenons tout en charge pour que vous
+            profitiez sereinement de vos revenus locatifs.
+          </p>
+          <div className="hero-actions">
+            <a href="#devis" className="btn btn-gold">
+              Demander un devis gratuit
+              <span className="arrow" aria-hidden="true">→</span>
+            </a>
+            <a href="#services" className="btn btn-ghost-light">
+              Découvrir nos services
+              <span className="arrow" aria-hidden="true">→</span>
+            </a>
           </div>
+        </div>
 
-          <div className="relative">
-            {/* Photo Delil — carte fondateur */}
-            <div className="relative aspect-[4/5] overflow-hidden rounded-3xl shadow-2xl shadow-brand-900/20">
-              <Image
-                src="/delil.jpg"
-                alt="Delil Torgursul, fondateur de Full Conciergerie Nevers, devant la cathédrale de Nevers"
-                fill
-                className="object-cover"
-                priority
-                sizes="(min-width: 1024px) 45vw, 100vw"
-              />
+        <div className="hero-meta">
+          <span className="gold-rule"></span>
+          <span>Nevers · 47°N</span>
+          <span>Des services Full Options</span>
+        </div>
 
-              {/* Dégradé pour lisibilité texte en bas */}
-              <div
-                aria-hidden="true"
-                className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-brand-900/85 via-brand-900/40 to-transparent"
-              />
+        <div className="scroll-cue" aria-hidden="true">
+          <span>Découvrir</span>
+          <span className="line"></span>
+        </div>
+      </header>
 
-              {/* Label fondateur en bas */}
-              <div className="absolute inset-x-0 bottom-0 p-6 text-sand-50 sm:p-8">
-                <p className="font-cursive text-2xl text-sand-200">
-                  Delil Torgursul
-                </p>
-                <p className="mt-1 text-sm uppercase tracking-wider text-sand-100/85">
-                  Fondateur · Nevers
-                </p>
-              </div>
-
-              {/* Badge note plateformes en haut à droite */}
-              <div className="absolute right-5 top-5 rounded-full bg-sand-50/95 px-3 py-1.5 text-xs font-semibold text-brand-800 shadow-lg backdrop-blur">
-                ★ 4,9/5 · 800+ avis
-              </div>
+      {/* ============ TRUST ============ */}
+      <section className="trust" data-screen-label="03 Trust band">
+        <div className="container">
+          <div className="trust-grid">
+            <div className="trust-item reveal">
+              <span className="trust-num serif">30<span className="suffix">+</span></span>
+              <span className="trust-label">Logements gérés à Nevers et alentours</span>
             </div>
-
-            {/* Tagline en complément, sous la photo */}
-            <p className="mt-6 text-center font-cursive text-2xl text-brand-600">
-              Des services Full Options
-            </p>
+            <div className="trust-item center reveal reveal-delay-1">
+              <span className="trust-num serif">100<span className="suffix">%</span></span>
+              <span className="trust-label">Autonomie pour vous — vous ne touchez à rien</span>
+            </div>
+            <div className="trust-item end reveal reveal-delay-2">
+              <span className="trust-num serif">800<span className="suffix">+</span></span>
+              <span className="trust-label">Commentaires plateformes · 4,9★ de moyenne</span>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ──────────── 3+ SERVICES ──────────── */}
-      <section className="bg-white py-20 sm:py-24">
-        <div className="mx-auto max-w-6xl px-6 sm:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="font-cursive text-xl text-brand-600">Nos services</p>
-            <h2 className="mt-2 font-serif text-3xl font-medium text-brand-900 sm:text-4xl">
-              Une gestion complète, sans aucun souci.
-            </h2>
-            <p className="mt-4 text-brand-800/80">
-              De l&apos;arrivée du voyageur à son départ, nous orchestrons chaque
-              étape pour vous offrir une tranquillité totale.
-            </p>
+      {/* ============ FONDATEUR ============ */}
+      <section id="histoire" className="founder bg-ivoire" data-screen-label="04 Fondateur">
+        <div className="container">
+          <div className="founder-grid">
+            <div className="founder-photo reveal">
+              <div className="placeholder">
+                <img
+                  className="fill-image"
+                  src="/delil-portrait.jpg"
+                  alt="Delil Torgursul, fondateur de Full Conciergerie Nevers"
+                  onError={hideOnError}
+                />
+                <div className="stripes"></div>
+                <div className="frame"></div>
+              </div>
+            </div>
+            <div className="founder-text reveal reveal-delay-1">
+              <span className="eyebrow">02 — <span className="or-mark">Qui sommes-nous ?</span></span>
+              <h2 className="founder-name serif">
+                <small>Le fondateur</small>
+                Delil Torgursul
+              </h2>
+              <span className="gold-rule"></span>
+              <div className="founder-bio">
+                <p>
+                  Fondée par Delil Torgursul, Full Conciergerie · Nevers accompagne les propriétaires de
+                  logements en location courte durée de la région nivernaise. Notre engagement :
+                  une qualité de service irréprochable, des prestataires locaux fiables, et une
+                  transparence totale sur la gestion de votre bien.
+                </p>
+                <p>
+                  Que vous soyez propriétaire d&apos;un appartement de centre-ville ou d&apos;une maison de
+                  caractère, nous adaptons notre prestation à votre logement et à vos voyageurs.
+                </p>
+              </div>
+              <blockquote className="founder-quote">
+                Chaque logement que je gère, je le traite comme s&apos;il était le mien.
+              </blockquote>
+              <div className="founder-rating">
+                <span className="stars">★★★★★</span>
+                <span className="score serif">4,9 / 5</span>
+                <span className="src">— sur 800+ commentaires plateformes</span>
+              </div>
+            </div>
           </div>
+        </div>
+      </section>
 
-          <div className="mt-14 grid gap-8 md:grid-cols-3">
-            <ServiceCard
-              title="Ménage professionnel"
-              description="Une équipe de prestataires expérimentés assure le ménage après chaque départ, avec un standard hôtelier."
-            />
-            <ServiceCard
-              title="Accueil voyageurs"
-              description="Communication 7j/7, instructions claires, support pendant le séjour. Vous ne décrochez plus jamais le téléphone."
-            />
-            <ServiceCard
-              title="Optimisation des tarifs"
-              description="Analyse du marché local et ajustement des prix selon la saison pour maximiser vos revenus."
-            />
-            <ServiceCard
-              title="Photos professionnelles"
-              description="Mise en valeur de votre logement avec des photos qui attirent les meilleurs voyageurs."
-            />
-            <ServiceCard
-              title="Location de linge & blanchisserie"
-              description="Linge de qualité hôtelière (draps, serviettes) en location. Blanchisserie en interne pour maîtriser les coûts. Plus de stock à gérer pour vous."
-            />
-            <ServiceCard
-              title="Petites interventions"
-              description="Espaces verts, dépannage, livraison d&apos;extras voyageurs — nos partenaires s&apos;occupent de tout."
-            />
-          </div>
-
-          <div className="mt-12 text-center">
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-2 text-sm font-medium text-brand-700 hover:text-brand-600"
+      {/* ============ SERVICES ============ */}
+      <section id="services" className="services bg-sable" data-screen-label="05 Services">
+        <div className="container">
+          <div className="services-head">
+            <div className="section-head reveal">
+              <span className="eyebrow">03 — <span className="or-mark">Nos services</span></span>
+              <h2 className="title serif">Une gestion complète, sans aucun souci.</h2>
+              <span className="gold-rule"></span>
+            </div>
+            <p
+              className="lede reveal reveal-delay-1"
+              style={{ maxWidth: '36ch', color: 'var(--texte-mute)', fontSize: '17px' }}
             >
-              Voir tous nos services <span aria-hidden="true">→</span>
-            </Link>
+              De l&apos;arrivée du voyageur à son départ, nous orchestrons chaque étape pour vous
+              offrir une tranquillité totale.
+            </p>
+          </div>
+
+          <div className="services-grid">
+            {/* 1 */}
+            <article className="service-card reveal">
+              <span className="service-num">— 01</span>
+              <svg className="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round">
+                <path d="M8 36 L8 22 L22 12 L36 22 L36 36 Z"/>
+                <path d="M8 36 L36 36"/>
+                <path d="M18 36 L18 26 L26 26 L26 36"/>
+                <path d="M14 18 L14 14"/>
+              </svg>
+              <h3 className="service-title">Ménage professionnel</h3>
+              <p className="service-body">Une équipe de prestataires expérimentés assure le ménage après chaque départ, avec un standard hôtelier.</p>
+              <a href="#" className="service-more">En savoir plus <span className="service-arrow">→</span></a>
+            </article>
+            {/* 2 */}
+            <article className="service-card reveal reveal-delay-1">
+              <span className="service-num">— 02</span>
+              <svg className="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round">
+                <path d="M6 12 H38 V30 H22 L14 36 V30 H6 Z"/>
+                <path d="M14 19 H30 M14 24 H26"/>
+              </svg>
+              <h3 className="service-title">Accueil voyageurs</h3>
+              <p className="service-body">Communication 7j/7, instructions claires, support pendant le séjour. Vous ne décrochez plus jamais le téléphone.</p>
+              <a href="#" className="service-more">En savoir plus <span className="service-arrow">→</span></a>
+            </article>
+            {/* 3 */}
+            <article className="service-card reveal reveal-delay-2">
+              <span className="service-num">— 03</span>
+              <svg className="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round">
+                <path d="M6 32 L16 22 L22 28 L36 12"/>
+                <path d="M28 12 L36 12 L36 20"/>
+                <path d="M6 36 L38 36"/>
+              </svg>
+              <h3 className="service-title">Optimisation des tarifs</h3>
+              <p className="service-body">Analyse du marché local et ajustement des prix selon la saison pour maximiser vos revenus.</p>
+              <a href="#" className="service-more">En savoir plus <span className="service-arrow">→</span></a>
+            </article>
+            {/* 4 */}
+            <article className="service-card reveal">
+              <span className="service-num">— 04</span>
+              <svg className="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round">
+                <rect x="6" y="12" width="32" height="22"/>
+                <circle cx="22" cy="23" r="6"/>
+                <path d="M16 12 L18 8 H26 L28 12"/>
+                <circle cx="32" cy="17" r="0.8" fill="currentColor"/>
+              </svg>
+              <h3 className="service-title">Photos professionnelles</h3>
+              <p className="service-body">Mise en valeur de votre logement avec des photos qui attirent les meilleurs voyageurs.</p>
+              <a href="#" className="service-more">En savoir plus <span className="service-arrow">→</span></a>
+            </article>
+            {/* 5 */}
+            <article className="service-card reveal reveal-delay-1">
+              <span className="service-num">— 05</span>
+              <svg className="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round">
+                <path d="M10 14 C10 10, 14 8, 22 8 C30 8, 34 10, 34 14 L34 30 C34 34, 30 36, 22 36 C14 36, 10 34, 10 30 Z"/>
+                <path d="M10 14 C10 18, 14 20, 22 20 C30 20, 34 18, 34 14"/>
+                <path d="M22 20 L22 36"/>
+              </svg>
+              <h3 className="service-title">Linge &amp; blanchisserie</h3>
+              <p className="service-body">Linge de qualité hôtelière en location, blanchisserie en interne pour maîtriser les coûts. Plus de stock à gérer.</p>
+              <a href="#" className="service-more">En savoir plus <span className="service-arrow">→</span></a>
+            </article>
+            {/* 6 */}
+            <article className="service-card reveal reveal-delay-2">
+              <span className="service-num">— 06</span>
+              <svg className="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round">
+                <path d="M14 30 L30 14 M12 32 L8 36 M28 12 L32 8 L36 12 L32 16"/>
+                <path d="M28 12 L20 20 L24 24 L32 16"/>
+              </svg>
+              <h3 className="service-title">Petites interventions</h3>
+              <p className="service-body">Espaces verts, dépannage, livraison d&apos;extras voyageurs — nos partenaires s&apos;occupent de tout.</p>
+              <a href="#" className="service-more">En savoir plus <span className="service-arrow">→</span></a>
+            </article>
           </div>
         </div>
       </section>
 
-      {/* ──────────── NEVERS — Galerie ville ──────────── */}
-      <section className="bg-white py-20 sm:py-24">
-        <div className="mx-auto max-w-6xl px-6 sm:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="font-cursive text-xl text-brand-600">
-              Notre territoire
-            </p>
-            <h2 className="mt-2 font-serif text-3xl font-medium text-brand-900 sm:text-4xl">
-              Nevers, perle ligérienne au cœur de la Nièvre.
-            </h2>
-            <p className="mt-4 text-brand-800/80">
-              Cité d&apos;art et d&apos;histoire au bord de la Loire, Nevers
-              séduit toute l&apos;année — pèlerins de Sainte-Bernadette,
-              cyclistes de la Loire à Vélo, amateurs de patrimoine, week-ends
-              gastronomiques. Une destination idéale pour la location courte
-              durée, et un terrain de jeu rêvé pour vos voyageurs.
-            </p>
-          </div>
-
-          {/* Galerie : grand format à gauche + 2 petits à droite */}
-          <div className="mt-14 grid gap-4 sm:grid-cols-3 sm:grid-rows-2">
-            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-xl shadow-brand-900/10 sm:col-span-2 sm:row-span-2 sm:aspect-auto">
-              <Image
-                src="/nevers-pont-cathedrale.jpg"
-                alt="Pont sur la Loire et cathédrale Saint-Cyr-et-Sainte-Julitte à Nevers"
-                fill
-                className="object-cover"
-                sizes="(min-width: 640px) 66vw, 100vw"
-              />
+      {/* ============ TERRITOIRE ============ */}
+      <section className="territoire bg-ivoire" data-screen-label="06 Territoire">
+        <div className="container">
+          <div className="territoire-grid">
+            <div className="territoire-text reveal">
+              <span className="eyebrow">04 — <span className="or-mark">Notre territoire</span></span>
+              <h2 className="territoire-title serif">
+                <em>Nevers</em>, perle ligerienne<br/>au cœur de la Nièvre.
+              </h2>
+              <span className="gold-rule"></span>
+              <p>
+                Cité d&apos;art et d&apos;histoire au bord de la Loire, Nevers séduit toute l&apos;année —
+                pèlerins de Sainte-Bernadette, cyclistes de la Loire à Vélo, amateurs de
+                patrimoine, week-ends gastronomiques.
+              </p>
+              <p>
+                Une destination idéale pour la location courte durée, et un terrain de jeu rêvé
+                pour vos voyageurs. Notre équipe vit ici, connaît chaque rue, chaque quartier,
+                chaque adresse qu&apos;on glisse dans le livret d&apos;accueil.
+              </p>
+              <div className="quartiers" aria-label="Atouts du territoire">
+                <span className="quartier gold">Patrimoine UNESCO</span>
+                <span className="quartier">Loire à Vélo</span>
+                <span className="quartier">Sanctuaire Ste-Bernadette</span>
+                <span className="quartier">Magny-Cours</span>
+                <span className="quartier">Vignoble Pouilly</span>
+              </div>
             </div>
-            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-lg shadow-brand-900/10">
-              <Image
-                src="/nevers-loire.jpg"
-                alt="Vue sur la Loire depuis Nevers"
-                fill
-                className="object-cover"
-                sizes="(min-width: 640px) 33vw, 100vw"
-              />
-            </div>
-            <div className="relative aspect-[4/3] overflow-hidden rounded-3xl shadow-lg shadow-brand-900/10">
-              <Image
-                src="/nevers-pont-vue.jpg"
-                alt="Le Pont de Loire et la vieille ville de Nevers"
-                fill
-                className="object-cover"
-                sizes="(min-width: 640px) 33vw, 100vw"
-              />
+            <div className="territoire-photo reveal reveal-delay-1">
+              <div className="placeholder">
+                <img
+                  className="fill-image"
+                  src="/nevers-pont-cathedrale.jpg"
+                  alt="Pont sur la Loire et cathédrale Saint-Cyr-et-Sainte-Julitte à Nevers"
+                  onError={hideOnError}
+                />
+                <div className="stripes"></div>
+                <div className="frame"></div>
+                <div className="corner-mark">06 · Nevers</div>
+              </div>
             </div>
           </div>
-
-          {/* Points forts du territoire */}
-          <div className="mt-14 grid gap-8 sm:grid-cols-3">
-            <Highlight
-              title="Patrimoine UNESCO"
-              text="Cathédrale du XIᵉ s., Palais ducal, vieille ville classée."
-            />
-            <Highlight
-              title="Loire à Vélo"
-              text="Étape majeure de l'itinéraire le plus fréquenté de France."
-            />
-            <Highlight
-              title="Sanctuaire Sainte-Bernadette"
-              text="Plus de 100 000 pèlerins chaque année, toute l'année."
-            />
-          </div>
-
-          {/* Crédit photos */}
-          <p className="mt-12 text-center text-xs text-brand-800/40">
-            Photos&nbsp;: Wikimedia Commons · CC-BY-SA
-          </p>
         </div>
       </section>
 
-      {/* ──────────── À PROPOS — Photo Delil ──────────── */}
-      <section className="bg-sand-100 py-20 sm:py-24">
-        <div className="mx-auto grid max-w-6xl gap-10 px-6 sm:px-8 lg:grid-cols-2 lg:items-center lg:gap-16">
-          <div className="relative aspect-[3/4] overflow-hidden rounded-3xl shadow-2xl shadow-brand-900/10">
-            <Image
-              src="/delil-portrait.jpg"
-              alt="Delil Torgursul, fondateur de Full Conciergerie Nevers"
-              fill
-              className="object-cover"
-              sizes="(min-width: 1024px) 50vw, 100vw"
-            />
+      {/* ============ PROCESSUS ============ */}
+      <section className="processus" data-screen-label="07 Processus">
+        <div className="container">
+          <div className="section-head reveal">
+            <span className="eyebrow">05 — <span className="or-mark">Comment ça se passe</span></span>
+            <h2 className="title serif" style={{ color: 'var(--ivoire)' }}>
+              Quatre étapes,<br/>et vous n&apos;y pensez plus.
+            </h2>
+            <span className="gold-rule"></span>
+            <p className="lede" style={{ maxWidth: '60ch' }}>
+              De la première discussion jusqu&apos;au virement mensuel, nous avons balisé chaque étape
+              pour que vous sachiez exactement à quoi vous attendre. Et quand.
+            </p>
           </div>
 
-          <div>
-            <p className="font-cursive text-xl text-brand-600">
-              Qui sommes-nous ?
+          <div className="steps">
+            <div className="step reveal">
+              <span className="step-num">01</span>
+              <h3 className="step-title">Premier échange</h3>
+              <p className="step-body">Un appel ou une visio de vingt minutes. Vous nous racontez votre logement, nous vous disons ce qu&apos;on peut en faire.</p>
+              <span className="step-meta">20 min · gratuit</span>
+            </div>
+            <div className="step reveal reveal-delay-1">
+              <span className="step-num">02</span>
+              <h3 className="step-title">Visite du logement</h3>
+              <p className="step-body">On passe sur place. Audit complet, photos, recommandations concrètes pour augmenter les revenus.</p>
+              <span className="step-meta">1 h · sans engagement</span>
+            </div>
+            <div className="step reveal reveal-delay-2">
+              <span className="step-num">03</span>
+              <h3 className="step-title">Mise en route</h3>
+              <p className="step-body">Création des annonces, installation du livret d&apos;accueil, prise des photos. On démarre dans la semaine.</p>
+              <span className="step-meta">5 à 7 jours</span>
+            </div>
+            <div className="step reveal reveal-delay-3">
+              <span className="step-num">04</span>
+              <h3 className="step-title">Vous touchez vos revenus</h3>
+              <p className="step-body">Virement automatique chaque mois, reporting transparent, accès à votre tableau de bord en temps réel.</p>
+              <span className="step-meta">Tous les 5 du mois</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ TÉMOIGNAGES ============ */}
+      <section id="temoignages" className="temoignages" data-screen-label="08 Témoignages">
+        <div className="container">
+          <div className="section-head reveal">
+            <span className="eyebrow">06 — <span className="or-mark">Ce qu&apos;ils en disent</span></span>
+            <h2 className="title serif">Des voyageurs comblés,<br/>des propriétaires sereins.</h2>
+            <span className="gold-rule"></span>
+            <p className="lede" style={{ color: 'var(--texte-mute)', marginTop: '16px' }}>
+              Plus de 800 commentaires sur Airbnb et Booking. Voici quelques retours récents de
+              voyageurs ayant séjourné dans nos logements.
             </p>
-            <h2 className="mt-2 font-serif text-3xl font-medium text-brand-900 sm:text-4xl">
-              Une équipe nivernaise, à votre service.
-            </h2>
-            <p className="mt-6 text-lg leading-relaxed text-brand-800/85">
-              Fondée par <strong>Delil Torgursul</strong>, Full Conciergerie
-              Nevers accompagne les propriétaires de logements en location
-              courte durée de la région nivernaise. Notre engagement&nbsp;: une
-              qualité de service irréprochable, des prestataires locaux
-              fiables, et une transparence totale sur la gestion de votre bien.
-            </p>
-            <p className="mt-4 text-brand-800/80">
-              Que vous soyez propriétaire d&apos;un appartement de centre-ville
-              ou d&apos;une maison de caractère, nous adaptons notre prestation
-              à votre logement et à vos voyageurs.
-            </p>
-            <div className="mt-8">
-              <Link
-                href="/a-propos"
-                className="inline-flex items-center gap-2 rounded-full border-2 border-brand-700 px-5 py-2.5 text-sm font-medium text-brand-700 hover:bg-brand-700 hover:text-sand-50"
+          </div>
+
+          <div className="temoignages-grid">
+            <article className="temoignage reveal">
+              <span className="stars">★★★★★</span>
+              <blockquote>
+                Jolie maison décorée avec goût et bien équipée. Les instructions pour accéder
+                sont claires. Très bon relationnel avec le propriétaire.
+              </blockquote>
+              <div className="temoignage-author">
+                <div className="author-photo">
+                  <div className="placeholder" style={{ background: '#7d8b78' }}>
+                    <div className="stripes"></div>
+                  </div>
+                </div>
+                <div className="author-info">
+                  <span className="author-name serif">David</span>
+                  <span className="author-meta">Mai 2026 · Airbnb</span>
+                </div>
+              </div>
+            </article>
+
+            <article className="temoignage reveal reveal-delay-1">
+              <span className="stars">★★★★★</span>
+              <blockquote>
+                Très disponible, a cherché une solution pour le stationnement des vélos et du
+                véhicule. Merci beaucoup !
+              </blockquote>
+              <div className="temoignage-author">
+                <div className="author-photo">
+                  <div className="placeholder" style={{ background: '#6e7d68' }}>
+                    <div className="stripes"></div>
+                  </div>
+                </div>
+                <div className="author-info">
+                  <span className="author-name serif">Manuela</span>
+                  <span className="author-meta">Suisse · Mai 2026 · Airbnb</span>
+                </div>
+              </div>
+            </article>
+
+            <article className="temoignage reveal reveal-delay-2">
+              <span className="stars">★★★★★</span>
+              <blockquote>
+                Logement impeccable. Accueil chaleureux, communication fluide du début à la fin.
+                Je recommande sans hésiter à toute personne de passage à Nevers.
+              </blockquote>
+              <div className="temoignage-author">
+                <div className="author-photo">
+                  <div className="placeholder" style={{ background: '#5f6f58' }}>
+                    <div className="stripes"></div>
+                  </div>
+                </div>
+                <div className="author-info">
+                  <span className="author-name serif">Benoit</span>
+                  <span className="author-meta">France · Mai 2026 · Airbnb</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div style={{ marginTop: '56px', textAlign: 'center' }} className="reveal">
+            <span className="eyebrow" style={{ display: 'inline-flex', alignItems: 'center', gap: '14px' }}>
+              <span style={{ color: 'var(--or)', letterSpacing: '0.1em' }}>★★★★★</span>
+              Note moyenne 4,9/5 sur Airbnb · plus de 800 commentaires
+            </span>
+          </div>
+        </div>
+      </section>
+
+      {/* ============ FAQ ============ */}
+      <section id="faq" className="faq bg-ivoire" data-screen-label="09 FAQ">
+        <div className="container">
+          <div className="faq-grid">
+            <div className="reveal">
+              <span className="eyebrow">07 — <span className="or-mark">Questions fréquentes</span></span>
+              <h2
+                className="serif"
+                style={{
+                  fontSize: 'clamp(36px, 4.5vw, 56px)',
+                  lineHeight: 1.05,
+                  marginTop: '24px',
+                  marginBottom: '24px',
+                }}
               >
-                En savoir plus sur nous
-              </Link>
+                Tout ce que vous vous demandez — sans tourner autour du pot.
+              </h2>
+              <span className="gold-rule"></span>
+              <p style={{ marginTop: '24px', color: 'var(--texte-mute)', fontSize: '16px' }}>
+                Vous ne trouvez pas votre réponse ?{' '}
+                <a
+                  href="#contact"
+                  style={{ color: 'var(--or)', borderBottom: '1px solid var(--or)', paddingBottom: '2px' }}
+                >
+                  Contactez-nous directement
+                </a>
+                .
+              </p>
+            </div>
+
+            <div className="faq-list reveal reveal-delay-1">
+              <div className="faq-item">
+                <button className="faq-q" aria-expanded="false">
+                  <span>Combien ça coûte ?</span>
+                  <span className="faq-icon" aria-hidden="true"></span>
+                </button>
+                <div className="faq-a"><div className="faq-a-inner">
+                  Nous nous rémunérons uniquement sur les nuitées effectivement réalisées. Pas
+                  d&apos;abonnement, pas de frais cachés. Si votre logement ne se loue pas, on ne
+                  facture rien. Le pourcentage exact dépend de votre logement — on vous le
+                  confirme après la visite.
+                </div></div>
+              </div>
+
+              <div className="faq-item">
+                <button className="faq-q" aria-expanded="false">
+                  <span>Vous gérez aussi les check-in tardifs ?</span>
+                  <span className="faq-icon" aria-hidden="true"></span>
+                </button>
+                <div className="faq-a"><div className="faq-a-inner">
+                  Oui, sans surcoût pour vous. Notre équipe peut accueillir un voyageur jusqu&apos;à 23 h,
+                  et au-delà nous mettons en place un système de boîtes à clés sécurisées avec code
+                  temporaire envoyé au voyageur.
+                </div></div>
+              </div>
+
+              <div className="faq-item">
+                <button className="faq-q" aria-expanded="false">
+                  <span>Que se passe-t-il en cas de dégradation ?</span>
+                  <span className="faq-icon" aria-hidden="true"></span>
+                </button>
+                <div className="faq-a"><div className="faq-a-inner">
+                  Nous réalisons un état des lieux photo après chaque départ. En cas de dégradation,
+                  nous déclenchons la garantie Airbnb / Booking dans les 24 h et suivons le dossier
+                  jusqu&apos;au remboursement. Vous n&apos;avez rien à faire — nous vous tenons informé.
+                </div></div>
+              </div>
+
+              <div className="faq-item">
+                <button className="faq-q" aria-expanded="false">
+                  <span>Sur quelles plateformes vous publiez ?</span>
+                  <span className="faq-icon" aria-hidden="true"></span>
+                </button>
+                <div className="faq-a"><div className="faq-a-inner">
+                  Airbnb, Booking, et notre channel manager qui synchronise les calendriers.
+                  Pas de double réservation, pas de période bloquée inutilement.
+                </div></div>
+              </div>
+
+              <div className="faq-item">
+                <button className="faq-q" aria-expanded="false">
+                  <span>Combien de temps pour démarrer ?</span>
+                  <span className="faq-icon" aria-hidden="true"></span>
+                </button>
+                <div className="faq-a"><div className="faq-a-inner">
+                  Entre cinq et sept jours ouvrés à partir de la signature. Le temps de faire les
+                  photos, rédiger les annonces, installer le livret d&apos;accueil et faire un audit
+                  complet du logement.
+                </div></div>
+              </div>
+
+              <div className="faq-item">
+                <button className="faq-q" aria-expanded="false">
+                  <span>Je peux récupérer mon logement quand je veux ?</span>
+                  <span className="faq-icon" aria-hidden="true"></span>
+                </button>
+                <div className="faq-a"><div className="faq-a-inner">
+                  Bien sûr. Vous bloquez vos dates depuis votre espace propriétaire — pour des
+                  vacances, de la famille, ou simplement par envie. Aucun préavis, aucune pénalité.
+                </div></div>
+              </div>
+
+              <div className="faq-item">
+                <button className="faq-q" aria-expanded="false">
+                  <span>Vous travaillez avec des LMNP / LMP ?</span>
+                  <span className="faq-icon" aria-hidden="true"></span>
+                </button>
+                <div className="faq-a"><div className="faq-a-inner">
+                  Oui, nous avons l&apos;habitude. Nous fournissons le récapitulatif comptable mensuel et
+                  annuel, compatible avec votre expert-comptable. Si vous n&apos;en avez pas, nous avons un
+                  partenaire à Nevers que nous pouvons vous recommander.
+                </div></div>
+              </div>
+
+              <div className="faq-item">
+                <button className="faq-q" aria-expanded="false">
+                  <span>Le contrat est sur quelle durée ?</span>
+                  <span className="faq-icon" aria-hidden="true"></span>
+                </button>
+                <div className="faq-a"><div className="faq-a-inner">
+                  Engagement minimum trois mois, ensuite résiliable à tout moment avec un mois de
+                  préavis. Nous préférons que vous restiez parce que vous êtes satisfait, pas parce
+                  que vous êtes coincé.
+                </div></div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ──────────── TÉMOIGNAGES ──────────── */}
-      <section className="bg-white py-20 sm:py-24">
-        <div className="mx-auto max-w-6xl px-6 sm:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="font-cursive text-xl text-brand-600">
-              Ce qu&apos;ils en disent
-            </p>
-            <h2 className="mt-2 font-serif text-3xl font-medium text-brand-900 sm:text-4xl">
-              Des voyageurs comblés, des propriétaires sereins.
-            </h2>
-            <p className="mt-4 text-brand-800/80">
-              Plus de 800 commentaires sur Airbnb et Booking. Voici quelques
-              retours récents de voyageurs ayant séjourné dans nos logements.
-            </p>
-          </div>
-
-          {/* Carrousel : scroll-snap horizontal, pas de JS */}
-          <div
-            className="mt-14 -mx-6 flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-smooth px-6 pb-4 sm:-mx-8 sm:px-8 lg:mx-0 lg:px-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
-            aria-label="Témoignages voyageurs"
-          >
-            <Testimonial
-              quote="Jolie maison décorée avec goût et bien équipée. Les instructions pour accéder sont claires. Très bon relationnel avec le propriétaire."
-              author="David"
-              date="Mai 2026"
-              platform="Airbnb"
-            />
-            <Testimonial
-              quote="Très disponible, a cherché une solution pour le stationnement des vélos et du véhicule. Merci beaucoup !"
-              author="Manuela"
-              location="Suisse"
-              date="Mai 2026"
-              platform="Airbnb"
-            />
-            <Testimonial
-              quote="Logement impeccable."
-              author="Benoit"
-              location="France"
-              date="Mai 2026"
-              platform="Airbnb"
-            />
-          </div>
-
-          <p className="mt-8 text-center text-sm text-brand-700/70">
-            ★★★★★ — Note moyenne 4,9/5 sur Airbnb · plus de 800 commentaires
-          </p>
-          <p className="mt-2 text-center text-xs text-brand-800/50 lg:hidden">
-            Faites glisser pour voir plus →
-          </p>
+      {/* ============ CTA FINAL ============ */}
+      <section id="devis" className="final-cta" data-screen-label="10 CTA final">
+        <div className="bg placeholder dark">
+          <img
+            className="fill-image"
+            src="/nevers-loire.jpg"
+            alt=""
+            onError={hideOnError}
+          />
+          <div className="stripes"></div>
         </div>
-      </section>
-
-      {/* ──────────── CTA FINAL ──────────── */}
-      <section className="bg-brand-700 py-20 text-sand-50 sm:py-24">
-        <div className="mx-auto max-w-3xl px-6 text-center sm:px-8">
-          <p className="font-cursive text-2xl text-sand-200">
-            Prêt à nous confier votre logement ?
-          </p>
-          <h2 className="mt-3 font-serif text-3xl font-medium sm:text-4xl">
-            Discutons de votre projet.
+        <div className="container" id="contact">
+          <span className="eyebrow reveal" style={{ color: 'var(--or)' }}>
+            — Prêt à nous confier votre logement ?
+          </span>
+          <h2 className="serif reveal reveal-delay-1">
+            Discutons de <em>votre projet.</em>
           </h2>
-          <p className="mt-4 text-sand-100/90">
-            Devis gratuit et sans engagement. Réponse sous 24h.
+          <span className="gold-rule"></span>
+          <p className="reveal reveal-delay-2">
+            Devis gratuit et sans engagement. Réponse sous 24 h.
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Link
-              href="/contact"
-              className="rounded-full bg-sand-50 px-6 py-3 text-sm font-medium text-brand-700 hover:bg-sand-100"
-            >
+          <div className="actions reveal reveal-delay-3">
+            <a href="#" className="btn btn-gold">
               Demander un devis
-            </Link>
-            <a
-              href="tel:+33376150229"
-              className="rounded-full border-2 border-sand-50 px-6 py-3 text-sm font-medium text-sand-50 hover:bg-sand-50 hover:text-brand-700"
-            >
+              <span className="arrow">→</span>
+            </a>
+            <a href="tel:+33376150229" className="btn btn-ghost-light">
               03 76 15 02 29
+              <span className="arrow">↗</span>
             </a>
           </div>
         </div>
       </section>
+
+      {/* ============ FOOTER ============ */}
+      <footer className="footer" data-screen-label="11 Footer">
+        <div className="footer-grid">
+          <div className="footer-brand">
+            <a href="#" className="logo" style={{ color: 'var(--ivoire)' }}>
+              <span className="logo-mark">F</span>
+              <span className="logo-text">
+                Full Conciergerie
+                <small>Nevers</small>
+              </span>
+            </a>
+            <p>
+              Conciergerie à Nevers et en région. Confiez votre Airbnb à des
+              professionnels locaux passionnés.
+            </p>
+          </div>
+          <div className="footer-col">
+            <h4>Contact</h4>
+            <ul>
+              <li><a href="tel:+33376150229">03 76 15 02 29</a></li>
+              <li><a href="https://wa.me/33661753738">WhatsApp</a></li>
+              <li><a href="mailto:contact@full-nevers-conciergerie.fr">contact@full-nevers…</a></li>
+              <li>16 Quai de Mantoue<br/>58000 Nevers</li>
+            </ul>
+          </div>
+          <div className="footer-col">
+            <h4>Navigation</h4>
+            <ul>
+              <li><a href="#services">Nos services</a></li>
+              <li><a href="#histoire">À propos</a></li>
+              <li><a href="#temoignages">Avis</a></li>
+              <li><a href="#devis">Devis gratuit</a></li>
+            </ul>
+          </div>
+          <div className="footer-col">
+            <h4>Autres services</h4>
+            <ul>
+              <li><a href="/devenir-prestataire">Devenir prestataire →</a></li>
+              <li><a href="/lancer-une-conciergerie">Lancer votre conciergerie →</a></li>
+              <li><a href="#">Instagram</a></li>
+              <li><a href="#">LinkedIn</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="footer-bot">
+          <small>© 2026 SAS Full Nevers Conciergerie · SIREN 915 379 226 · RCS Nevers · Mentions légales</small>
+          <small className="made">— Des services Full Options</small>
+        </div>
+      </footer>
     </>
-  );
-}
-
-function Stat({ number, label }: { number: string; label: string }) {
-  return (
-    <div>
-      <p className="font-serif text-3xl text-brand-700">{number}</p>
-      <p className="mt-1 text-xs uppercase tracking-wider text-brand-700/70">
-        {label}
-      </p>
-    </div>
-  );
-}
-
-function ServiceCard({
-  title,
-  description,
-}: {
-  title: string;
-  description: string;
-}) {
-  return (
-    <div className="group rounded-2xl border border-brand-100 bg-sand-50 p-7 transition-shadow hover:shadow-lg hover:shadow-brand-900/5">
-      {/* Filet doré décoratif (rappel du footer + plaque) */}
-      <span
-        aria-hidden="true"
-        className="block h-px w-10 bg-gold-400 transition-all group-hover:w-16"
-      />
-
-      <h3 className="mt-5 font-serif text-xl font-medium text-brand-900">
-        {title}
-      </h3>
-      <p className="mt-3 text-sm leading-relaxed text-brand-800/80">
-        {description}
-      </p>
-    </div>
-  );
-}
-
-function Highlight({ title, text }: { title: string; text: string }) {
-  return (
-    <div className="text-center sm:text-left">
-      <h3 className="font-serif text-xl font-medium text-brand-900">
-        {title}
-      </h3>
-      <p className="mt-2 text-sm leading-relaxed text-brand-800/80">{text}</p>
-    </div>
-  );
-}
-
-function Testimonial({
-  quote,
-  author,
-  location,
-  date,
-  platform,
-}: {
-  quote: string;
-  author: string;
-  location?: string;
-  date: string;
-  platform: string;
-}) {
-  return (
-    <figure className="flex shrink-0 basis-[85%] snap-center flex-col rounded-2xl border border-brand-100 bg-sand-50 p-8 sm:basis-[calc(50%-12px)] lg:basis-[calc(33.333%-16px)]">
-      <div
-        className="font-serif text-5xl leading-none text-brand-300"
-        aria-hidden="true"
-      >
-        &ldquo;
-      </div>
-      <blockquote className="mt-2 flex-1 font-serif text-lg italic leading-relaxed text-brand-900">
-        {quote}
-      </blockquote>
-      <figcaption className="mt-6 flex flex-wrap items-baseline gap-x-2 text-sm text-brand-800/80">
-        <span className="font-medium text-brand-700">— {author}</span>
-        {location && (
-          <>
-            <span className="text-brand-800/60">·</span>
-            <span>{location}</span>
-          </>
-        )}
-        <span className="text-brand-800/60">·</span>
-        <span>{date}</span>
-        <span className="text-brand-800/60">·</span>
-        <span className="text-xs uppercase tracking-wider text-brand-600">
-          {platform}
-        </span>
-      </figcaption>
-    </figure>
   );
 }

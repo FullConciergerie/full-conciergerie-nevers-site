@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Cormorant_Garamond, Manrope, Dancing_Script } from 'next/font/google';
+import { Cormorant_Garamond, Manrope, Dancing_Script, JetBrains_Mono } from 'next/font/google';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 import './globals.css';
@@ -27,6 +27,13 @@ const dancing = Dancing_Script({
   variable: '--font-dancing',
   subsets: ['latin'],
   weight: ['400', '500', '600'],
+});
+
+// JetBrains Mono — mono pour les eyebrows / labels de la landing v2
+const jetbrains = JetBrains_Mono({
+  variable: '--font-jetbrains',
+  subsets: ['latin'],
+  weight: ['400', '500'],
 });
 
 const SITE_URL = 'https://full-nevers-conciergerie.fr';
@@ -118,7 +125,7 @@ export default function RootLayout({
   return (
     <html
       lang="fr"
-      className={`${cormorant.variable} ${manrope.variable} ${dancing.variable} h-full antialiased`}
+      className={`${cormorant.variable} ${manrope.variable} ${dancing.variable} ${jetbrains.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-sans">
         <Header />

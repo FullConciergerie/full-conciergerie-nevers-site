@@ -1,10 +1,19 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 /**
  * Footer global du site Full Conciergerie Nevers.
+ *
+ * La home `/` a son propre footer custom (design v2) — on n'affiche
+ * donc pas ce footer global sur la home.
  */
 export function Footer() {
+  const pathname = usePathname();
   const year = new Date().getFullYear();
+
+  if (pathname === '/') return null;
 
   return (
     <footer className="mt-20 border-t border-brand-200 bg-brand-700 text-sand-50">

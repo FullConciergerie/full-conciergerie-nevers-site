@@ -26,6 +26,9 @@ export function Header() {
   const pathname = usePathname();
   const close = () => setIsOpen(false);
 
+  // La home `/` utilise sa propre nav custom (design v2) — on n'affiche pas le Header global.
+  if (pathname === '/') return null;
+
   return (
     <header className="sticky top-0 z-40 border-b border-brand-100 bg-sand-50/95 backdrop-blur">
       <nav
