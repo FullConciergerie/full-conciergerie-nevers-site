@@ -516,8 +516,8 @@ export default function HomePage() {
             </h2>
             <span className="gold-rule"></span>
             <p className="lede" style={{ maxWidth: '60ch' }}>
-              De la première discussion jusqu&apos;au virement mensuel, nous avons balisé chaque étape
-              pour que vous sachiez exactement à quoi vous attendre. Et quand.
+              De la première discussion jusqu&apos;à votre premier voyageur, nous avons balisé chaque
+              étape pour que vous sachiez exactement à quoi vous attendre. Et quand.
             </p>
           </div>
 
@@ -542,9 +542,9 @@ export default function HomePage() {
             </div>
             <div className="step reveal reveal-delay-3">
               <span className="step-num">04</span>
-              <h3 className="step-title">Vous touchez vos revenus</h3>
-              <p className="step-body">Virement automatique chaque mois, reporting transparent, accès à votre tableau de bord en temps réel.</p>
-              <span className="step-meta">Tous les 5 du mois</span>
+              <h3 className="step-title">Vous percevez vos revenus</h3>
+              <p className="step-body">Airbnb et Booking versent directement vos revenus sur votre compte après chaque séjour. De notre côté, vous recevez une facture mensuelle claire avec le détail des prestations.</p>
+              <span className="step-meta">Versés par les plateformes</span>
             </div>
           </div>
         </div>
@@ -728,8 +728,9 @@ export default function HomePage() {
                   <span className="faq-icon" aria-hidden="true"></span>
                 </button>
                 <div className="faq-a"><div className="faq-a-inner">
-                  Bien sûr. Vous bloquez vos dates depuis votre espace propriétaire — pour des
-                  vacances, de la famille, ou simplement par envie. Aucun préavis, aucune pénalité.
+                  Bien sûr. Il suffit de nous prévenir par téléphone, WhatsApp ou email — on bloque
+                  vos dates sur les plateformes pour les vacances, la famille, ou simplement par
+                  envie. Aucun préavis minimum, aucune pénalité.
                 </div></div>
               </div>
 
