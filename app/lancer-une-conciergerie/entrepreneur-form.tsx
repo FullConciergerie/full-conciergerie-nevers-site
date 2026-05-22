@@ -23,119 +23,153 @@ export function EntrepreneurForm() {
         });
       }}
       id="entrepreneur-form"
-      className="mt-10 space-y-6 rounded-3xl border border-brand-200 bg-sand-50 p-6 sm:p-8"
+      className="v2-form"
     >
-      <div className="grid gap-4 sm:grid-cols-2">
-        <Field label="Prénom *" name="firstName" required autoComplete="given-name" />
-        <Field label="Nom *" name="lastName" required autoComplete="family-name" />
-        <Field
-          label="Email *"
-          name="email"
-          type="email"
-          required
-          autoComplete="email"
-          placeholder="vous@email.fr"
-        />
-        <Field
-          label="Téléphone *"
-          name="phone"
-          type="tel"
-          required
-          autoComplete="tel"
-          placeholder="06 12 34 56 78"
-        />
-        <Field
-          label="Ville / zone envisagée *"
-          name="city"
-          required
-          placeholder="Ex : Bourges, Auxerre, Mâcon…"
-        />
-        <SelectField
-          label="Votre situation actuelle"
-          name="currentRole"
-          options={[
-            '',
-            'Salarié·e — en réflexion / reconversion',
-            'Salarié·e — projet en parallèle',
-            'Déjà indépendant·e',
-            'Investisseur·euse',
-            'En recherche d\'activité',
-            'Retraité·e actif·ve',
-            'Autre',
-          ]}
-        />
+      {/* ── Section 1 : Coordonnées ── */}
+      <div className="v2-form-section">
+        <div className="v2-form-section-head">
+          <span className="v2-form-section-eyebrow">01 — Vos coordonnées</span>
+          <h3 className="v2-form-section-title">Présentez-vous</h3>
+        </div>
+
+        <div className="v2-form-row">
+          <Field label="Prénom" name="firstName" required autoComplete="given-name" placeholder="Marie" />
+          <Field label="Nom" name="lastName" required autoComplete="family-name" placeholder="Dupont" />
+        </div>
+        <div className="v2-form-row">
+          <Field
+            label="Email"
+            name="email"
+            type="email"
+            required
+            autoComplete="email"
+            placeholder="vous@email.fr"
+          />
+          <Field
+            label="Téléphone"
+            name="phone"
+            type="tel"
+            required
+            autoComplete="tel"
+            placeholder="06 12 34 56 78"
+          />
+        </div>
       </div>
 
-      <div className="grid gap-4 sm:grid-cols-2">
-        <SelectField
-          label="Capacité d'investissement (estimation)"
-          name="investment"
-          options={[
-            '',
-            'Moins de 5 000 €',
-            '5 000 — 15 000 €',
-            '15 000 — 30 000 €',
-            '30 000 € et plus',
-            'Je préfère en discuter',
-          ]}
-        />
-        <SelectField
-          label="Horizon de lancement"
-          name="timeline"
-          options={[
-            '',
-            'Dans les 3 mois',
-            'Dans 3 à 6 mois',
-            'Dans 6 à 12 mois',
-            'Plus tard / à explorer',
-          ]}
-        />
+      {/* ── Section 2 : Votre projet ── */}
+      <div className="v2-form-section">
+        <div className="v2-form-section-head">
+          <span className="v2-form-section-eyebrow">02 — Votre projet</span>
+          <h3 className="v2-form-section-title">Où et quand voulez-vous lancer&nbsp;?</h3>
+        </div>
+
+        <div className="v2-form-row">
+          <Field
+            label="Ville / zone envisagée"
+            name="city"
+            required
+            placeholder="Ex : Bourges, Auxerre, Mâcon…"
+          />
+          <SelectField
+            label="Votre situation actuelle"
+            name="currentRole"
+            options={[
+              '',
+              'Salarié·e — en réflexion / reconversion',
+              'Salarié·e — projet en parallèle',
+              'Déjà indépendant·e',
+              'Investisseur·euse',
+              "En recherche d'activité",
+              'Retraité·e actif·ve',
+              'Autre',
+            ]}
+          />
+        </div>
+
+        <div className="v2-form-row">
+          <SelectField
+            label="Capacité d'investissement (estimation)"
+            name="investment"
+            options={[
+              '',
+              'Moins de 5 000 €',
+              '5 000 — 15 000 €',
+              '15 000 — 30 000 €',
+              '30 000 € et plus',
+              'Je préfère en discuter',
+            ]}
+          />
+          <SelectField
+            label="Horizon de lancement"
+            name="timeline"
+            options={[
+              '',
+              'Dans les 3 mois',
+              'Dans 3 à 6 mois',
+              'Dans 6 à 12 mois',
+              'Plus tard / à explorer',
+            ]}
+          />
+        </div>
       </div>
 
-      <TextareaField
-        label="Expérience pertinente (facultatif)"
-        name="experience"
-        placeholder="Immobilier, hospitalité, gestion, entrepreneuriat, etc."
-        rows={3}
-      />
+      {/* ── Section 3 : Pour mieux vous connaître ── */}
+      <div className="v2-form-section">
+        <div className="v2-form-section-head">
+          <span className="v2-form-section-eyebrow">03 — Pour mieux vous connaître</span>
+          <h3 className="v2-form-section-title">Votre parcours, votre vision</h3>
+        </div>
 
-      <TextareaField
-        label="Pourquoi ce projet vous intéresse ?"
-        name="motivation"
-        placeholder="Ce que vous cherchez à construire, votre vision, votre marché…"
-        rows={4}
-      />
+        <div className="v2-form-row full">
+          <TextareaField
+            label="Expérience pertinente (facultatif)"
+            name="experience"
+            placeholder="Immobilier, hospitalité, gestion, entrepreneuriat, etc."
+            rows={3}
+          />
+        </div>
 
+        <div className="v2-form-row full">
+          <TextareaField
+            label="Pourquoi ce projet vous intéresse ?"
+            name="motivation"
+            placeholder="Ce que vous cherchez à construire, votre vision, votre marché…"
+            rows={4}
+          />
+        </div>
+      </div>
+
+      {/* Résultat */}
       {result && 'success' in result && (
-        <div
-          role="status"
-          className="rounded-xl border border-green-300 bg-green-50 p-4 text-sm text-green-900"
-        >
-          ✅ Candidature reçue. Delil vous appelle sous 48h pour un premier
-          échange de découverte (30 minutes).
+        <div role="status" className="v2-form-alert success">
+          <span className="v2-form-alert-icon">✓</span>
+          <span>
+            <strong>Candidature reçue.</strong> Delil vous appelle sous 48h pour un
+            premier échange de découverte (30 minutes).
+          </span>
         </div>
       )}
       {result && 'error' in result && (
-        <div
-          role="alert"
-          className="rounded-xl border border-red-300 bg-red-50 p-4 text-sm text-red-900"
-        >
-          ❌ {result.error}
+        <div role="alert" className="v2-form-alert error">
+          <span className="v2-form-alert-icon">!</span>
+          <span>{result.error}</span>
         </div>
       )}
 
-      <div className="flex flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-xs text-brand-800/60">
-          Vos données restent confidentielles et ne servent qu&apos;à organiser
-          un premier appel.
+      {/* Footer */}
+      <div className="v2-form-footer">
+        <p className="v2-form-footer-note">
+          Vos données restent confidentielles
         </p>
-        <button
-          type="submit"
-          disabled={isPending}
-          className="rounded-full bg-brand-700 px-7 py-3 text-sm font-medium text-sand-50 transition-colors hover:bg-brand-600 disabled:opacity-60"
-        >
-          {isPending ? 'Envoi en cours…' : 'Demander un appel découverte'}
-        </button>
+        <div className="v2-form-submit-row">
+          <span style={{ fontFamily: 'var(--mono)', fontSize: '11px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--texte-mute)' }}>
+            Premier échange gratuit
+          </span>
+          <button type="submit" disabled={isPending} className="v2-form-submit">
+            <span>{isPending ? 'Envoi en cours…' : 'Demander un appel découverte'}</span>
+            <span className="arrow" aria-hidden="true">→</span>
+          </button>
+        </div>
       </div>
     </form>
   );
@@ -159,15 +193,18 @@ function Field({
   placeholder?: string;
 }) {
   return (
-    <label className="block text-sm">
-      <span className="block font-medium text-brand-900">{label}</span>
+    <label className="v2-field">
+      <span className="v2-field-label">
+        {label}
+        {required && <span className="req">*</span>}
+      </span>
       <input
         name={name}
         type={type}
         required={required}
         autoComplete={autoComplete}
         placeholder={placeholder}
-        className="mt-1 w-full rounded-xl border border-brand-200 bg-white px-4 py-2.5 text-sm text-brand-900 focus:border-brand-700 focus:outline-none"
+        className="v2-field-input"
       />
     </label>
   );
@@ -183,13 +220,9 @@ function SelectField({
   options: string[];
 }) {
   return (
-    <label className="block text-sm">
-      <span className="block font-medium text-brand-900">{label}</span>
-      <select
-        name={name}
-        defaultValue=""
-        className="mt-1 w-full rounded-xl border border-brand-200 bg-white px-4 py-2.5 text-sm text-brand-900 focus:border-brand-700 focus:outline-none"
-      >
+    <label className="v2-field">
+      <span className="v2-field-label">{label}</span>
+      <select name={name} defaultValue="" className="v2-field-select">
         {options.map((opt) => (
           <option key={opt} value={opt}>
             {opt || '— Sélectionner —'}
@@ -212,13 +245,13 @@ function TextareaField({
   rows?: number;
 }) {
   return (
-    <label className="block text-sm">
-      <span className="block font-medium text-brand-900">{label}</span>
+    <label className="v2-field">
+      <span className="v2-field-label">{label}</span>
       <textarea
         name={name}
         rows={rows}
         placeholder={placeholder}
-        className="mt-1 w-full rounded-xl border border-brand-200 bg-white px-4 py-2.5 text-sm text-brand-900 focus:border-brand-700 focus:outline-none"
+        className="v2-field-textarea"
       />
     </label>
   );
