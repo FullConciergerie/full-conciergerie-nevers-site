@@ -1424,3 +1424,162 @@ section { padding-top: var(--pad-section); padding-bottom: var(--pad-section); p
   .v2-form-submit { width: 100%; justify-content: center; }
   .v2-form-submit-row { flex-direction: column-reverse; align-items: stretch; }
 }
+
+/* ====================================================================
+   BOUTON WHATSAPP FLOTTANT — design v2
+   ==================================================================== */
+
+.wa-fab {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 8px 22px 8px 8px;
+  background: #25D366;
+  color: #fff;
+  border-radius: 999px;
+  text-decoration: none;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.25) inset,
+    0 8px 24px -8px rgba(15, 38, 37, 0.45),
+    0 18px 48px -16px rgba(37, 211, 102, 0.45);
+  border: 1px solid rgba(201, 168, 104, 0.55);
+  transition:
+    transform 320ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    box-shadow 320ms cubic-bezier(0.2, 0.7, 0.2, 1),
+    background 320ms;
+  animation: wa-enter 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 600ms both;
+  will-change: transform;
+}
+
+.wa-fab:hover {
+  transform: translateY(-3px);
+  background: #1ebe5d;
+  box-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.35) inset,
+    0 14px 32px -8px rgba(15, 38, 37, 0.55),
+    0 28px 64px -16px rgba(201, 168, 104, 0.55);
+  border-color: var(--or);
+}
+
+.wa-fab:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* Bulle interne ronde */
+.wa-bubble {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  min-width: 48px;
+  border-radius: 999px;
+  background: linear-gradient(160deg, #ffffff14, transparent 60%);
+}
+
+.wa-icon {
+  width: 28px;
+  height: 28px;
+  fill: #fff;
+  flex-shrink: 0;
+}
+
+/* Petit point de présence "en ligne" doré */
+.wa-online-dot {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--or);
+  border: 2px solid #25D366;
+  box-shadow: 0 0 0 2px rgba(201, 168, 104, 0.25);
+}
+
+.wa-fab:hover .wa-online-dot { border-color: #1ebe5d; }
+
+/* Texte */
+.wa-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  line-height: 1.1;
+  padding-right: 4px;
+}
+
+.wa-eyebrow {
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.78);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.wa-eyebrow::before {
+  content: "";
+  display: inline-block;
+  width: 14px;
+  height: 1px;
+  background: var(--or);
+}
+
+.wa-label {
+  font-family: var(--serif);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  color: #fff;
+}
+
+/* Anneaux de pulse — doublés, lents, espacés */
+.wa-pulse {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: #25D366;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.wa-pulse-1 { animation: wa-ping 2800ms cubic-bezier(0.2, 0.7, 0.2, 1) infinite; }
+.wa-pulse-2 { animation: wa-ping 2800ms cubic-bezier(0.2, 0.7, 0.2, 1) infinite; animation-delay: 1400ms; }
+
+@keyframes wa-ping {
+  0% { transform: scale(0.95); opacity: 0.35; }
+  80% { transform: scale(1.35); opacity: 0; }
+  100% { transform: scale(1.35); opacity: 0; }
+}
+
+@keyframes wa-enter {
+  0% { opacity: 0; transform: translateY(20px) scale(0.85); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Mobile : on garde uniquement la bulle ronde, plus compact */
+@media (max-width: 640px) {
+  .wa-fab {
+    padding: 6px;
+    bottom: 16px;
+    right: 16px;
+    gap: 0;
+  }
+  .wa-text { display: none; }
+  .wa-bubble { width: 52px; height: 52px; }
+  .wa-icon { width: 30px; height: 30px; }
+}
+
+/* Respect prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .wa-pulse-1, .wa-pulse-2 { animation: none; opacity: 0; }
+  .wa-fab { animation: none; }
+}
