@@ -312,7 +312,7 @@ export default function HomePage() {
             </div>
             <div className="trust-item end reveal reveal-delay-2">
               <span className="trust-num serif">800<span className="suffix">+</span></span>
-              <span className="trust-label">Commentaires plateformes · 4,9★ de moyenne</span>
+              <span className="trust-label">Commentaires plateformes (Airbnb &amp; Booking)</span>
             </div>
           </div>
         </div>
@@ -357,9 +357,7 @@ export default function HomePage() {
                 Chaque logement que je gère, je le traite comme s&apos;il était le mien.
               </blockquote>
               <div className="founder-rating">
-                <span className="stars">★★★★★</span>
-                <span className="score serif">4,9 / 5</span>
-                <span className="src">— sur 800+ commentaires plateformes</span>
+                <span className="src">— Plus de 800 commentaires voyageurs sur Airbnb &amp; Booking</span>
               </div>
             </div>
           </div>
@@ -623,9 +621,8 @@ export default function HomePage() {
           </div>
 
           <div style={{ marginTop: '56px', textAlign: 'center' }} className="reveal">
-            <span className="eyebrow" style={{ display: 'inline-flex', alignItems: 'center', gap: '14px' }}>
-              <span style={{ color: 'var(--or)', letterSpacing: '0.1em' }}>★★★★★</span>
-              Note moyenne 4,9/5 sur Airbnb · plus de 800 commentaires
+            <span className="eyebrow">
+              Plus de 800 commentaires voyageurs sur Airbnb &amp; Booking
             </span>
           </div>
         </div>
@@ -752,9 +749,9 @@ export default function HomePage() {
                   <span className="faq-icon" aria-hidden="true"></span>
                 </button>
                 <div className="faq-a"><div className="faq-a-inner">
-                  Engagement minimum trois mois, ensuite résiliable à tout moment avec un mois de
-                  préavis. Nous préférons que vous restiez parce que vous êtes satisfait, pas parce
-                  que vous êtes coincé.
+                  Sans engagement minimum. Vous pouvez arrêter à tout moment avec un préavis d&apos;un
+                  mois. On préfère que vous restiez parce que vous êtes satisfait, pas parce que vous
+                  êtes coincé.
                 </div></div>
               </div>
             </div>
