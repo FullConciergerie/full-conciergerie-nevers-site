@@ -1,184 +1,143 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 /**
- * Header global du site Full Conciergerie Nevers.
+ * Header global du site — version design v2 (vert profond + or, typo serif).
  *
- * Desktop (≥ md) : nav inline + CTA "Devis gratuit"
- * Mobile (< md)  : hamburger menu qui ouvre un drawer avec les liens
+ * - Sur la home `/` : on retourne null, la home a sa propre nav inline custom.
+ * - Sur les autres pages : header sticky avec le même look que la nav home.
+ *
+ * Desktop : nav inline + CTA "Devis gratuit" doré
+ * Mobile : burger menu qui ouvre un drawer plein écran
  */
 
 const NAV_LINKS = [
-  { href: '/', label: 'Accueil' },
   { href: '/services', label: 'Services' },
   { href: '/a-propos', label: 'À propos' },
-  { href: '/contact', label: 'Contact' },
   { href: '/devenir-prestataire', label: 'Recrutement' },
   { href: '/lancer-une-conciergerie', label: 'Entrepreneurs' },
+  { href: '/contact', label: 'Contact' },
 ] as const;
 
 export function Header() {
-  const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
-  const close = () => setIsOpen(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
-  // La home `/` utilise sa propre nav custom (design v2) — on n'affiche pas le Header global.
+  // La home utilise sa propre nav inline (cf. app/page.tsx).
+  // Header global affiché uniquement sur les autres routes.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
   if (pathname === '/') return null;
 
+  const close = () => setIsOpen(false);
+
   return (
-    <header className="sticky top-0 z-40 border-b border-brand-100 bg-sand-50/95 backdrop-blur">
-      <nav
-        className="mx-auto flex max-w-6xl items-center justify-between px-6 py-3 sm:px-8"
-        aria-label="Navigation principale"
-      >
-        {/* Logo + marque */}
+    <>
+      <header className={`global-nav ${scrolled ? 'scrolled' : ''}`}>
         <Link
           href="/"
-          className="flex items-center gap-3"
-          aria-label="Full Conciergerie Nevers — Accueil"
+          className="global-nav-logo"
+          aria-label="Full Conciergerie Nevers — accueil"
           onClick={close}
         >
-          <Image
-            src="/logo.jpg"
-            alt="Full Conciergerie Nevers"
-            width={120}
-            height={120}
-            className="h-14 w-14 object-contain mix-blend-multiply sm:h-16 sm:w-16"
-            priority
-          />
-          <span className="leading-tight">
-            <span className="block font-serif text-lg font-medium text-brand-900 sm:text-xl">
-              Full Conciergerie
-            </span>
-            <span className="block font-serif text-lg font-medium italic text-brand-700 sm:text-xl">
-              Nevers
-            </span>
+          <span className="global-nav-logo-wrap">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/logo.jpg" alt="" />
+          </span>
+          <span className="global-nav-logo-text">
+            Full Conciergerie
+            <small>Nevers</small>
           </span>
         </Link>
 
-        {/* Liens de navigation — desktop */}
-        <ul className="hidden items-center gap-8 text-sm font-medium text-brand-800 md:flex">
+        <nav className="global-nav-menu" aria-label="Navigation principale">
           {NAV_LINKS.map((link) => {
             const isActive = pathname === link.href;
             return (
-              <li key={link.href}>
-                <Link
-                  href={link.href}
-                  className={
-                    isActive
-                      ? 'text-brand-700 underline underline-offset-8 decoration-2 decoration-brand-700/50'
-                      : 'hover:text-brand-600'
-                  }
-                >
-                  {link.label}
-                </Link>
-              </li>
+              <Link
+                key={link.href}
+                href={link.href}
+                className={isActive ? 'is-active' : ''}
+              >
+                {link.label}
+              </Link>
             );
           })}
-        </ul>
+        </nav>
 
-        {/* CTA desktop */}
-        <Link
-          href="/contact"
-          className="hidden rounded-full bg-brand-700 px-5 py-2 text-sm font-medium text-sand-50 transition-colors hover:bg-brand-600 md:inline-block"
-        >
-          Devis gratuit
-        </Link>
+        <div className="global-nav-cta">
+          <Link href="/contact" className="btn btn-gold-outline">
+            <span className="cta-label">Devis gratuit</span>
+            <span className="arrow" aria-hidden="true">→</span>
+          </Link>
+          <button
+            type="button"
+            className="global-nav-burger"
+            aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+            aria-expanded={isOpen}
+            onClick={() => setIsOpen((v) => !v)}
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </header>
 
-        {/* Bouton hamburger — mobile uniquement */}
-        <button
-          type="button"
-          onClick={() => setIsOpen((v) => !v)}
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full text-brand-700 transition-colors hover:bg-brand-100 md:hidden"
-          aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
-          aria-expanded={isOpen}
-          aria-controls="mobile-menu"
-        >
-          {isOpen ? (
-            <svg
-              width="22"
-              height="22"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-              aria-hidden="true"
-            >
-              <line x1="6" y1="6" x2="18" y2="18" />
-              <line x1="6" y1="18" x2="18" y2="6" />
-            </svg>
-          ) : (
-            <svg
-              width="22"
-              height="22"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.2"
-              strokeLinecap="round"
-              aria-hidden="true"
-            >
-              <line x1="4" y1="7" x2="20" y2="7" />
-              <line x1="4" y1="12" x2="20" y2="12" />
-              <line x1="4" y1="17" x2="20" y2="17" />
-            </svg>
-          )}
-        </button>
-      </nav>
-
-      {/* Drawer mobile */}
+      {/* Drawer mobile plein écran */}
       {isOpen && (
-        <div
-          id="mobile-menu"
-          className="border-t border-brand-100 bg-sand-50 px-6 pb-8 pt-4 sm:px-8 md:hidden"
-        >
-          <ul className="space-y-1">
-            {NAV_LINKS.map((link) => {
-              const isActive = pathname === link.href;
-              return (
+        <div className="global-nav-drawer" onClick={close}>
+          <div
+            className="global-nav-drawer-inner"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={close}
+              aria-label="Fermer le menu"
+              className="global-nav-drawer-close"
+            >
+              ✕
+            </button>
+            <ul>
+              <li>
+                <Link href="/" onClick={close}>Accueil</Link>
+              </li>
+              {NAV_LINKS.map((link) => (
                 <li key={link.href}>
-                  <Link
-                    href={link.href}
-                    onClick={close}
-                    className={
-                      'block rounded-xl px-4 py-3 text-lg font-medium transition-colors ' +
-                      (isActive
-                        ? 'bg-brand-100/60 text-brand-700'
-                        : 'text-brand-800 hover:bg-brand-100/40 hover:text-brand-700')
-                    }
-                    aria-current={isActive ? 'page' : undefined}
-                  >
+                  <Link href={link.href} onClick={close}>
                     {link.label}
                   </Link>
                 </li>
-              );
-            })}
-          </ul>
-
-          {/* CTA mobile */}
-          <Link
-            href="/contact"
-            onClick={close}
-            className="mt-5 block rounded-full bg-brand-700 px-6 py-3 text-center text-sm font-medium text-sand-50 transition-colors hover:bg-brand-600"
-          >
-            Demander un devis gratuit
-          </Link>
-
-          {/* Téléphone mobile — accessible direct */}
-          <a
-            href="tel:+33376150229"
-            className="mt-3 block rounded-full border-2 border-brand-700 px-6 py-3 text-center text-sm font-medium text-brand-700 hover:bg-brand-700 hover:text-sand-50"
-            onClick={close}
-          >
-            📞 03 76 15 02 29
-          </a>
+              ))}
+            </ul>
+            <Link
+              href="/contact"
+              onClick={close}
+              className="btn btn-gold drawer-cta"
+            >
+              Demander un devis gratuit
+              <span className="arrow" aria-hidden="true">→</span>
+            </Link>
+            <a
+              href="tel:+33376150229"
+              onClick={close}
+              className="drawer-tel"
+            >
+              📞 03 76 15 02 29
+            </a>
+          </div>
         </div>
       )}
-    </header>
+    </>
   );
 }

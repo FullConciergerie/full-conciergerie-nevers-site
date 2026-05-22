@@ -1,130 +1,100 @@
 'use client';
 
-import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 /**
- * Footer global du site Full Conciergerie Nevers.
+ * Footer global du site — version design v2 (vert profond + or, typo serif).
  *
- * La home `/` a son propre footer custom (design v2) — on n'affiche
- * donc pas ce footer global sur la home.
+ * - Sur la home `/` : on retourne null, la home a son propre footer inline.
+ * - Sur les autres pages : footer riche avec marque, contact, navigation,
+ *   autres services, mentions légales.
  */
 export function Footer() {
   const pathname = usePathname();
-  const year = new Date().getFullYear();
-
   if (pathname === '/') return null;
 
   return (
-    <footer className="mt-20 border-t border-brand-200 bg-brand-700 text-sand-50">
-      <div className="mx-auto grid max-w-6xl gap-10 px-6 py-12 sm:grid-cols-2 sm:px-8 lg:grid-cols-4">
-        {/* Bloc identité — marque typographique + tagline */}
-        <div className="sm:col-span-2">
-          {/* Marque en typographie — pas d'image, plus propre sur fond foncé */}
-          <p className="font-serif text-3xl font-medium leading-tight text-sand-50 sm:text-4xl">
+    <footer className="global-footer">
+      <div className="global-footer-grid">
+        <div className="global-footer-brand">
+          <p className="global-footer-name">
             Full Conciergerie
             <br />
-            <span className="italic">Nevers</span>
+            <span className="global-footer-italic">Nevers</span>
           </p>
-
-          {/* Filet doré */}
-          <span
-            aria-hidden="true"
-            className="mt-4 block h-px w-16 bg-gold-400/60"
-          />
-
-          <p className="mt-4 max-w-sm font-cursive text-2xl text-sand-200">
-            Des services Full Options
-          </p>
-          <p className="mt-3 max-w-sm text-sm text-sand-100/90">
-            Conciergerie haut de gamme à Nevers et en région. Confiez votre
-            Airbnb à des professionnels locaux passionnés.
-          </p>
-          <p className="mt-4 text-xs text-sand-200/80">
-            SAS Full Nevers Conciergerie · SIREN 915&nbsp;379&nbsp;226 · RCS Nevers
+          <span className="global-footer-rule" aria-hidden="true" />
+          <p className="global-footer-tagline">Des services Full Options</p>
+          <p className="global-footer-pitch">
+            Conciergerie à Nevers et en région. Confiez votre Airbnb à des
+            professionnels locaux passionnés.
           </p>
         </div>
 
-        {/* Bloc liens */}
-        <div>
-          <h3 className="text-xs font-semibold uppercase tracking-wider text-sand-200">
-            Navigation
-          </h3>
-          <ul className="mt-3 space-y-2 text-sm">
+        <div className="global-footer-col">
+          <h4>Contact</h4>
+          <ul>
             <li>
-              <Link href="/" className="hover:text-sand-200">
-                Accueil
-              </Link>
+              <a href="tel:+33376150229">03 76 15 02 29</a>
             </li>
             <li>
-              <Link href="/services" className="hover:text-sand-200">
-                Nos services
-              </Link>
+              <a href="https://wa.me/33661753738">WhatsApp</a>
             </li>
             <li>
-              <Link href="/a-propos" className="hover:text-sand-200">
-                À propos
-              </Link>
+              <a href="mailto:contact@full-nevers-conciergerie.fr">
+                contact@full-nevers-conciergerie.fr
+              </a>
             </li>
             <li>
-              <Link href="/contact" className="hover:text-sand-200">
-                Contact
-              </Link>
+              16 Quai de Mantoue
+              <br />
+              58000 Nevers
             </li>
-            <li className="pt-3 mt-3 border-t border-sand-200/15">
-              <Link
-                href="/devenir-prestataire"
-                className="font-medium text-sand-100 hover:text-sand-200"
-              >
-                Devenir prestataire →
-              </Link>
+          </ul>
+        </div>
+
+        <div className="global-footer-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li>
+              <Link href="/">Accueil</Link>
             </li>
             <li>
-              <Link
-                href="/lancer-une-conciergerie"
-                className="font-medium text-sand-100 hover:text-sand-200"
-              >
+              <Link href="/services">Nos services</Link>
+            </li>
+            <li>
+              <Link href="/a-propos">À propos</Link>
+            </li>
+            <li>
+              <Link href="/contact">Demander un devis</Link>
+            </li>
+          </ul>
+        </div>
+
+        <div className="global-footer-col">
+          <h4>Autres services</h4>
+          <ul>
+            <li>
+              <Link href="/devenir-prestataire">Devenir prestataire →</Link>
+            </li>
+            <li>
+              <Link href="/lancer-une-conciergerie">
                 Lancer votre conciergerie →
               </Link>
             </li>
           </ul>
         </div>
-
-        {/* Bloc contact */}
-        <div>
-          <h3 className="text-xs font-semibold uppercase tracking-wider text-sand-200">
-            Contact
-          </h3>
-          <ul className="mt-3 space-y-2 text-sm">
-            <li>
-              <a
-                href="mailto:contact@full-nevers-conciergerie.fr"
-                className="hover:text-sand-200"
-              >
-                contact@full-nevers-conciergerie.fr
-              </a>
-            </li>
-            <li>
-              <a href="tel:+33376150229" className="hover:text-sand-200">
-                03&nbsp;76&nbsp;15&nbsp;02&nbsp;29
-              </a>
-            </li>
-            <li className="text-sand-200/80">16 Quai de Mantoue, 58000 Nevers</li>
-          </ul>
-        </div>
       </div>
 
-      <div className="border-t border-brand-600/40">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-4 text-xs text-sand-200/70 sm:px-8">
-          <p>© {year} Full Nevers Conciergerie. Tous droits réservés.</p>
-          <ul className="flex gap-4">
-            <li>
-              <Link href="/cgv" className="hover:text-sand-200">
-                Mentions légales · CGV
-              </Link>
-            </li>
-          </ul>
-        </div>
+      <div className="global-footer-bot">
+        <small>
+          © {new Date().getFullYear()} SAS Full Nevers Conciergerie · SIREN
+          915&nbsp;379&nbsp;226 · RCS Nevers ·{' '}
+          <Link href="/cgv" style={{ textDecoration: 'underline' }}>
+            Mentions légales / CGV
+          </Link>
+        </small>
+        <small className="made">— Des services Full Options</small>
       </div>
     </footer>
   );
