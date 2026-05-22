@@ -10,284 +10,329 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Devenir prestataire — Full Conciergerie Nevers',
     description:
-      'Travaillez quand vous voulez, gagnez en plus. Nous gérons l\'administratif.',
+      "Travaillez quand vous voulez, gagnez en plus. Nous gérons l'administratif.",
     url: '/devenir-prestataire',
   },
 };
 
 export default function DevenirPrestatairePage() {
   return (
-    <div className="mx-auto max-w-5xl px-6 py-20 sm:px-8 sm:py-24">
-      {/* ──────── Hero ──────── */}
-      <p className="font-cursive text-xl text-brand-600">Rejoignez l&apos;équipe</p>
-      <h1 className="mt-2 font-serif text-4xl font-medium text-brand-900 sm:text-5xl">
-        Des missions près de chez vous,{' '}
-        <span className="italic text-brand-700">
-          quand vous voulez.
-        </span>
-      </h1>
-
-      <div className="mt-6 max-w-2xl space-y-3 text-lg leading-relaxed text-brand-800/85">
-        <p>
-          Vous cherchez à arrondir vos fins de mois&nbsp;? Travailler quand
-          vous le souhaitez&nbsp;? Découvrir un nouveau métier sans quitter le
-          vôtre&nbsp;?
-        </p>
-        <p>
-          <strong>Full Conciergerie Nevers</strong> recrute des
-          indépendant·e·s motivé·e·s pour rejoindre son réseau de prestataires
-          locaux. Vous postulez via le formulaire, on revient vers vous sous
-          48h, et vous démarrez avec vos premières missions.
-        </p>
-      </div>
-
-      {/* ──────── 3 promesses ──────── */}
-      <div className="mt-12 grid gap-6 sm:grid-cols-3">
-        <Promise
-          title="100% flexible"
-          text="Vous choisissez vos jours, vos créneaux, vos missions. Aucun engagement de durée."
-        />
-        <Promise
-          title="On gère l'administratif"
-          text="Facturation, paiements, planning, communication client : on s'occupe de tout."
-        />
-        <Promise
-          title="Paiements rapides"
-          text="Règlement sous 7 jours après chaque mission validée."
-        />
-      </div>
-
-      {/* ──────── Profils recherchés ──────── */}
-      <div className="mt-20">
-        <h2 className="font-serif text-3xl font-medium text-brand-900 sm:text-4xl">
-          Quels profils nous recherchons.
-        </h2>
-        <p className="mt-3 max-w-2xl text-brand-800/80">
-          Plusieurs métiers, plusieurs niveaux d&apos;expérience. Que vous
-          soyez débutant·e ou expert·e, il y a probablement une mission pour
-          vous.
-        </p>
-
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          <ProfileCard
-            title="Ménage / Entretien"
-            text="Logements meublés entre voyageurs. Standard hôtelier exigé."
-          />
-          <ProfileCard
-            title="Petits travaux / Bricolage"
-            text="Plomberie, électricité légère, ameublement, peinture."
-          />
-          <ProfileCard
-            title="Espaces verts"
-            text="Tonte, taille, désherbage, arrosage. Saisonnier ou régulier."
-          />
-          <ProfileCard
-            title="Entretien de piscine"
-            text="Nettoyage, traitement de l'eau, ouverture/fermeture saisonnière."
-          />
-          <ProfileCard
-            title="Conciergerie d'entreprise"
-            text="Services aux salariés en entreprise : pressing, courses, gardiennage…"
-          />
-          <ProfileCard
-            title="Livraisons & courses"
-            text="Petits-déjeuners voyageurs, paniers locaux, courses sur demande."
-          />
-        </div>
-      </div>
-
-      {/* ──────── Comment ça marche ──────── */}
-      <div className="mt-20 rounded-3xl border border-brand-200 bg-sand-100 p-8 sm:p-12">
-        <h2 className="font-serif text-2xl font-medium text-brand-900 sm:text-3xl">
-          Comment ça marche.
-        </h2>
-        <div className="mt-8 grid gap-8 sm:grid-cols-3">
-          <Step
-            number="1"
-            title="Vous postulez"
-            text="Vous remplissez le formulaire ci-dessous en 3 minutes. Aucun engagement."
-          />
-          <Step
-            number="2"
-            title="On vous rappelle"
-            text="Sous 48h, par téléphone ou WhatsApp. On valide votre profil ensemble."
-          />
-          <Step
-            number="3"
-            title="Première mission"
-            text="On vous propose des missions qui collent à vos disponibilités. Vous acceptez, on vous brief, vous y allez."
-          />
-        </div>
-      </div>
-
-      {/* ──────── Formulaire ──────── */}
-      <div className="mt-20">
-        <h2 className="font-serif text-3xl font-medium text-brand-900 sm:text-4xl">
-          Postulez maintenant.
-        </h2>
-        <p className="mt-3 max-w-2xl text-brand-800/80">
-          5 à 10 minutes pour remplir. On vous recontacte sous 48h.
-        </p>
-
-        <PrestataireForm />
-      </div>
-
-      {/* ──────── Parrainage ──────── */}
-      <div className="mt-20 overflow-hidden rounded-3xl border-2 border-gold-400 bg-gradient-to-br from-sand-100 to-sand-50 p-8 sm:p-12">
-        <div className="flex items-start gap-5">
-          <span
-            aria-hidden="true"
-            className="hidden h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gold-400 font-serif text-2xl text-brand-900 sm:flex"
-          >
-            🎁
-          </span>
-          <div>
-            <p className="font-cursive text-xl text-brand-700">
-              Programme de parrainage
-            </p>
-            <h2 className="mt-1 font-serif text-2xl font-medium text-brand-900 sm:text-3xl">
-              50 € offerts pour chaque filleul·e qui démarre.
-            </h2>
-            <p className="mt-4 max-w-2xl leading-relaxed text-brand-800/85">
-              Vous connaissez quelqu&apos;un qui pourrait nous rejoindre&nbsp;?
-              Pour chaque personne que vous nous recommandez et qui valide sa
-              première mission, vous touchez{' '}
-              <strong>50&nbsp;€ en bon d&apos;achat ou virement</strong>.
-              Cumulable, sans limite.
-            </p>
-            <p className="mt-3 max-w-2xl text-sm text-brand-800/70">
-              Demandez à votre filleul·e d&apos;indiquer votre nom dans le
-              champ «&nbsp;Qui vous a recommandé&nbsp;?&nbsp;» du formulaire
-              ci-dessous. C&apos;est tout.
-            </p>
+    <>
+      {/* ─────────── Hero ─────────── */}
+      <section className="bg-charbon" style={{ paddingTop: 'calc(var(--pad-section) * 0.7)' }}>
+        <div className="container" style={{ display: 'flex', flexDirection: 'column', gap: '32px', maxWidth: '900px' }}>
+          <p className="eyebrow"><span className="or-mark">◆</span> Recrutement — Réseau prestataires</p>
+          <h1 style={{ fontSize: 'clamp(48px, 7vw, 96px)', lineHeight: '1.02', fontFamily: 'var(--serif)', fontWeight: 400 }}>
+            Des missions près de chez vous,
+            <br />
+            <em style={{ fontStyle: 'italic', color: 'var(--or)' }}>quand vous voulez.</em>
+          </h1>
+          <p className="lede" style={{ maxWidth: '60ch', fontSize: '20px', lineHeight: 1.55 }}>
+            Vous cherchez à arrondir vos fins de mois&nbsp;? Travailler quand vous le
+            souhaitez&nbsp;? Découvrir un nouveau métier sans quitter le vôtre&nbsp;? Full
+            Conciergerie Nevers recrute des indépendant·e·s motivé·e·s pour rejoindre son
+            réseau de prestataires locaux.
+          </p>
+          <div className="hero-actions" style={{ marginTop: '8px' }}>
+            <a href="#postuler" className="btn btn-gold">
+              <span className="cta-label">Postuler en 3 minutes</span>
+              <span className="arrow" aria-hidden="true">→</span>
+            </a>
+            <a href="#comment" className="btn btn-ghost-light">
+              <span className="cta-label">Comment ça marche</span>
+              <span className="arrow" aria-hidden="true">→</span>
+            </a>
           </div>
         </div>
-      </div>
+      </section>
 
-      {/* ──────── FAQ courte ──────── */}
-      <div className="mt-20">
-        <h2 className="font-serif text-2xl font-medium text-brand-900 sm:text-3xl">
-          Questions fréquentes.
-        </h2>
-        <div className="mt-8 space-y-6">
-          <Faq
-            q="Faut-il être auto-entrepreneur pour postuler ?"
-            a="Pas obligatoirement à l'inscription. Si vous ne l'êtes pas encore, on vous accompagne dans les démarches (très simples, 100% en ligne, environ 15 minutes)."
-          />
-          <Faq
-            q="À quelle fréquence pourrai-je travailler ?"
-            a="Ça dépend de votre disponibilité et des missions à pourvoir. Certains prestataires font 2-3h par semaine, d'autres font des temps pleins. Vous choisissez."
-          />
-          <Faq
-            q="Comment suis-je rémunéré·e ?"
-            a="Vous nous facturez vos missions (mensuellement ou à la mission, selon vos préférences). Paiement sous 7 jours après validation."
-          />
-          <Faq
-            q="Vous travaillez dans quelle zone ?"
-            a="Nevers et 30 km autour : Magny-Cours, Pougues-les-Eaux, La Charité-sur-Loire, Imphy, Decize, etc. Plus la zone autour de votre domicile est large, plus vous aurez d'opportunités."
-          />
-          <Faq
-            q="Combien je peux espérer gagner ?"
-            a="Dépend du profil et du volume. Indicatif : 15-25€/h en ménage, 20-40€/h en petits travaux, selon votre statut et expérience. On en parle au téléphone."
-          />
+      {/* ─────────── 3 promesses (trust band) ─────────── */}
+      <section className="trust" style={{ paddingTop: '72px', paddingBottom: '72px' }}>
+        <div className="container">
+          <div className="trust-grid">
+            <div className="trust-item">
+              <span className="gold-rule" aria-hidden="true" />
+              <p className="trust-num" style={{ fontSize: '64px' }}>
+                100<span className="suffix">%</span>
+              </p>
+              <p className="trust-label">Flexible — Vos jours, vos créneaux, vos missions. Aucun engagement de durée.</p>
+            </div>
+            <div className="trust-item center">
+              <span className="gold-rule" aria-hidden="true" />
+              <p className="trust-num" style={{ fontSize: '64px' }}>
+                0<span className="suffix">€</span>
+              </p>
+              <p className="trust-label">Admin à votre charge — Facturation, paiements, planning, communication client : on s&apos;occupe de tout.</p>
+            </div>
+            <div className="trust-item end">
+              <span className="gold-rule" aria-hidden="true" />
+              <p className="trust-num" style={{ fontSize: '64px' }}>
+                7<span className="suffix">j</span>
+              </p>
+              <p className="trust-label">Paiements rapides — Règlement sous 7 jours après chaque mission validée.</p>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
 
-      {/* ──────── CTA secondaire ──────── */}
-      <div className="mt-16 rounded-3xl bg-brand-700 p-8 text-center text-sand-50 sm:p-12">
-        <p className="font-cursive text-2xl text-sand-200">
-          Une question avant de postuler ?
-        </p>
-        <h2 className="mt-2 font-serif text-2xl font-medium sm:text-3xl">
-          Parlons-en directement.
-        </h2>
-        <div className="mt-7 flex flex-wrap justify-center gap-4">
-          <a
-            href="tel:+33376150229"
-            className="rounded-full bg-sand-50 px-6 py-3 text-sm font-medium text-brand-700 hover:bg-sand-100"
-          >
-            📞 03 76 15 02 29
-          </a>
-          <a
-            href="https://wa.me/33661753738"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="rounded-full border-2 border-sand-50 px-6 py-3 text-sm font-medium text-sand-50 hover:bg-sand-50 hover:text-brand-700"
-          >
-            WhatsApp
-          </a>
-          <Link
-            href="/contact"
-            className="rounded-full border-2 border-sand-50 px-6 py-3 text-sm font-medium text-sand-50 hover:bg-sand-50 hover:text-brand-700"
-          >
-            Contact
-          </Link>
+      {/* ─────────── Profils recherchés ─────────── */}
+      <section className="bg-ivoire">
+        <div className="container">
+          <div className="section-head">
+            <p className="eyebrow"><span className="or-mark">◆</span> 01 — Profils recherchés</p>
+            <h2 className="title" style={{ fontSize: 'clamp(40px, 5vw, 64px)' }}>
+              Plusieurs métiers,
+              <br />
+              <em style={{ fontStyle: 'italic', color: 'var(--or)' }}>plusieurs niveaux.</em>
+            </h2>
+            <p className="lede">
+              Que vous soyez débutant·e ou expert·e, il y a probablement une mission pour
+              vous dans notre réseau local.
+            </p>
+            <span className="gold-rule" aria-hidden="true" />
+          </div>
+
+          <div className="services-grid" style={{ marginTop: '64px' }}>
+            <ProfileCard
+              num="01"
+              title="Ménage / Entretien"
+              text="Logements meublés entre voyageurs. Standard hôtelier exigé."
+            />
+            <ProfileCard
+              num="02"
+              title="Petits travaux"
+              text="Plomberie, électricité légère, ameublement, peinture."
+            />
+            <ProfileCard
+              num="03"
+              title="Espaces verts"
+              text="Tonte, taille, désherbage, arrosage. Saisonnier ou régulier."
+            />
+            <ProfileCard
+              num="04"
+              title="Entretien piscine"
+              text="Nettoyage, traitement de l'eau, ouverture / fermeture saisonnière."
+            />
+            <ProfileCard
+              num="05"
+              title="Conciergerie d'entreprise"
+              text="Services aux salariés en entreprise : pressing, courses, gardiennage."
+            />
+            <ProfileCard
+              num="06"
+              title="Livraisons & courses"
+              text="Petits-déjeuners voyageurs, paniers locaux, courses sur demande."
+            />
+          </div>
         </div>
-      </div>
-    </div>
+      </section>
+
+      {/* ─────────── Comment ça marche (vert) ─────────── */}
+      <section className="processus" id="comment">
+        <div className="container">
+          <div className="section-head">
+            <p className="eyebrow" style={{ color: 'rgba(245,241,232,0.55)' }}>
+              <span className="or-mark">◆</span> 02 — Comment ça marche
+            </p>
+            <h2 className="title" style={{ fontSize: 'clamp(40px, 5vw, 64px)' }}>
+              Trois étapes,
+              <br />
+              <em style={{ fontStyle: 'italic', color: 'var(--or)' }}>zéro friction.</em>
+            </h2>
+            <span className="gold-rule" aria-hidden="true" />
+          </div>
+
+          <div className="steps" style={{ marginTop: '64px' }}>
+            <div className="step">
+              <p className="step-num">01</p>
+              <p className="step-meta">Étape 1 — Candidature</p>
+              <h3 className="step-title">Vous postulez en 3 minutes</h3>
+              <p className="step-body">
+                Vous remplissez le formulaire ci-dessous. Aucun engagement. On garde votre
+                profil même si on n&apos;a pas de mission tout de suite.
+              </p>
+            </div>
+            <div className="step">
+              <p className="step-num">02</p>
+              <p className="step-meta">Étape 2 — Échange</p>
+              <h3 className="step-title">On vous rappelle sous 48h</h3>
+              <p className="step-body">
+                Par téléphone ou WhatsApp. On valide votre profil ensemble, vos
+                disponibilités, votre zone d&apos;intervention.
+              </p>
+            </div>
+            <div className="step">
+              <p className="step-num">03</p>
+              <p className="step-meta">Étape 3 — Mission</p>
+              <h3 className="step-title">Première mission</h3>
+              <p className="step-body">
+                On vous propose des missions qui collent à vos disponibilités. Vous
+                acceptez, on vous brief, vous y allez. Paiement sous 7 jours.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────── Parrainage ─────────── */}
+      <section className="bg-sable">
+        <div className="container">
+          <div className="section-head" style={{ maxWidth: '900px' }}>
+            <p className="eyebrow"><span className="or-mark">◆</span> 03 — Programme de parrainage</p>
+            <h2 className="title" style={{ fontSize: 'clamp(36px, 4.5vw, 56px)' }}>
+              50&nbsp;€ offerts
+              {' '}
+              <em style={{ fontStyle: 'italic', color: 'var(--or)' }}>
+                pour chaque filleul·e qui démarre.
+              </em>
+            </h2>
+            <p className="lede" style={{ fontSize: '18px' }}>
+              Vous connaissez quelqu&apos;un qui pourrait nous rejoindre&nbsp;? Pour chaque
+              personne que vous nous recommandez et qui valide sa première mission, vous
+              touchez <strong>50&nbsp;€ en bon d&apos;achat ou virement</strong>. Cumulable, sans
+              limite.
+            </p>
+            <p style={{ fontSize: '14px', color: 'var(--texte-mute)', fontFamily: 'var(--mono)', letterSpacing: '0.04em' }}>
+              Demandez à votre filleul·e d&apos;indiquer votre nom dans le champ
+              «&nbsp;Qui vous a recommandé&nbsp;?&nbsp;» du formulaire. C&apos;est tout.
+            </p>
+            <span className="gold-rule" aria-hidden="true" />
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────── Formulaire ─────────── */}
+      <section className="bg-ivoire" id="postuler">
+        <div className="container">
+          <div className="section-head">
+            <p className="eyebrow"><span className="or-mark">◆</span> 04 — Candidature</p>
+            <h2 className="title" style={{ fontSize: 'clamp(40px, 5vw, 64px)' }}>
+              Postulez
+              {' '}
+              <em style={{ fontStyle: 'italic', color: 'var(--or)' }}>maintenant.</em>
+            </h2>
+            <p className="lede">5 à 10 minutes pour remplir. On vous recontacte sous 48h.</p>
+            <span className="gold-rule" aria-hidden="true" />
+          </div>
+
+          <div style={{ marginTop: '48px' }}>
+            <PrestataireForm />
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────── FAQ ─────────── */}
+      <section className="bg-ivoire" style={{ paddingTop: 0 }}>
+        <div className="container">
+          <div className="faq-grid">
+            <div className="section-head" style={{ position: 'sticky', top: '100px', alignSelf: 'flex-start' }}>
+              <p className="eyebrow"><span className="or-mark">◆</span> 05 — FAQ</p>
+              <h2 className="title" style={{ fontSize: 'clamp(36px, 4.5vw, 56px)' }}>
+                Questions
+                <br />
+                <em style={{ fontStyle: 'italic', color: 'var(--or)' }}>fréquentes.</em>
+              </h2>
+              <span className="gold-rule" aria-hidden="true" />
+            </div>
+
+            <div className="faq-list">
+              <FaqItem
+                q="Faut-il être auto-entrepreneur pour postuler ?"
+                a="Pas obligatoirement à l'inscription. Si vous ne l'êtes pas encore, on vous accompagne dans les démarches (très simples, 100% en ligne, environ 15 minutes)."
+              />
+              <FaqItem
+                q="À quelle fréquence pourrai-je travailler ?"
+                a="Ça dépend de votre disponibilité et des missions à pourvoir. Certains prestataires font 2-3h par semaine, d'autres font des temps pleins. Vous choisissez."
+              />
+              <FaqItem
+                q="Comment suis-je rémunéré·e ?"
+                a="Vous nous facturez vos missions (mensuellement ou à la mission, selon vos préférences). Paiement sous 7 jours après validation."
+              />
+              <FaqItem
+                q="Vous travaillez dans quelle zone ?"
+                a="Nevers et 30 km autour : Magny-Cours, Pougues-les-Eaux, La Charité-sur-Loire, Imphy, Decize, etc. Plus la zone autour de votre domicile est large, plus vous aurez d'opportunités."
+              />
+              <FaqItem
+                q="Combien je peux espérer gagner ?"
+                a="Dépend du profil et du volume. Indicatif : 15-25 €/h en ménage, 20-40 €/h en petits travaux, selon votre statut et expérience. On en parle au téléphone."
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────── CTA final ─────────── */}
+      <section className="final-cta">
+        <div className="container">
+          <p className="eyebrow" style={{ color: 'rgba(245,241,232,0.55)' }}>
+            <span className="or-mark">◆</span> Une question avant de postuler&nbsp;?
+          </p>
+          <h2>
+            Parlons-en
+            {' '}
+            <em>directement.</em>
+          </h2>
+          <p>
+            Préférez-vous nous appeler ou nous écrire ? Nous sommes joignables tous les
+            jours, de 8h à 20h.
+          </p>
+          <span className="gold-rule" aria-hidden="true" />
+          <div className="actions">
+            <a href="tel:+33376150229" className="btn btn-gold">
+              <span className="cta-label">📞 03 76 15 02 29</span>
+              <span className="arrow" aria-hidden="true">→</span>
+            </a>
+            <a
+              href="https://wa.me/33661753738"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-ghost-light"
+            >
+              <span className="cta-label">WhatsApp</span>
+              <span className="arrow" aria-hidden="true">→</span>
+            </a>
+            <Link href="/contact" className="btn btn-ghost-light">
+              <span className="cta-label">Contact</span>
+              <span className="arrow" aria-hidden="true">→</span>
+            </Link>
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
 
 /* ───────── helpers ───────── */
 
-function Promise({ title, text }: { title: string; text: string }) {
-  return (
-    <div className="rounded-2xl border border-brand-100 bg-sand-50 p-6">
-      <span aria-hidden="true" className="block h-px w-10 bg-gold-400" />
-      <h3 className="mt-4 font-serif text-xl font-medium text-brand-900">
-        {title}
-      </h3>
-      <p className="mt-2 text-sm leading-relaxed text-brand-800/80">{text}</p>
-    </div>
-  );
-}
-
-function ProfileCard({ title, text }: { title: string; text: string }) {
-  return (
-    <div className="rounded-2xl border border-brand-100 bg-white p-5">
-      <h3 className="font-serif text-lg font-medium text-brand-900">
-        {title}
-      </h3>
-      <p className="mt-2 text-sm leading-relaxed text-brand-800/80">{text}</p>
-    </div>
-  );
-}
-
-function Step({
-  number,
+function ProfileCard({
+  num,
   title,
   text,
 }: {
-  number: string;
+  num: string;
   title: string;
   text: string;
 }) {
   return (
-    <div>
-      <p className="font-serif text-4xl text-gold-500">{number}</p>
-      <h3 className="mt-2 font-serif text-xl font-medium text-brand-900">
-        {title}
-      </h3>
-      <p className="mt-2 text-sm leading-relaxed text-brand-800/80">{text}</p>
-    </div>
+    <article className="service-card">
+      <p className="service-num">{num}</p>
+      <h3 className="service-title">{title}</h3>
+      <p className="service-body">{text}</p>
+    </article>
   );
 }
 
-function Faq({ q, a }: { q: string; a: string }) {
+function FaqItem({ q, a }: { q: string; a: string }) {
   return (
-    <details className="group rounded-2xl border border-brand-100 bg-sand-50 p-5">
-      <summary className="cursor-pointer list-none font-serif text-lg font-medium text-brand-900 marker:hidden">
-        <span className="flex items-start justify-between gap-3">
-          <span>{q}</span>
-          <span
-            aria-hidden="true"
-            className="mt-1 inline-block h-5 w-5 shrink-0 text-brand-700 transition-transform group-open:rotate-45"
-          >
-            +
-          </span>
-        </span>
+    <details className="faq-item" style={{ padding: '24px 0' }}>
+      <summary
+        className="faq-q"
+        style={{ listStyle: 'none', cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '16px' }}
+      >
+        <span>{q}</span>
+        <span className="faq-icon" aria-hidden="true" />
       </summary>
-      <p className="mt-3 text-sm leading-relaxed text-brand-800/85">{a}</p>
+      <div className="faq-a-inner" style={{ paddingTop: '16px' }}>{a}</div>
     </details>
   );
 }
