@@ -7,115 +7,220 @@ export function ContactForm() {
   const [isPending, startTransition] = useTransition();
   const [result, setResult] = useState<ContactResult | null>(null);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    const formData = new FormData(e.currentTarget);
-    setResult(null);
-    startTransition(async () => {
-      const r = await submitContactForm(formData);
-      setResult(r);
-    });
-  };
-
-  if (result && 'success' in result && result.success) {
-    return (
-      <div className="mt-6 rounded-2xl border border-brand-300 bg-brand-50 p-6">
-        <p className="font-serif text-xl text-brand-700">
-          ✓ Message envoyé !
-        </p>
-        <p className="mt-2 text-sm text-brand-800/85">
-          Merci pour votre message. Nous revenons vers vous sous 24h ouvrées.
-        </p>
-        <button
-          type="button"
-          onClick={() => setResult(null)}
-          className="mt-4 text-sm text-brand-700 underline hover:text-brand-600"
-        >
-          Envoyer un autre message
-        </button>
-      </div>
-    );
-  }
-
   return (
-    <form onSubmit={handleSubmit} className="mt-6 space-y-4">
-      <label className="block">
-        <span className="text-sm font-medium text-brand-800">Nom complet *</span>
-        <input
-          type="text"
-          name="name"
-          required
-          className="mt-1 block w-full rounded-lg border-2 border-brand-200 bg-white px-3 py-2 text-base focus:border-brand-500 focus:outline-none"
-        />
-      </label>
+    <form
+      action={(formData) => {
+        setResult(null);
+        startTransition(async () => {
+          const res = await submitContactForm(formData);
+          setResult(res);
+          if ('success' in res && res.success) {
+            (document.getElementById('contact-form') as HTMLFormElement)?.reset();
+          }
+        });
+      }}
+      id="contact-form"
+      className="v2-form"
+    >
+      {/* ── Section 1 : Vos coordonnées ── */}
+      <div className="v2-form-section">
+        <div className="v2-form-section-head">
+          <span className="v2-form-section-eyebrow">01 — Vos coordonnées</span>
+          <h3 className="v2-form-section-title">Présentez-vous</h3>
+        </div>
 
-      <label className="block">
-        <span className="text-sm font-medium text-brand-800">Email *</span>
-        <input
-          type="email"
-          name="email"
-          required
-          className="mt-1 block w-full rounded-lg border-2 border-brand-200 bg-white px-3 py-2 text-base focus:border-brand-500 focus:outline-none"
-        />
-      </label>
+        <div className="v2-form-row full">
+          <Field
+            label="Nom complet"
+            name="name"
+            required
+            autoComplete="name"
+            placeholder="Marie Dupont"
+          />
+        </div>
 
-      <label className="block">
-        <span className="text-sm font-medium text-brand-800">Téléphone</span>
-        <input
-          type="tel"
-          name="phone"
-          className="mt-1 block w-full rounded-lg border-2 border-brand-200 bg-white px-3 py-2 text-base focus:border-brand-500 focus:outline-none"
-        />
-      </label>
+        <div className="v2-form-row">
+          <Field
+            label="Email"
+            name="email"
+            type="email"
+            required
+            autoComplete="email"
+            placeholder="vous@email.fr"
+          />
+          <Field
+            label="Téléphone"
+            name="phone"
+            type="tel"
+            autoComplete="tel"
+            placeholder="06 12 34 56 78"
+          />
+        </div>
+      </div>
 
-      <label className="block">
-        <span className="text-sm font-medium text-brand-800">
-          Combien de logements souhaitez-vous nous confier ?
-        </span>
-        <select
-          name="logements"
-          className="mt-1 block w-full rounded-lg border-2 border-brand-200 bg-white px-3 py-2 text-base focus:border-brand-500 focus:outline-none"
-        >
-          <option value="1">1 logement</option>
-          <option value="2-3">2 à 3 logements</option>
-          <option value="4+">4 logements ou plus</option>
-          <option value="other">Autre / je ne sais pas encore</option>
-        </select>
-      </label>
+      {/* ── Section 2 : Votre projet ── */}
+      <div className="v2-form-section">
+        <div className="v2-form-section-head">
+          <span className="v2-form-section-eyebrow">02 — Votre projet</span>
+          <h3 className="v2-form-section-title">Parlez-nous de votre logement</h3>
+        </div>
 
-      <label className="block">
-        <span className="text-sm font-medium text-brand-800">
-          Votre message *
-        </span>
-        <textarea
-          name="message"
-          required
-          rows={5}
-          placeholder="Parlez-nous de votre logement, vos besoins, vos attentes..."
-          className="mt-1 block w-full rounded-lg border-2 border-brand-200 bg-white px-3 py-2 text-base focus:border-brand-500 focus:outline-none"
-        />
-      </label>
+        <div className="v2-form-row full">
+          <SelectField
+            label="Combien de logements souhaitez-vous nous confier ?"
+            name="logements"
+            options={[
+              '1 logement',
+              '2 à 3 logements',
+              '4 logements ou plus',
+              'Autre / je ne sais pas encore',
+            ]}
+          />
+        </div>
 
-      <button
-        type="submit"
-        disabled={isPending}
-        className="w-full rounded-full bg-brand-700 px-6 py-3 text-sm font-medium text-sand-50 hover:bg-brand-600 disabled:opacity-50"
-      >
-        {isPending ? 'Envoi en cours…' : 'Envoyer mon message'}
-      </button>
+        <div className="v2-form-row full">
+          <TextareaField
+            label="Votre message"
+            name="message"
+            required
+            placeholder="Parlez-nous de votre logement, vos besoins, vos attentes…"
+            rows={5}
+          />
+        </div>
+      </div>
 
+      {/* Résultat */}
+      {result && 'success' in result && (
+        <div role="status" className="v2-form-alert success">
+          <span className="v2-form-alert-icon">✓</span>
+          <span>
+            <strong>Message reçu.</strong> Nous revenons vers vous sous 24h ouvrées
+            pour échanger sur votre projet.
+          </span>
+        </div>
+      )}
       {result && 'error' in result && (
-        <p className="text-sm text-red-700">❌ {result.error}</p>
+        <div role="alert" className="v2-form-alert error">
+          <span className="v2-form-alert-icon">!</span>
+          <span>{result.error}</span>
+        </div>
       )}
 
-      <p className="text-xs text-brand-800/60">
-        En envoyant ce message, vous acceptez que vos données soient utilisées
-        pour vous recontacter. Voir nos{' '}
-        <a href="/cgv" className="underline">
-          mentions légales
-        </a>
-        .
-      </p>
+      {/* Footer */}
+      <div className="v2-form-footer">
+        <p className="v2-form-footer-note">
+          Vos données restent confidentielles. Voir nos{' '}
+          <a href="/cgv" style={{ textDecoration: 'underline' }}>
+            mentions légales
+          </a>
+          .
+        </p>
+        <div className="v2-form-submit-row">
+          <span
+            style={{
+              fontFamily: 'var(--mono)',
+              fontSize: '11px',
+              letterSpacing: '0.18em',
+              textTransform: 'uppercase',
+              color: 'var(--texte-mute)',
+            }}
+          >
+            Réponse sous 24 h
+          </span>
+          <button type="submit" disabled={isPending} className="v2-form-submit">
+            <span>{isPending ? 'Envoi en cours…' : 'Envoyer mon message'}</span>
+            <span className="arrow" aria-hidden="true">→</span>
+          </button>
+        </div>
+      </div>
     </form>
+  );
+}
+
+/* ───────── helpers ───────── */
+
+function Field({
+  label,
+  name,
+  type = 'text',
+  required,
+  autoComplete,
+  placeholder,
+}: {
+  label: string;
+  name: string;
+  type?: string;
+  required?: boolean;
+  autoComplete?: string;
+  placeholder?: string;
+}) {
+  return (
+    <label className="v2-field">
+      <span className="v2-field-label">
+        {label}
+        {required && <span className="req">*</span>}
+      </span>
+      <input
+        name={name}
+        type={type}
+        required={required}
+        autoComplete={autoComplete}
+        placeholder={placeholder}
+        className="v2-field-input"
+      />
+    </label>
+  );
+}
+
+function SelectField({
+  label,
+  name,
+  options,
+}: {
+  label: string;
+  name: string;
+  options: string[];
+}) {
+  return (
+    <label className="v2-field">
+      <span className="v2-field-label">{label}</span>
+      <select name={name} defaultValue={options[0]} className="v2-field-select">
+        {options.map((opt) => (
+          <option key={opt} value={opt}>
+            {opt}
+          </option>
+        ))}
+      </select>
+    </label>
+  );
+}
+
+function TextareaField({
+  label,
+  name,
+  required,
+  placeholder,
+  rows = 4,
+}: {
+  label: string;
+  name: string;
+  required?: boolean;
+  placeholder?: string;
+  rows?: number;
+}) {
+  return (
+    <label className="v2-field">
+      <span className="v2-field-label">
+        {label}
+        {required && <span className="req">*</span>}
+      </span>
+      <textarea
+        name={name}
+        required={required}
+        placeholder={placeholder}
+        rows={rows}
+        className="v2-field-textarea"
+      />
+    </label>
   );
 }
