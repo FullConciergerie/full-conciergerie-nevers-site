@@ -239,7 +239,7 @@ export default function HomePage() {
           <a href="#contact">Contact</a>
         </div>
         <div className="nav-cta">
-          <a href="#devis" className="btn btn-gold-outline">
+          <a href="/contact" className="btn btn-gold-outline">
             <span className="cta-label">Devis gratuit</span>
             <span className="arrow" aria-hidden="true">→</span>
           </a>
@@ -275,7 +275,7 @@ export default function HomePage() {
             profitiez sereinement de vos revenus locatifs.
           </p>
           <div className="hero-actions">
-            <a href="#devis" className="btn btn-gold">
+            <a href="/contact" className="btn btn-gold">
               Demander un devis gratuit
               <span className="arrow" aria-hidden="true">→</span>
             </a>
@@ -782,7 +782,7 @@ export default function HomePage() {
             Devis gratuit et sans engagement. Réponse sous 24 h.
           </p>
           <div className="actions reveal reveal-delay-3">
-            <a href="#" className="btn btn-gold">
+            <a href="/contact" className="btn btn-gold">
               Demander un devis
               <span className="arrow">→</span>
             </a>
@@ -827,7 +827,7 @@ export default function HomePage() {
               <li><a href="#histoire">À propos</a></li>
               <li><a href="#temoignages">Avis</a></li>
               <li><a href="#faq">FAQ</a></li>
-              <li><a href="#devis">Devis gratuit</a></li>
+              <li><a href="/contact">Devis gratuit</a></li>
               <li><a href="/contact">Page contact</a></li>
             </ul>
           </div>
