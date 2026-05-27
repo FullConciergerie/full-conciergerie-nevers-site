@@ -88,8 +88,7 @@ export async function submitContactForm(
       const text = await res.text();
       console.error('[contact-form] Resend error', res.status, text);
       return {
-        error:
-          'L\'envoi a échoué. Réessayez ou contactez-nous au 03 76 15 02 29.',
+        error: `[DEBUG ${res.status}] FROM=${FROM_EMAIL} TO=${TO_EMAIL} — ${text.slice(0, 400)}`,
       };
     }
 
