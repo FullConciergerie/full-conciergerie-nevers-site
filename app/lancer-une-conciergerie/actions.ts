@@ -4,7 +4,7 @@ export type EntrepreneurResult = { success: true } | { error: string };
 
 const FROM_EMAIL =
   process.env.RESEND_FROM_EMAIL ??
-  'Full Conciergerie Nevers <noreply@fullconciergerie.com>';
+  'Full Conciergerie Nevers <noreply@fullconciergerie.fr>';
 const TO_EMAIL =
   process.env.CONTACT_TO_EMAIL ?? 'contact@full-nevers-conciergerie.fr';
 
