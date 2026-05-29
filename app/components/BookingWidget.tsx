@@ -142,6 +142,7 @@ export default function BookingWidget() {
         style={{ display: 'block', border: 'none', transition: 'height 0.3s ease' }}
         allowFullScreen
         allow="storage-access; payment"
+        referrerPolicy="no-referrer-when-downgrade"
         title="Moteur de réservation — Full Conciergerie Nevers"
         loading="eager"
       />
