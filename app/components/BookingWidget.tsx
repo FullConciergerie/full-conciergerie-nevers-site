@@ -60,7 +60,7 @@ export default function BookingWidget() {
       height={height}
       style={{ display: 'block', border: 'none', transition: 'height 0.3s ease' }}
       allowFullScreen
-      sandbox="allow-scripts allow-forms allow-same-origin allow-presentation allow-top-navigation"
+      allow="storage-access; payment"
       title="Moteur de réservation — Full Conciergerie Nevers"
       loading="eager"
     />
