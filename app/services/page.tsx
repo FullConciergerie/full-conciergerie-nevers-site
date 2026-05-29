@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'Nos services — Full Conciergerie Nevers',
   description:
-    "Découvrez tous nos services de conciergerie à Nevers : accueil voyageurs 7j/7, optimisation des tarifs, ménage hôtelier, photos pro, blanchisserie en interne, petites interventions.",
+    "Découvrez tous nos services de conciergerie à Nevers : accueil voyageurs 7j/7, optimisation des tarifs, ménage hôtelier, blanchisserie, livret d'accueil IA, rapports de mission photo.",
   alternates: { canonical: '/services' },
   openGraph: {
     title: 'Nos services — Full Conciergerie Nevers',
@@ -87,12 +87,38 @@ const SERVICES = [
       { label: 'Coordination de travaux', detail: 'Devis multi-artisans, suivi de chantier en votre absence.' },
     ],
   },
+  {
+    num: '07',
+    title: 'Livret d\'accueil numérique',
+    tagline: 'Vos voyageurs ont toutes les réponses. Sans vous appeler.',
+    body: 'Chaque logement dispose d\'un livret d\'accueil numérique personnalisé, accessible par QR code. Une IA intégrée répond aux questions des voyageurs en temps réel — règles de la maison, accès, bons plans locaux — 24h/24, en français et en anglais.',
+    items: [
+      { label: 'Accès instantané par QR code', detail: 'Scanné à l\'arrivée, le voyageur trouve tout sans chercher.' },
+      { label: 'IA conversationnelle 24h/24', detail: 'Répond aux questions des voyageurs en temps réel, dans leur langue.' },
+      { label: 'Contenu personnalisé par logement', detail: 'Wifi, codes, règles, recommandations de restaurants et activités à Nevers.' },
+      { label: 'Mise à jour instantanée', detail: 'Un changement de code ? Mis à jour en 30 secondes sur tous les appareils.' },
+    ],
+  },
+  {
+    num: '08',
+    title: 'Application & rapports de mission',
+    tagline: 'Vous voyez tout ce qui se passe dans votre logement.',
+    body: 'Notre application interne pilote chaque intervention — ménage, dépannage, livraison de linge. Après chaque passage, vous recevez un rapport photo horodaté. Transparence totale, zéro mauvaise surprise.',
+    items: [
+      { label: 'Rapport photo après chaque mission', detail: 'Photos avant/après envoyées automatiquement à la fin de chaque intervention.' },
+      { label: 'Suivi en temps réel', detail: 'Statut de chaque mission visible depuis votre espace propriétaire.' },
+      { label: 'Historique complet des interventions', detail: 'Traçabilité de tout ce qui a été fait dans votre logement, date par date.' },
+      { label: 'Alertes automatiques', detail: 'Notification immédiate en cas d\'anomalie constatée lors d\'un passage.' },
+    ],
+  },
 ];
 
 const INCLUS = [
   'Assurance dégâts voyageurs',
   'Rapport mensuel détaillé',
   'Accès permanent au planning',
+  'Livret d\'accueil numérique IA',
+  'Rapports de mission photo',
   'Aucun engagement de durée',
 ];
 

@@ -454,7 +454,31 @@ export default function HomePage() {
               </svg>
               <h3 className="service-title">Petites interventions</h3>
               <p className="service-body">Espaces verts, dépannage, livraison d&apos;extras voyageurs — nos partenaires s&apos;occupent de tout.</p>
-
+            </article>
+            {/* 7 */}
+            <article className="service-card reveal">
+              <span className="service-num">— 07</span>
+              <svg className="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round">
+                <rect x="10" y="6" width="24" height="32" rx="2"/>
+                <path d="M15 14 H29 M15 19 H29 M15 24 H22"/>
+                <circle cx="30" cy="32" r="6" fill="none"/>
+                <path d="M28 32 L30 34 L33 30"/>
+              </svg>
+              <h3 className="service-title">Livret d&apos;accueil IA</h3>
+              <p className="service-body">Livret numérique personnalisé par QR code + IA qui répond aux questions des voyageurs 24h/24, en français et en anglais.</p>
+            </article>
+            {/* 8 */}
+            <article className="service-card reveal reveal-delay-1">
+              <span className="service-num">— 08</span>
+              <svg className="service-icon" viewBox="0 0 44 44" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round">
+                <rect x="6" y="8" width="32" height="28" rx="1"/>
+                <path d="M6 16 H38"/>
+                <path d="M14 24 L18 28 L26 20"/>
+                <circle cx="10" cy="12" r="1.2" fill="currentColor"/>
+                <circle cx="14" cy="12" r="1.2" fill="currentColor"/>
+              </svg>
+              <h3 className="service-title">Rapports de mission</h3>
+              <p className="service-body">Après chaque intervention, vous recevez un rapport photo horodaté via notre application. Traçabilité totale, zéro mauvaise surprise.</p>
             </article>
           </div>
         </div>
