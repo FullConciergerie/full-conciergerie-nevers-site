@@ -14,78 +14,60 @@ export const metadata: Metadata = {
   },
 };
 
-/**
- * ─────────────────────────────────────────────────────────────────────────────
- * WEBKEY SUPERHOTE
- * ─────────────────────────────────────────────────────────────────────────────
- * 1. Connecte-toi sur app.superhote.com
- * 2. Va dans Notifications → onglet "Shortcodes personnalisés"
- *    (ou Paramètres → Profil utilisateur selon la version)
- * 3. Cherche la valeur "SH WebKey" ou "Webkey"
- * 4. Remplace la valeur ci-dessous par ta clé
- * ─────────────────────────────────────────────────────────────────────────────
- */
 const SUPERHOTE_WEBKEY = '5WubL6qaur36Xr4JaYFQNiW9e';
-
 const BOOKING_URL = `https://app.superhote.com/#/get-available-rentals/${SUPERHOTE_WEBKEY}`;
 
 export default function LogementsPage() {
   return (
     <>
       {/* ══════════════════════════════════════════════════════════
-          HERO — fond vert profond
+          BANDEAU INTRO — compact, juste ce qu'il faut
       ══════════════════════════════════════════════════════════ */}
       <section
         className="bg-charbon"
-        style={{ paddingTop: 'clamp(100px, 16vw, 180px)', paddingBottom: 'clamp(64px, 10vw, 120px)' }}
+        style={{ paddingTop: 'clamp(72px, 10vw, 100px)', paddingBottom: 32 }}
       >
         <div className="container">
-          <div style={{ maxWidth: 760 }}>
-            <p className="eyebrow reveal">
-              <span className="or-mark">✦</span>&nbsp; Réservation directe
-            </p>
-            <h1
-              className="serif reveal"
-              style={{
-                fontSize: 'clamp(44px, 7vw, 88px)',
-                lineHeight: 1.04,
-                marginTop: 20,
-                color: 'var(--ivoire)',
-              }}
-            >
-              Nos logements
-              <br />
-              <em>à Nevers</em>
-            </h1>
-            <p
-              className="reveal"
-              style={{
-                marginTop: 24,
-                fontSize: 'clamp(16px, 1.3vw, 19px)',
-                color: 'rgba(245,241,232,0.72)',
-                maxWidth: '52ch',
-                lineHeight: 1.65,
-              }}
-            >
-              Réservez directement sans passer par Airbnb ou Booking.
-              Vous économisez les frais de service plateforme et vous
-              traitez en direct avec notre équipe à Nevers.
-            </p>
+          <div
+            style={{
+              display: 'flex',
+              flexWrap: 'wrap',
+              alignItems: 'baseline',
+              justifyContent: 'space-between',
+              gap: '12px 40px',
+            }}
+          >
+            {/* Titre */}
+            <div>
+              <p className="eyebrow" style={{ marginBottom: 10 }}>
+                <span className="or-mark">✦</span>&nbsp; Réservation directe · -10% vs Airbnb
+              </p>
+              <h1
+                className="serif"
+                style={{
+                  fontSize: 'clamp(32px, 4.5vw, 56px)',
+                  lineHeight: 1.08,
+                  color: 'var(--ivoire)',
+                  margin: 0,
+                }}
+              >
+                Nos logements <em>à Nevers</em>
+              </h1>
+            </div>
 
-            {/* Chips avantages */}
+            {/* Chips avantages — ligne droite à droite sur desktop */}
             <div
-              className="reveal"
               style={{
                 display: 'flex',
                 flexWrap: 'wrap',
-                gap: 12,
-                marginTop: 36,
+                gap: 8,
+                alignItems: 'center',
               }}
             >
               {[
                 { icon: '🏷️', label: 'Meilleur prix garanti' },
-                { icon: '🔒', label: 'Paiement 100% sécurisé' },
-                { icon: '💬', label: 'Contact direct avec l\'équipe' },
+                { icon: '🔒', label: 'Paiement sécurisé' },
+                { icon: '💬', label: 'Contact direct' },
                 { icon: '✅', label: 'Confirmation immédiate' },
               ].map(({ icon, label }) => (
                 <span
@@ -93,12 +75,13 @@ export default function LogementsPage() {
                   style={{
                     display: 'inline-flex',
                     alignItems: 'center',
-                    gap: 8,
-                    padding: '8px 16px',
+                    gap: 6,
+                    padding: '6px 12px',
                     border: '1px solid rgba(201,168,104,0.3)',
                     color: 'var(--ivoire)',
-                    fontSize: 13,
+                    fontSize: 12,
                     letterSpacing: '0.02em',
+                    whiteSpace: 'nowrap',
                   }}
                 >
                   <span>{icon}</span>
@@ -111,107 +94,23 @@ export default function LogementsPage() {
       </section>
 
       {/* ══════════════════════════════════════════════════════════
-          AVANTAGES — 3 colonnes ivoire
-      ══════════════════════════════════════════════════════════ */}
-      <section className="bg-ivoire">
-        <div className="container">
-          <p className="eyebrow reveal" style={{ marginBottom: 48 }}>
-            <span className="or-mark">✦</span>&nbsp; Pourquoi réserver en direct
-          </p>
-          <div
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))',
-              gap: 'clamp(24px, 4vw, 48px)',
-            }}
-          >
-            {[
-              {
-                num: '01',
-                title: 'Prix bas garanti',
-                text: 'En réservant directement, vous bénéficiez de nos meilleurs tarifs — sans les frais de service Airbnb (jusqu\'à 15%) ni Booking.',
-              },
-              {
-                num: '02',
-                title: 'Flexibilité maximale',
-                text: 'Des demandes spéciales ? Un lit bébé, une arrivée tardive, un panier local à l\'accueil ? Parlez-nous directement, on s\'adapte.',
-              },
-              {
-                num: '03',
-                title: 'Une équipe locale',
-                text: 'Nous sommes basés à Nevers. En cas de besoin pendant votre séjour, vous appelez une vraie personne qui connaît les lieux.',
-              },
-            ].map(({ num, title, text }) => (
-              <div key={num} className="reveal">
-                <span
-                  className="serif"
-                  style={{
-                    fontSize: 13,
-                    color: 'var(--or)',
-                    letterSpacing: '0.1em',
-                    display: 'block',
-                    marginBottom: 16,
-                  }}
-                >
-                  {num}
-                </span>
-                <span
-                  className="gold-rule"
-                  style={{ marginBottom: 20, display: 'block' }}
-                />
-                <h2
-                  className="serif"
-                  style={{
-                    fontSize: 'clamp(22px, 2.2vw, 28px)',
-                    marginBottom: 14,
-                    color: 'var(--vert-deep)',
-                  }}
-                >
-                  {title}
-                </h2>
-                <p style={{ color: 'var(--texte-mute)', lineHeight: 1.7, fontSize: 15 }}>
-                  {text}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════════════════════════════════════
-          MOTEUR DE RÉSERVATION — widget SuperHote
+          WIDGET DE RÉSERVATION — au premier plan, immédiatement
       ══════════════════════════════════════════════════════════ */}
       <section
         style={{
           background: 'var(--vert-sauge-soft)',
-          paddingTop: 'var(--pad-section)',
-          paddingBottom: 'var(--pad-section)',
+          paddingTop: 32,
+          paddingBottom: 'clamp(48px, 6vw, 80px)',
         }}
       >
         <div className="container">
-          <div className="section-head reveal" style={{ marginBottom: 48 }}>
-            <p className="eyebrow">
-              <span className="or-mark">✦</span>&nbsp; Disponibilités en temps réel
-            </p>
-            <h2 className="serif title" style={{ color: 'var(--vert-deep)' }}>
-              Choisissez vos dates,
-              <br />
-              <em>réservez en 2 minutes</em>
-            </h2>
-            <p className="lede">
-              Sélectionnez vos dates d&apos;arrivée et de départ, le nombre
-              de voyageurs, et consultez nos logements disponibles. Paiement
-              sécurisé directement en ligne.
-            </p>
-          </div>
-
-          {/* Widget SuperHote */}
+          {/* Iframe SuperHote */}
           <div
             style={{
               background: 'white',
               borderRadius: 4,
               overflow: 'hidden',
-              boxShadow: '0 2px 24px rgba(15,38,37,0.08)',
+              boxShadow: '0 2px 32px rgba(15,38,37,0.1)',
               border: '1px solid var(--ligne)',
             }}
           >
@@ -224,28 +123,90 @@ export default function LogementsPage() {
               allowFullScreen
               sandbox="allow-scripts allow-forms allow-same-origin allow-presentation allow-top-navigation"
               title="Moteur de réservation — Full Conciergerie Nevers"
-              loading="lazy"
+              loading="eager"
             />
           </div>
 
-          {/* Note sous le widget */}
+          {/* Mention sécurité */}
           <p
             style={{
-              marginTop: 20,
+              marginTop: 16,
               textAlign: 'center',
               fontSize: 12,
               color: 'var(--texte-mute)',
               letterSpacing: '0.03em',
             }}
           >
-            🔒 Paiement sécurisé par Stripe · Confirmation instantanée ·
-            Taxe de séjour incluse
+            🔒 Paiement sécurisé par Stripe · Confirmation instantanée · Taxe de séjour incluse
           </p>
         </div>
       </section>
 
       {/* ══════════════════════════════════════════════════════════
-          CTA FINAL — fond vert profond
+          AVANTAGES — bande horizontale compacte
+      ══════════════════════════════════════════════════════════ */}
+      <section className="bg-ivoire" style={{ paddingTop: 'clamp(40px, 5vw, 64px)', paddingBottom: 'clamp(40px, 5vw, 64px)' }}>
+        <div className="container">
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+              gap: 'clamp(20px, 3vw, 40px)',
+            }}
+          >
+            {[
+              {
+                num: '01',
+                title: 'Prix bas garanti',
+                text: "Sans les frais Airbnb (jusqu'à 15%) ni Booking — nos tarifs directs sont toujours les meilleurs.",
+              },
+              {
+                num: '02',
+                title: 'Flexibilité maximale',
+                text: 'Lit bébé, arrivée tardive, panier local… Parlez-nous directement, on s\'adapte.',
+              },
+              {
+                num: '03',
+                title: 'Équipe locale',
+                text: 'Basés à Nevers. En cas de besoin, vous appelez une vraie personne qui connaît les lieux.',
+              },
+            ].map(({ num, title, text }) => (
+              <div key={num} className="reveal" style={{ display: 'flex', gap: 16 }}>
+                <span
+                  className="serif"
+                  style={{
+                    fontSize: 13,
+                    color: 'var(--or)',
+                    letterSpacing: '0.1em',
+                    flexShrink: 0,
+                    paddingTop: 2,
+                  }}
+                >
+                  {num}
+                </span>
+                <div>
+                  <h2
+                    className="serif"
+                    style={{
+                      fontSize: 'clamp(16px, 1.6vw, 20px)',
+                      marginBottom: 8,
+                      color: 'var(--vert-deep)',
+                    }}
+                  >
+                    {title}
+                  </h2>
+                  <p style={{ color: 'var(--texte-mute)', lineHeight: 1.65, fontSize: 14, margin: 0 }}>
+                    {text}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════════════════════════════════════
+          CTA FINAL
       ══════════════════════════════════════════════════════════ */}
       <section className="bg-charbon">
         <div className="container">
@@ -255,8 +216,8 @@ export default function LogementsPage() {
               flexDirection: 'column',
               alignItems: 'center',
               textAlign: 'center',
-              gap: 28,
-              maxWidth: 640,
+              gap: 24,
+              maxWidth: 560,
               margin: '0 auto',
             }}
           >
@@ -264,9 +225,10 @@ export default function LogementsPage() {
             <h2
               className="serif reveal"
               style={{
-                fontSize: 'clamp(32px, 4vw, 52px)',
+                fontSize: 'clamp(28px, 3.5vw, 44px)',
                 color: 'var(--ivoire)',
-                lineHeight: 1.1,
+                lineHeight: 1.15,
+                margin: 0,
               }}
             >
               Une question sur un logement ?
@@ -275,25 +237,22 @@ export default function LogementsPage() {
               className="reveal"
               style={{
                 color: 'rgba(245,241,232,0.68)',
-                fontSize: 16,
+                fontSize: 15,
                 lineHeight: 1.7,
+                margin: 0,
               }}
             >
-              Notre équipe répond 7j/7. Disponibilités, tarifs spéciaux,
-              accueil personnalisé — on s&apos;adapte à vos besoins.
+              Notre équipe répond 7j/7 — disponibilités, tarifs spéciaux, accueil personnalisé.
             </p>
             <div
               className="reveal"
-              style={{ display: 'flex', flexWrap: 'wrap', gap: 16, justifyContent: 'center' }}
+              style={{ display: 'flex', flexWrap: 'wrap', gap: 12, justifyContent: 'center' }}
             >
               <Link href="/contact" className="btn btn-gold">
                 Nous contacter
                 <span className="arrow" aria-hidden="true">→</span>
               </Link>
-              <a
-                href="tel:+33376150229"
-                className="btn btn-ghost-light"
-              >
+              <a href="tel:+33376150229" className="btn btn-ghost-light">
                 📞 03 76 15 02 29
               </a>
             </div>
