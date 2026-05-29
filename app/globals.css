@@ -1594,6 +1594,28 @@ section { padding-top: var(--pad-section); padding-bottom: var(--pad-section); p
 }
 
 /* ====================================================================
+   PAGE À PROPOS — grille fondateur responsive
+   ==================================================================== */
+
+.about-founder-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(40px, 6vw, 96px);
+  align-items: center;
+}
+
+@media (max-width: 860px) {
+  .about-founder-grid {
+    grid-template-columns: 1fr;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+  .about-founder-grid > div:first-child {
+    aspect-ratio: 4/3;
+  }
+}
+
+/* ====================================================================
    PAGE SERVICES — grille 2 colonnes → 1 colonne sur mobile
    ==================================================================== */
 

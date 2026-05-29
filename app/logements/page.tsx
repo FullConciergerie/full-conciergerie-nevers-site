@@ -196,7 +196,7 @@ export default function LogementsPage() {
       {/* ══════════════════════════════════════════════════════════
           CTA FINAL
       ══════════════════════════════════════════════════════════ */}
-      <section className="bg-charbon">
+      <section className="bg-charbon" style={{ paddingTop: 'clamp(56px,8vw,96px)', paddingBottom: 'clamp(56px,8vw,96px)' }}>
         <div className="container">
           <div
             style={{
