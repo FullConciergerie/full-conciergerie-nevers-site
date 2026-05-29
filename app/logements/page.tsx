@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import BookingWidget from '../components/BookingWidget';
 
 export const metadata: Metadata = {
   title: 'Nos logements à Nevers — Réservez en direct',
@@ -13,9 +14,6 @@ export const metadata: Metadata = {
     url: '/logements',
   },
 };
-
-const SUPERHOTE_WEBKEY = '5WubL6qaur36Xr4JaYFQNiW9e';
-const BOOKING_URL = `https://app.superhote.com/#/get-available-rentals/${SUPERHOTE_WEBKEY}`;
 
 export default function LogementsPage() {
   return (
@@ -104,7 +102,7 @@ export default function LogementsPage() {
         }}
       >
         <div className="container">
-          {/* Iframe SuperHote */}
+          {/* Widget SuperHote — hauteur auto via postMessage */}
           <div
             style={{
               background: 'white',
@@ -114,17 +112,7 @@ export default function LogementsPage() {
               border: '1px solid var(--ligne)',
             }}
           >
-            <iframe
-              id="bookingengine"
-              src={BOOKING_URL}
-              width="100%"
-              height="3879"
-              style={{ display: 'block', border: 'none' }}
-              allowFullScreen
-              sandbox="allow-scripts allow-forms allow-same-origin allow-presentation allow-top-navigation"
-              title="Moteur de réservation — Full Conciergerie Nevers"
-              loading="eager"
-            />
+            <BookingWidget />
           </div>
 
           {/* Mention sécurité */}
