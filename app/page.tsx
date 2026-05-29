@@ -230,6 +230,7 @@ export default function HomePage() {
           </span>
         </a>
         <div className="nav-menu" role="navigation">
+          <a href="/logements">Nos logements</a>
           <a href="#services">Services</a>
           <a href="#histoire">À propos</a>
           <a href="#temoignages">Avis</a>
@@ -823,12 +824,12 @@ export default function HomePage() {
           <div className="footer-col">
             <h4>Navigation</h4>
             <ul>
+              <li><a href="/logements">Nos logements →</a></li>
               <li><a href="#services">Nos services</a></li>
               <li><a href="#histoire">À propos</a></li>
               <li><a href="#temoignages">Avis</a></li>
               <li><a href="#faq">FAQ</a></li>
               <li><a href="/contact">Devis gratuit</a></li>
-              <li><a href="/contact">Page contact</a></li>
             </ul>
           </div>
           <div className="footer-col">

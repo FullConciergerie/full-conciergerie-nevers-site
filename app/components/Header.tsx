@@ -15,6 +15,7 @@ import { usePathname } from 'next/navigation';
  */
 
 const NAV_LINKS = [
+  { href: '/logements', label: 'Nos logements' },
   { href: '/services', label: 'Services' },
   { href: '/a-propos', label: 'À propos' },
   { href: '/devenir-prestataire', label: 'Recrutement' },
