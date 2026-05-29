@@ -30,8 +30,6 @@ const SUPERHOTE_WEBKEY = '5WubL6qaur36Xr4JaYFQNiW9e';
 const BOOKING_URL = `https://app.superhote.com/#/get-available-rentals/${SUPERHOTE_WEBKEY}`;
 
 export default function LogementsPage() {
-  const webkeyMissing = SUPERHOTE_WEBKEY === 'TON_WEBKEY_ICI';
-
   return (
     <>
       {/* ══════════════════════════════════════════════════════════
@@ -217,54 +215,17 @@ export default function LogementsPage() {
               border: '1px solid var(--ligne)',
             }}
           >
-            {webkeyMissing ? (
-              /* ── Placeholder visible tant que la Webkey n'est pas configurée ── */
-              <div
-                style={{
-                  padding: 'clamp(48px, 8vw, 96px) clamp(24px, 6vw, 64px)',
-                  textAlign: 'center',
-                  background: 'var(--ivoire-2)',
-                }}
-              >
-                <p
-                  className="serif"
-                  style={{ fontSize: 28, color: 'var(--vert-deep)', marginBottom: 16 }}
-                >
-                  Widget de réservation
-                </p>
-                <p style={{ color: 'var(--texte-mute)', maxWidth: '48ch', margin: '0 auto 24px', fontSize: 15 }}>
-                  Pour activer ce module, remplace{' '}
-                  <code
-                    style={{
-                      background: 'rgba(15,38,37,0.08)',
-                      padding: '2px 8px',
-                      borderRadius: 4,
-                      fontSize: 13,
-                    }}
-                  >
-                    TON_WEBKEY_ICI
-                  </code>{' '}
-                  par ta Webkey SuperHote dans{' '}
-                  <code style={{ fontSize: 13 }}>app/logements/page.tsx</code>.
-                </p>
-                <p style={{ color: 'var(--texte-mute)', fontSize: 13 }}>
-                  📍 SuperHote → Notifications → Shortcodes personnalisés → cherche{' '}
-                  <strong>SH WebKey</strong>
-                </p>
-              </div>
-            ) : (
-              <iframe
-                id="bookingengine"
-                src={BOOKING_URL}
-                width="100%"
-                height="3879"
-                style={{ display: 'block', border: 'none' }}
-                allowFullScreen
-                sandbox="allow-scripts allow-forms allow-same-origin allow-presentation allow-top-navigation"
-                title="Moteur de réservation — Full Conciergerie Nevers"
-                loading="lazy"
-              />
-            )}
+            <iframe
+              id="bookingengine"
+              src={BOOKING_URL}
+              width="100%"
+              height="3879"
+              style={{ display: 'block', border: 'none' }}
+              allowFullScreen
+              sandbox="allow-scripts allow-forms allow-same-origin allow-presentation allow-top-navigation"
+              title="Moteur de réservation — Full Conciergerie Nevers"
+              loading="lazy"
+            />
           </div>
 
           {/* Note sous le widget */}
