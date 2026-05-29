@@ -6,6 +6,7 @@ import './globals.css';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { WhatsAppButton } from './components/WhatsAppButton';
+import { RevealObserver } from './components/RevealObserver';
 
 // Cormorant Garamond — serif élégant pour les titres (vintage / luxe)
 const cormorant = Cormorant_Garamond({
@@ -133,6 +134,8 @@ export default function RootLayout({
         <Footer />
         {/* Bouton WhatsApp flottant — toutes les pages */}
         <WhatsAppButton />
+        {/* Scroll-reveal global — anime les éléments .reveal sur toutes les pages */}
+        <RevealObserver />
         {/* Vercel Analytics — RGPD-compliant, sans cookies */}
         <Analytics />
         <SpeedInsights />

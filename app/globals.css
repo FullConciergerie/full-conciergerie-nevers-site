@@ -829,6 +829,7 @@ section { padding-top: var(--pad-section); padding-bottom: var(--pad-section); p
 
 /* ---------- GLOBAL HEADER ---------- */
 .global-nav {
+  position: -webkit-sticky;
   position: sticky; top: 0;
   z-index: 100;
   padding: 16px var(--pad-x);
@@ -838,6 +839,9 @@ section { padding-top: var(--pad-section); padding-bottom: var(--pad-section); p
   color: var(--ivoire);
   border-bottom: 1px solid rgba(201, 168, 104, 0.18);
   transition: padding 350ms ease, background 350ms ease;
+  /* Crée un contexte de rendu GPU — corrige les problèmes tactiles iOS sticky */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 .global-nav.scrolled {
   background: rgba(15, 38, 37, 0.94);
@@ -910,12 +914,17 @@ section { padding-top: var(--pad-section); padding-bottom: var(--pad-section); p
 
 .global-nav-burger {
   display: none;
-  width: 40px; height: 40px;
+  width: 44px; height: 44px;
   align-items: center; justify-content: center;
   flex-direction: column; gap: 5px;
   background: transparent; border: none;
   cursor: pointer;
   color: var(--ivoire);
+  /* Supprime le délai 300ms iOS et le halo de tap */
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  /* Zone de tap explicite */
+  padding: 0;
 }
 .global-nav-burger span {
   display: block; width: 22px; height: 1px;
@@ -1582,4 +1591,26 @@ section { padding-top: var(--pad-section); padding-bottom: var(--pad-section); p
 @media (prefers-reduced-motion: reduce) {
   .wa-pulse-1, .wa-pulse-2 { animation: none; opacity: 0; }
   .wa-fab { animation: none; }
+}
+
+/* ====================================================================
+   PAGE SERVICES — grille 2 colonnes → 1 colonne sur mobile
+   ==================================================================== */
+
+.service-section-grid {
+  display: grid;
+  grid-template-columns: clamp(220px, 28%, 320px) 1fr;
+  gap: clamp(32px, 6vw, 80px);
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .service-section-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  /* Désactive le sticky sur mobile (inutile en 1 colonne) */
+  .service-col-sticky {
+    position: static !important;
+  }
 }

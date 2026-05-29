@@ -160,16 +160,9 @@ export default function ServicesPage() {
           }}
         >
           <div className="container">
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'clamp(220px, 28%, 320px) 1fr',
-                gap: 'clamp(32px, 6vw, 80px)',
-                alignItems: 'start',
-              }}
-            >
+            <div className="service-section-grid">
               {/* Colonne gauche — titre sticky */}
-              <div className="reveal" style={{ position: 'sticky', top: 96 }}>
+              <div className="reveal service-col-sticky" style={{ position: 'sticky', top: 96 }}>
                 <span className="serif" style={{ fontSize: 12, color: 'var(--or)', letterSpacing: '0.12em', display: 'block', marginBottom: 12 }}>{s.num}</span>
                 <span className="gold-rule" style={{ display: 'block', marginBottom: 20 }} />
                 <h2 className="serif" style={{ fontSize: 'clamp(24px, 2.5vw, 34px)', color: 'var(--vert-deep)', lineHeight: 1.1, marginBottom: 12 }}>
