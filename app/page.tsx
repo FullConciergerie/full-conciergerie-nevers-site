@@ -466,6 +466,16 @@ export default function HomePage() {
               </svg>
               <h3 className="service-title">Livret d&apos;accueil IA</h3>
               <p className="service-body">Livret numérique personnalisé par QR code + IA qui répond aux questions des voyageurs 24h/24, en français et en anglais.</p>
+              <a
+                href="https://fullconciergerie.fr/livrets"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="service-cta"
+              >
+                Créez le vôtre — 1 mois offert
+                <span className="arrow" aria-hidden>→</span>
+              </a>
+              <span className="service-cta-note">Sans engagement</span>
             </article>
             {/* 8 */}
             <article className="service-card reveal reveal-delay-1">
