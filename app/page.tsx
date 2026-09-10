@@ -304,7 +304,7 @@ export default function HomePage() {
         <div className="container">
           <div className="trust-grid">
             <div className="trust-item reveal">
-              <span className="trust-num serif">30<span className="suffix">+</span></span>
+              <span className="trust-num serif">40<span className="suffix">+</span></span>
               <span className="trust-label">Logements gérés à Nevers et alentours</span>
             </div>
             <div className="trust-item center reveal reveal-delay-1">
