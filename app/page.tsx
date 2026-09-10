@@ -312,7 +312,7 @@ export default function HomePage() {
               <span className="trust-label">Autonomie pour vous — vous ne touchez à rien</span>
             </div>
             <div className="trust-item end reveal reveal-delay-2">
-              <span className="trust-num serif">800<span className="suffix">+</span></span>
+              <span className="trust-num serif">1000<span className="suffix">+</span></span>
               <span className="trust-label">Commentaires plateformes (Airbnb &amp; Booking)</span>
             </div>
           </div>
@@ -358,7 +358,7 @@ export default function HomePage() {
                 Chaque logement que je gère, je le traite comme s&apos;il était le mien.
               </blockquote>
               <div className="founder-rating">
-                <span className="src">— Plus de 800 commentaires voyageurs sur Airbnb &amp; Booking</span>
+                <span className="src">— Plus de 1 000 commentaires voyageurs sur Airbnb &amp; Booking</span>
               </div>
             </div>
           </div>
@@ -591,7 +591,7 @@ export default function HomePage() {
             <h2 className="title serif">Des voyageurs comblés,<br/>des propriétaires sereins.</h2>
             <span className="gold-rule"></span>
             <p className="lede" style={{ color: 'var(--texte-mute)', marginTop: '16px' }}>
-              Plus de 800 commentaires sur Airbnb et Booking. Voici quelques retours récents de
+              Plus de 1 000 commentaires sur Airbnb et Booking. Voici quelques retours récents de
               voyageurs ayant séjourné dans nos logements.
             </p>
           </div>
@@ -657,7 +657,7 @@ export default function HomePage() {
 
           <div style={{ marginTop: '56px', textAlign: 'center' }} className="reveal">
             <span className="eyebrow">
-              Plus de 800 commentaires voyageurs sur Airbnb &amp; Booking
+              Plus de 1 000 commentaires voyageurs sur Airbnb &amp; Booking
             </span>
           </div>
         </div>
