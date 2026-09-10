@@ -76,7 +76,7 @@ export function Header() {
         </nav>
 
         <div className="global-nav-cta">
-          <Link href="/contact" className="btn btn-gold-outline">
+          <Link href="/estimation" className="btn btn-gold-outline">
             <span className="cta-label">Devis gratuit</span>
             <span className="arrow" aria-hidden="true">→</span>
           </Link>
@@ -122,7 +122,7 @@ export function Header() {
               ))}
             </ul>
             <Link
-              href="/contact"
+              href="/estimation"
               onClick={close}
               className="btn btn-gold drawer-cta"
             >
