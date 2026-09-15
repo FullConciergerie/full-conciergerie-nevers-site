@@ -521,9 +521,7 @@ export default function HomePage() {
               <h3 className="service-title">Livret d&apos;accueil IA</h3>
               <p className="service-body">Livret numérique personnalisé par QR code + IA qui répond aux questions des voyageurs 24h/24, en français et en anglais.</p>
               <a
-                href="https://fullconciergerie.fr/livrets"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/application"
                 className="service-cta"
               >
                 Créez le vôtre — 1 mois offert
