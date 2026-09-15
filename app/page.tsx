@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 /**
  * Structured data Schema.org — LocalBusiness.
@@ -84,7 +84,20 @@ const websiteJsonLd = {
   },
 };
 
+const NAV_LINKS_HOME = [
+  { href: '/logements', label: 'Nos logements' },
+  { href: '#services', label: 'Services' },
+  { href: '#histoire', label: 'À propos' },
+  { href: '#temoignages', label: 'Avis' },
+  { href: '#faq', label: 'FAQ' },
+  { href: '/devenir-prestataire', label: 'Recrutement' },
+  { href: '/lancer-une-conciergerie', label: 'Entrepreneurs' },
+  { href: '#contact', label: 'Contact' },
+];
+
 export default function HomePage() {
+  const [mobileOpen, setMobileOpen] = useState(false);
+
   // ---------- NAV scroll state ----------
   useEffect(() => {
     const nav = document.getElementById('nav');
@@ -244,11 +257,50 @@ export default function HomePage() {
             <span className="cta-label">Devis gratuit</span>
             <span className="arrow" aria-hidden="true">→</span>
           </a>
-          <button className="nav-burger" aria-label="Menu">
+          <button
+            className="nav-burger"
+            aria-label={mobileOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+            aria-expanded={mobileOpen}
+            onClick={() => setMobileOpen((v) => !v)}
+          >
             <span></span><span></span><span></span>
           </button>
         </div>
       </nav>
+
+      {/* ============ MOBILE DRAWER ============ */}
+      {mobileOpen && (
+        <div className="global-nav-drawer" onClick={() => setMobileOpen(false)}>
+          <div className="global-nav-drawer-inner" onClick={(e) => e.stopPropagation()}>
+            <button
+              type="button"
+              onClick={() => setMobileOpen(false)}
+              aria-label="Fermer le menu"
+              className="global-nav-drawer-close"
+            >
+              ✕
+            </button>
+            <ul>
+              {NAV_LINKS_HOME.map((link) => (
+                <li key={link.href}>
+                  <a href={link.href} onClick={() => setMobileOpen(false)}>{link.label}</a>
+                </li>
+              ))}
+            </ul>
+            <a
+              href="/contact"
+              onClick={() => setMobileOpen(false)}
+              className="btn btn-gold drawer-cta"
+            >
+              Demander un devis gratuit
+              <span className="arrow" aria-hidden="true">→</span>
+            </a>
+            <a href="tel:+33376150229" onClick={() => setMobileOpen(false)} className="drawer-tel">
+              📞 03 76 15 02 29
+            </a>
+          </div>
+        </div>
+      )}
 
       {/* ============ HERO ============ */}
       <header className="hero" data-screen-label="02 Hero">
