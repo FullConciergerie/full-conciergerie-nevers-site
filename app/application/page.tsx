@@ -489,6 +489,11 @@ export default function ApplicationPage() {
             <h2 className="title">
               Trois façons <em>d&apos;entrer.</em>
             </h2>
+            <p className="lede">
+              Le principe tient en une phrase : celui qui gère le logement règle le pourcentage. Le
+              propriétaire s&apos;il gère seul son Airbnb, la conciergerie si elle en a la gestion complète.
+              Le prestataire, lui, ne paie jamais rien.
+            </p>
             <span className="gold-rule" />
           </div>
 
