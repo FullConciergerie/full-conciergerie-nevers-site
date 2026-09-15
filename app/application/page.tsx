@@ -451,9 +451,10 @@ export default function ApplicationPage() {
               <span className="num">02</span>
               <h3>Des partenaires locaux à présenter aux voyageurs</h3>
               <p>
-                Commerçants et artisans de la région proposent leurs offres dans le livret : le voyageur
-                arrive quelque part, pas seulement dans un logement. Vous rendez service à deux personnes à
-                la fois, et une partie du chiffre revient.
+                Commerçants et artisans de la région déposent leurs <strong>coupons de réduction</strong>
+                dans le livret. Le voyageur arrive quelque part, pas seulement dans un logement : il repart
+                avec le sentiment d&apos;avoir été reçu, le commerçant gagne un client, et une partie du
+                chiffre revient.
               </p>
             </article>
             <article>
@@ -499,6 +500,10 @@ export default function ApplicationPage() {
                 Vous créez votre compte, vous ajoutez votre logement, et nous prenons en charge la première
                 rotation — ménage et linge compris. Vous jugez sur pièce, pas sur une démonstration.
               </p>
+              <p>
+                Ensuite, l&apos;outil reste gratuit : seul un léger pourcentage s&apos;ajoute aux missions que
+                vous lancez.
+              </p>
               <p className="price">
                 Première mission <em>offerte</em>
               </p>
@@ -513,9 +518,9 @@ export default function ApplicationPage() {
               <span className="tag">Vous êtes une conciergerie</span>
               <h3>L&apos;outil est gratuit.</h3>
               <p>
-                Vos logements, vos prestataires, vos propriétaires, le planning, la facturation : rien à
-                payer. Je me rémunère uniquement sur les missions que vous lancez — tant que l&apos;outil ne
-                travaille pas pour vous, il ne vous coûte rien.
+                Vos logements, vos prestataires, vos propriétaires, le planning, la facturation : vous ne
+                payez rien. Je me rémunère par un léger pourcentage sur les missions lancées, réglé par le
+                propriétaire — pas par vous.
               </p>
               <p>
                 Seul le livret d&apos;accueil à assistance IA est en option, et le premier mois est offert.
