@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "L'application Full Conciergerie — le logiciel qui pilote une conciergerie",
   description:
-    "Missions, prestataires, linge, incidents, facturation : le logiciel que nous avons construit pour notre propre conciergerie, ouvert aux propriétaires et aux conciergeries. Première mission offerte, premier mois offert.",
+    "Missions, prestataires, linge, incidents, facturation : le logiciel que nous avons construit pour notre propre conciergerie, ouvert aux propriétaires et aux conciergeries. Gratuit : nous nous rémunérons uniquement sur les missions lancées. Première mission offerte.",
   alternates: { canonical: 'https://full-nevers-conciergerie.fr/application' },
   openGraph: {
     title: "L'application Full Conciergerie",
