@@ -92,6 +92,7 @@ const NAV_LINKS_HOME = [
   { href: '#faq', label: 'FAQ' },
   { href: '/devenir-prestataire', label: 'Recrutement' },
   { href: '/lancer-une-conciergerie', label: 'Entrepreneurs' },
+  { href: '/application', label: 'Application' },
   { href: '#contact', label: 'Contact' },
 ];
 
@@ -250,6 +251,7 @@ export default function HomePage() {
           <a href="#faq">FAQ</a>
           <a href="/devenir-prestataire">Recrutement</a>
           <a href="/lancer-une-conciergerie">Entrepreneurs</a>
+          <a href="/application">Application</a>
           <a href="#contact">Contact</a>
         </div>
         <div className="nav-cta">
