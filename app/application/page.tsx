@@ -85,8 +85,8 @@ const css = `
 .fca-plus h3{font-family:var(--serif);font-weight:400;font-size:27px;line-height:1.15;color:var(--vert-deep)}
 .fca-plus p{color:var(--texte-mute);font-size:15.5px;line-height:1.65}
 
-.fca-offers{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,40px);margin-top:clamp(40px,5vw,64px)}
-@media(max-width:860px){.fca-offers{grid-template-columns:1fr}}
+.fca-offers{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:clamp(24px,3vw,40px);margin-top:clamp(40px,5vw,64px)}
+
 .fca-offer{border:1px solid var(--ligne);padding:clamp(28px,3.5vw,46px);display:flex;flex-direction:column;gap:18px;background:var(--ivoire)}
 .fca-offer.gold{border-color:var(--or);background:var(--ivoire-2)}
 .fca-offer .tag{font-family:var(--mono);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--texte-mute)}
@@ -133,7 +133,7 @@ export default function ApplicationPage() {
             </a>
           </div>
           <p className="fca-note">
-            Outil gratuit · Première mission offerte · Livret IA : premier mois offert
+            Sans abonnement · Première mission offerte · Livret IA : premier mois offert
           </p>
         </div>
       </section>
@@ -487,7 +487,7 @@ export default function ApplicationPage() {
               06 <span className="or-mark">—</span> Commencer
             </p>
             <h2 className="title">
-              Deux façons <em>d&apos;entrer.</em>
+              Trois façons <em>d&apos;entrer.</em>
             </h2>
             <span className="gold-rule" />
           </div>
@@ -516,22 +516,44 @@ export default function ApplicationPage() {
 
             <div className="fca-offer">
               <span className="tag">Vous êtes une conciergerie</span>
-              <h3>L&apos;outil est gratuit.</h3>
+              <h3>Sans abonnement. Vous payez à l&apos;usage.</h3>
               <p>
-                Vos logements, vos prestataires, vos propriétaires, le planning, la facturation : vous ne
-                payez rien. Je me rémunère par un léger pourcentage sur les missions lancées, réglé par le
-                propriétaire — pas par vous.
+                Vos logements, vos prestataires, vos propriétaires, le planning, la facturation : rien à
+                installer, aucun forfait mensuel. Vous ne réglez qu&apos;un léger pourcentage sur les missions
+                que vous lancez — un mois creux ne vous coûte rien.
               </p>
               <p>
                 Seul le livret d&apos;accueil à assistance IA est en option, et le premier mois est offert.
               </p>
               <p className="price">
-                L&apos;outil <em>gratuit</em>
+                Sans <em>abonnement</em>
               </p>
               <div className="go">
                 <a className="btn btn-gold-outline" href="https://fullconciergerie.fr/login">
                   Ouvrir mon espace <span className="arrow">→</span>
                 </a>
+              </div>
+            </div>
+
+            <div className="fca-offer">
+              <span className="tag">Vous êtes prestataire ou artisan</span>
+              <h3>Vous ne payez rien. Jamais.</h3>
+              <p>
+                Vous recevez vos missions sur votre téléphone, vous cochez ce qui est fait, vous
+                photographiez, vous validez. Vos rémunérations sont suivies dans l&apos;outil, et réglées par
+                la conciergerie ou le propriétaire.
+              </p>
+              <p>
+                Six métiers : ménage, linge, bricolage, espaces verts, débarras, check-in. Vous ne voyez que
+                ce qui vous concerne.
+              </p>
+              <p className="price">
+                Toujours <em>gratuit</em>
+              </p>
+              <div className="go">
+                <Link className="btn btn-gold-outline" href="/devenir-prestataire">
+                  Proposer mes services <span className="arrow">→</span>
+                </Link>
               </div>
             </div>
           </div>
