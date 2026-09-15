@@ -133,7 +133,7 @@ export default function ApplicationPage() {
             </a>
           </div>
           <p className="fca-note">
-            Premier mois offert · Première mission offerte pour les propriétaires
+            Outil gratuit · Première mission offerte · Livret IA : premier mois offert
           </p>
         </div>
       </section>
@@ -258,7 +258,7 @@ export default function ApplicationPage() {
                 Une rotation sans prestataire à J-1, elle, ne se pose pas : elle se règle.
               </p>
               <p>
-                Le planning se synchronise avec <strong>Superhôte</strong> : les arrivées et les départs
+                Le planning se synchronise avec votre <strong>channel manager</strong> : les arrivées et les départs
                 remontent seuls, et les missions se créent avec eux.
               </p>
             </div>
@@ -375,7 +375,7 @@ export default function ApplicationPage() {
               <ul>
                 <li>Logements et fiches détaillées</li>
                 <li>Planning et missions</li>
-                <li>Synchronisation Superhôte</li>
+                <li>Synchronisation channel manager</li>
                 <li>Messagerie</li>
                 <li>Incidents</li>
               </ul>
@@ -444,7 +444,7 @@ export default function ApplicationPage() {
               <p>
                 Le voyageur pose sa question à n&apos;importe quelle heure — le code du portail, le
                 fonctionnement du chauffage, le jour des poubelles — et l&apos;assistant répond à partir du
-                livret de ce logement précis. Vous dormez, l&apos;accueil continue.
+                livret de ce logement précis. Vous dormez, l&apos;accueil continue. C&apos;est la seule brique payante de l&apos;outil, et le premier mois est offert.
               </p>
             </article>
             <article>
@@ -511,14 +511,17 @@ export default function ApplicationPage() {
 
             <div className="fca-offer">
               <span className="tag">Vous êtes une conciergerie</span>
-              <h3>Le premier mois est offert.</h3>
+              <h3>L&apos;outil est gratuit.</h3>
               <p>
-                Vous reprenez l&apos;outil tel qu&apos;il tourne chez nous, avec vos logements, vos
-                prestataires et vos propriétaires. Un mois complet pour voir si votre 1er du mois change
-                vraiment.
+                Vos logements, vos prestataires, vos propriétaires, le planning, la facturation : rien à
+                payer. Je me rémunère uniquement sur les missions que vous lancez — tant que l&apos;outil ne
+                travaille pas pour vous, il ne vous coûte rien.
+              </p>
+              <p>
+                Seul le livret d&apos;accueil à assistance IA est en option, et le premier mois est offert.
               </p>
               <p className="price">
-                Premier mois <em>offert</em>
+                L&apos;outil <em>gratuit</em>
               </p>
               <div className="go">
                 <a className="btn btn-gold-outline" href="https://fullconciergerie.fr/login">
