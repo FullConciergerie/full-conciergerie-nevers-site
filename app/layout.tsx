@@ -38,7 +38,7 @@ const jetbrains = JetBrains_Mono({
 });
 
 const SITE_URL = 'https://full-nevers-conciergerie.fr';
-const SITE_NAME = 'Full Conciergerie Nevers';
+const SITE_NAME = 'Full Conciergerie - Nevers';
 const DEFAULT_DESCRIPTION =
   "Conciergerie haut de gamme à Nevers. Confiez la gestion de votre Airbnb à des professionnels locaux : ménage, accueil voyageurs, photos pro, optimisation des tarifs.";
 
@@ -48,8 +48,8 @@ export const metadata: Metadata = {
   // Title template : chaque page peut surcharger juste son titre,
   // le suffixe " — Full Conciergerie Nevers" est ajouté automatiquement.
   title: {
-    default: 'Full Conciergerie Nevers — Des services Full Options',
-    template: '%s — Full Conciergerie Nevers',
+    default: 'Conciergerie Airbnb à Nevers | Full Conciergerie - Nevers',
+    template: '%s | Full Conciergerie - Nevers',
   },
 
   description: DEFAULT_DESCRIPTION,
@@ -95,7 +95,7 @@ export const metadata: Metadata = {
     locale: 'fr_FR',
     url: SITE_URL,
     siteName: SITE_NAME,
-    title: 'Full Conciergerie Nevers — Des services Full Options',
+    title: 'Conciergerie Airbnb à Nevers | Full Conciergerie - Nevers',
     description: DEFAULT_DESCRIPTION,
     // L'image est lue automatiquement depuis app/opengraph-image.jpg
   },
@@ -103,7 +103,7 @@ export const metadata: Metadata = {
   // Twitter Card
   twitter: {
     card: 'summary_large_image',
-    title: 'Full Conciergerie Nevers',
+    title: 'Full Conciergerie - Nevers',
     description: 'Des services Full Options pour votre Airbnb à Nevers.',
     // L'image est lue automatiquement depuis app/twitter-image.jpg
   },

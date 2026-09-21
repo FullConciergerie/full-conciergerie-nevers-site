@@ -2,12 +2,12 @@ import Link from 'next/link';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Nos services — Full Conciergerie Nevers',
+  title: 'Nos services de conciergerie Airbnb à Nevers',
   description:
     "Découvrez tous nos services de conciergerie à Nevers : accueil voyageurs 7j/7, optimisation des tarifs, ménage hôtelier, blanchisserie, livret d'accueil IA, rapports de mission photo.",
   alternates: { canonical: '/services' },
   openGraph: {
-    title: 'Nos services — Full Conciergerie Nevers',
+    title: 'Nos services — Full Conciergerie - Nevers',
     description:
       'Une gestion complète de votre Airbnb à Nevers : accueil, optimisation, ménage, photos pro, linge.',
     url: '/services',

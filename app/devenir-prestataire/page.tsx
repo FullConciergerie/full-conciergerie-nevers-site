@@ -3,12 +3,12 @@ import type { Metadata } from 'next';
 import { PrestataireForm } from './prestataire-form';
 
 export const metadata: Metadata = {
-  title: 'Devenir prestataire · Rejoindre Full Conciergerie Nevers',
+  title: 'Devenir prestataire ménage à Nevers',
   description:
     "Vous cherchez des missions à Nevers pour arrondir vos fins de mois ? Rejoignez notre réseau de prestataires indépendants. Ménage, espaces verts, petits travaux, livraisons. Inscription en quelques minutes.",
   alternates: { canonical: '/devenir-prestataire' },
   openGraph: {
-    title: 'Devenir prestataire — Full Conciergerie Nevers',
+    title: 'Devenir prestataire — Full Conciergerie - Nevers',
     description:
       "Travaillez quand vous voulez, gagnez en plus. Nous gérons l'administratif.",
     url: '/devenir-prestataire',

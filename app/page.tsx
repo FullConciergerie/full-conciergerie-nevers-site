@@ -13,7 +13,7 @@ const localBusinessJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
   '@id': 'https://full-nevers-conciergerie.fr/#business',
-  name: 'Full Conciergerie Nevers',
+  name: 'Full Conciergerie - Nevers',
   legalName: 'Full Nevers Conciergerie',
   description:
     "Conciergerie haut de gamme à Nevers. Gestion complète d'Airbnb : ménage, accueil voyageurs, photos professionnelles, optimisation des tarifs, location de linge et blanchisserie en interne.",
@@ -29,16 +29,11 @@ const localBusinessJsonLd = {
   },
   address: {
     '@type': 'PostalAddress',
-    streetAddress: '16 Quai de Mantoue',
+    streetAddress: '23 Faubourg de Lyon',
     addressLocality: 'Nevers',
     postalCode: '58000',
     addressRegion: 'Bourgogne-Franche-Comté',
     addressCountry: 'FR',
-  },
-  geo: {
-    '@type': 'GeoCoordinates',
-    latitude: 46.9911,
-    longitude: 3.1626,
   },
   areaServed: [
     {
@@ -59,12 +54,87 @@ const localBusinessJsonLd = {
     'Location de linge',
     'Blanchisserie',
   ],
-  openingHours: 'Mo-Su 09:00-19:00',
+  openingHours: 'Mo-Su 09:00-23:00',
   sameAs: [
-    // À compléter quand les réseaux sociaux seront créés
-    // 'https://www.facebook.com/fullconciergerienevers',
-    // 'https://www.instagram.com/fullconciergerienevers',
+    'https://www.instagram.com/full_nevers_conciergerie/',
+    'https://www.instagram.com/delil.torgursul/',
+    'https://www.youtube.com/@DelilTorgursul',
   ],
+};
+
+/**
+ * JSON-LD FAQPage — reprend mot pour mot la FAQ visible de la page d'accueil.
+ * (Si la FAQ change dans la page, mettre à jour ce bloc aussi.)
+ */
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Combien ça coûte ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nous nous rémunérons uniquement sur les nuitées effectivement réalisées. Pas d'abonnement, pas de frais cachés. Si votre logement ne se loue pas, on ne facture rien. Le pourcentage exact dépend de votre logement — on vous le confirme après la visite."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Vous gérez aussi les check-in tardifs ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui, sans surcoût pour vous. Notre équipe peut accueillir un voyageur jusqu'à 23 h, et au-delà nous mettons en place un système de boîtes à clés sécurisées avec code temporaire envoyé au voyageur."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Que se passe-t-il en cas de dégradation ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nous réalisons un état des lieux photo après chaque départ. En cas de dégradation, nous déclenchons la garantie Airbnb / Booking dans les 24 h et suivons le dossier jusqu'au remboursement. Vous n'avez rien à faire — nous vous tenons informé."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Sur quelles plateformes vous publiez ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Airbnb, Booking, et notre channel manager qui synchronise les calendriers. Pas de double réservation, pas de période bloquée inutilement."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Combien de temps pour démarrer ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Entre cinq et sept jours ouvrés à partir de la signature. Le temps de faire les photos, rédiger les annonces, installer le livret d'accueil et faire un audit complet du logement."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Je peux récupérer mon logement quand je veux ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bien sûr. Il suffit de nous prévenir par téléphone, WhatsApp ou email — on bloque vos dates sur les plateformes pour les vacances, la famille, ou simplement par envie. Aucun préavis minimum, aucune pénalité."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Vous travaillez avec des LMNP / LMP ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Oui, nous avons l'habitude. Nous fournissons le récapitulatif comptable mensuel et annuel, compatible avec votre expert-comptable. Si vous n'en avez pas, nous avons un partenaire à Nevers que nous pouvons vous recommander."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Le contrat est sur quelle durée ?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Sans engagement minimum. Vous pouvez arrêter à tout moment avec un préavis d'un mois. On préfère que vous restiez parce que vous êtes satisfait, pas parce que vous êtes coincé."
+      }
+    }
+  ]
 };
 
 /**
@@ -228,6 +298,13 @@ export default function HomePage() {
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(websiteJsonLd),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        // eslint-disable-next-line react/no-danger
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(faqJsonLd),
         }}
       />
 
