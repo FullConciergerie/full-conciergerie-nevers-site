@@ -111,7 +111,8 @@ export default function Article() {
           </div>
 
           <P>
-            C&apos;est la première question que me posent les propriétaires quand ils m&apos;appellent. Et c&apos;est normal : confier son
+            C&apos;est la première question que me posent les propriétaires quand ils m&apos;appellent (juste après{' '}
+            <Link href="/blog/conciergerie-airbnb-c-est-quoi" style={{ textDecoration: 'underline' }}>« une conciergerie Airbnb, c&apos;est quoi ? »</Link>). Et c&apos;est normal : confier son
             logement, c&apos;est accepter de partager ses revenus. Voici, sans jargon, comment se construit le prix d&apos;une conciergerie
             Airbnb, ce qu&apos;il faut vérifier, et un exemple chiffré sur un logement à Nevers.
           </P>

@@ -3,6 +3,14 @@ export type BlogArticle = { slug: string; title: string; excerpt: string; date: 
 
 export const articles: BlogArticle[] = [
   {
+    slug: 'conciergerie-airbnb-c-est-quoi',
+    title: 'Conciergerie Airbnb : c’est quoi et comment ça marche ?',
+    excerpt:
+      "Ce que fait concrètement une conciergerie Airbnb avant, pendant et après chaque séjour, comment on démarre, et comment choisir la bonne à Nevers.",
+    date: '2026-09-22',
+    readingMinutes: 6,
+  },
+  {
     slug: 'combien-coute-une-conciergerie-airbnb',
     title: 'Combien coûte une conciergerie Airbnb à Nevers ?',
     excerpt:

@@ -17,6 +17,7 @@ import { usePathname } from 'next/navigation';
 const NAV_LINKS = [
   { href: '/logements', label: 'Nos logements' },
   { href: '/services', label: 'Services' }, { href: '/application', label: 'Application' },
+  { href: '/blog', label: 'Blog' },
   { href: '/a-propos', label: 'À propos' },
   { href: '/devenir-prestataire', label: 'Recrutement' },
   { href: '/lancer-une-conciergerie', label: 'Entrepreneurs' },
@@ -62,7 +63,7 @@ export function Header() {
 
         <nav className="global-nav-menu" aria-label="Navigation principale">
           {NAV_LINKS.map((link) => {
-            const isActive = pathname === link.href;
+            const isActive = pathname === link.href || (link.href === '/blog' && pathname?.startsWith('/blog/'));
             return (
               <Link
                 key={link.href}
