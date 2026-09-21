@@ -69,6 +69,9 @@ export function Footer() {
               <Link href="/menage-airbnb-nevers">Ménage Airbnb à Nevers</Link>
             </li>
             <li>
+              <Link href="/blog">Blog</Link>
+            </li>
+            <li>
               <Link href="/a-propos">À propos</Link>
             </li>
             <li>

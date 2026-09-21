@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+import { articles } from './blog/_data/articles';
 
 /**
  * sitemap.xml généré dynamiquement par Next.js.
@@ -59,6 +60,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.8,
     },
+    {
+      url: `${baseUrl}/blog`,
+      lastModified,
+      changeFrequency: 'weekly',
+      priority: 0.7,
+    },
+    ...articles.map((a) => ({
+      url: `${baseUrl}/blog/${a.slug}`,
+      lastModified: new Date(a.date),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
     {
       url: `${baseUrl}/contact`,
       lastModified,
