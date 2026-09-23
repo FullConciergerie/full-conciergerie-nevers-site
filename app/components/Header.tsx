@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -52,8 +53,7 @@ export function Header() {
           onClick={close}
         >
           <span className="global-nav-logo-wrap">
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img src="/logo.jpg" alt="" />
+              <Image src="/logo.png" alt="" width={96} height={96} />
           </span>
           <span className="global-nav-logo-text">
             Full Conciergerie

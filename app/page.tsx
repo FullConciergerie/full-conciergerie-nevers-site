@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 
 /**
  * Structured data Schema.org — LocalBusiness.
@@ -279,10 +280,6 @@ export default function HomePage() {
     };
   }, []);
 
-  const hideOnError = (e: React.SyntheticEvent<HTMLImageElement>) => {
-    e.currentTarget.style.display = 'none';
-  };
-
   return (
     <>
       {/* Structured data JSON-LD pour Google — LocalBusiness + WebSite */}
@@ -313,7 +310,7 @@ export default function HomePage() {
         <a href="#" className="logo" aria-label="Full Conciergerie Nevers — accueil">
           {/* Vrai logo (en remplacement du placeholder F) */}
           <span className="logo-img-wrap">
-            <img src="/logo.jpg" alt="Full Conciergerie Nevers" className="logo-img" />
+            <Image src="/logo.png" alt="Full Conciergerie Nevers" className="logo-img" width={96} height={96} priority />
           </span>
           <span className="logo-text">
             Full Conciergerie
@@ -384,11 +381,14 @@ export default function HomePage() {
       {/* ============ HERO ============ */}
       <header className="hero" data-screen-label="02 Hero">
         <div className="hero-bg placeholder dark" data-parallax>
-          <img
+          <Image
             className="fill-image"
             src="/nevers-pont-vue.jpg"
             alt="Pont de Loire et vieille ville de Nevers"
-            onError={hideOnError}
+            fill
+            priority
+            sizes="100vw"
+            style={{ objectFit: 'cover' }}
           />
           <div className="stripes"></div>
         </div>
@@ -456,11 +456,13 @@ export default function HomePage() {
           <div className="founder-grid">
             <div className="founder-photo reveal">
               <div className="placeholder">
-                <img
+                <Image
                   className="fill-image"
                   src="/delil-portrait.jpg"
                   alt="Delil Torgursul, fondateur de Full Conciergerie Nevers"
-                  onError={hideOnError}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 500px"
+                  style={{ objectFit: 'cover' }}
                 />
                 <div className="stripes"></div>
                 <div className="frame"></div>
@@ -653,11 +655,13 @@ export default function HomePage() {
             </div>
             <div className="territoire-photo reveal reveal-delay-1">
               <div className="placeholder">
-                <img
+                <Image
                   className="fill-image"
                   src="/nevers-pont-cathedrale.jpg"
                   alt="Pont sur la Loire et cathédrale Saint-Cyr-et-Sainte-Julitte à Nevers"
-                  onError={hideOnError}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 453px"
+                  style={{ objectFit: 'cover' }}
                 />
                 <div className="stripes"></div>
                 <div className="frame"></div>
@@ -926,11 +930,13 @@ export default function HomePage() {
       {/* ============ CTA FINAL ============ */}
       <section id="devis" className="final-cta" data-screen-label="10 CTA final">
         <div className="bg placeholder dark">
-          <img
+          <Image
             className="fill-image"
             src="/nevers-loire.jpg"
             alt="Bord de Loire à Nevers — paysage du Centre-Val de Loire"
-            onError={hideOnError}
+            fill
+            sizes="100vw"
+            style={{ objectFit: 'cover' }}
           />
           <div className="stripes"></div>
         </div>
