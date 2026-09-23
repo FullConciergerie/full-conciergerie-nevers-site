@@ -387,6 +387,7 @@ export default function HomePage() {
             alt="Pont de Loire et vieille ville de Nevers"
             fill
             priority
+            quality={70}
             sizes="100vw"
             style={{ objectFit: 'cover' }}
           />
