@@ -72,7 +72,7 @@ const css = `
 .fca-stamp{font-family:var(--mono);font-size:10px;color:rgba(245,241,232,.42);letter-spacing:.06em}
 .fca-cta-mock{margin-top:4px;text-align:center;padding:12px;background:var(--or);color:var(--vert-deep);font-size:13px;font-weight:600;letter-spacing:.04em}
 
-.fca-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:1px;background:var(--ligne);border:1px solid var(--ligne);margin-top:clamp(40px,5vw,64px)}
+.fca-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:var(--ligne);border:1px solid var(--ligne);margin-top:clamp(40px,5vw,64px)}
 .fca-cell{background:var(--ivoire);padding:30px 28px;display:flex;flex-direction:column;gap:12px}
 .fca-cell .h{font-family:var(--serif);font-size:24px;color:var(--vert-deep);line-height:1.15}
 .fca-cell ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
