@@ -1,5 +1,7 @@
 'use server';
 
+import { isSpam } from '@/lib/anti-spam';
+
 export type EntrepreneurResult = { success: true } | { error: string };
 
 const FROM_EMAIL =
@@ -27,6 +29,11 @@ export async function submitEntrepreneurForm(
   const investment = String(formData.get('investment') ?? '').trim();
   const timeline = String(formData.get('timeline') ?? '').trim();
   const motivation = String(formData.get('motivation') ?? '').trim();
+
+  // Robot : on fait comme si c'était envoyé, sans rien transmettre
+  if (isSpam({ formData, name: `${firstName} ${lastName}`, email, phone, message: motivation })) {
+    return { success: true };
+  }
 
   if (!firstName || !lastName || !email || !phone || !city) {
     return {

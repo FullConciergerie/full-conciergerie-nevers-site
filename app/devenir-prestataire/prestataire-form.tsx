@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useTransition } from 'react';
+import { AntiSpamFields } from '@/app/components/anti-spam-fields';
 import { submitPrestataireForm, type PrestataireResult } from './actions';
 
 const PROFILES = [
@@ -33,6 +34,7 @@ export function PrestataireForm() {
       id="prestataire-form"
       className="v2-form"
     >
+      <AntiSpamFields />
       {/* ── Section 1 : Coordonnées ── */}
       <div className="v2-form-section">
         <div className="v2-form-section-head">

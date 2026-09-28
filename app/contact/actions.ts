@@ -1,5 +1,7 @@
 'use server';
 
+import { isSpam } from '@/lib/anti-spam';
+
 export type ContactResult = { success: true } | { error: string };
 
 const FROM_EMAIL =
@@ -22,6 +24,9 @@ export async function submitContactForm(
   const phone = String(formData.get('phone') ?? '').trim();
   const logements = String(formData.get('logements') ?? '').trim();
   const message = String(formData.get('message') ?? '').trim();
+
+  // Robot : on fait comme si c'était envoyé, sans rien transmettre
+  if (isSpam({ formData, name, email, phone, message })) return { success: true };
 
   if (!name || !email || !message) {
     return { error: 'Merci de remplir le nom, l\'email et le message.' };

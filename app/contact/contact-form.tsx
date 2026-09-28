@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useTransition } from 'react';
+import { AntiSpamFields } from '@/app/components/anti-spam-fields';
 import { submitContactForm, type ContactResult } from './actions';
 
 export function ContactForm() {
@@ -22,6 +23,7 @@ export function ContactForm() {
       id="contact-form"
       className="v2-form"
     >
+      <AntiSpamFields />
       {/* ── Section 1 : Vos coordonnées ── */}
       <div className="v2-form-section">
         <div className="v2-form-section-head">

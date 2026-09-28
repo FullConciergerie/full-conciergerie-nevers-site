@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useTransition } from 'react';
+import { AntiSpamFields } from '@/app/components/anti-spam-fields';
 import {
   submitEntrepreneurForm,
   type EntrepreneurResult,
@@ -25,6 +26,7 @@ export function EntrepreneurForm() {
       id="entrepreneur-form"
       className="v2-form"
     >
+      <AntiSpamFields />
       {/* ── Section 1 : Coordonnées ── */}
       <div className="v2-form-section">
         <div className="v2-form-section-head">

@@ -1,5 +1,7 @@
 'use server';
 
+import { isSpam } from '@/lib/anti-spam';
+
 export type PrestataireResult = { success: true } | { error: string };
 
 const FROM_EMAIL =
@@ -29,6 +31,11 @@ export async function submitPrestataireForm(
   const referrer = String(formData.get('referrer') ?? '').trim();
   const experience = String(formData.get('experience') ?? '').trim();
   const motivation = String(formData.get('motivation') ?? '').trim();
+
+  // Robot : on fait comme si c'était envoyé, sans rien transmettre
+  if (isSpam({ formData, name: `${firstName} ${lastName}`, email, phone, message: motivation || experience })) {
+    return { success: true };
+  }
 
   // Validations minimales
   if (!firstName || !lastName || !email || !phone) {
