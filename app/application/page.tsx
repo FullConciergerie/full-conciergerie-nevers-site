@@ -177,8 +177,8 @@ export default function ApplicationPage() {
             </div>
             <div className="trust-item center">
               <span className="gold-rule" />
-              <span className="trust-num">22</span>
-              <span className="trust-label">prestataires actifs sur le terrain</span>
+              <span className="trust-num">30+</span>
+              <span className="trust-label">prestataires dans l&apos;équipe</span>
             </div>
             <div className="trust-item end">
               <span className="gold-rule" />
@@ -316,8 +316,8 @@ export default function ApplicationPage() {
                 </div>
                 <div className="fca-kpi">
                   <span className="l">Prestataires</span>
-                  <span className="v">22</span>
-                  <span className="s">actifs ce mois</span>
+                  <span className="v">26</span>
+                  <span className="s">actifs dans l&apos;équipe</span>
                 </div>
               </div>
             </div>
