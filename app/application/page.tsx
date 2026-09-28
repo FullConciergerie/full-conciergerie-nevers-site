@@ -4,12 +4,12 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: "L'application Full Conciergerie — le logiciel qui pilote une conciergerie",
   description:
-    "Missions, prestataires, linge, incidents, facturation : le logiciel que nous avons construit pour notre propre conciergerie, ouvert aux propriétaires et aux conciergeries. Gratuit : nous nous rémunérons uniquement sur les missions lancées. Première mission offerte.",
+    "Missions, prestataires, messagerie, avis voyageurs, extras, linge, facturation : le logiciel que nous avons construit pour notre propre conciergerie, ouvert aux propriétaires et aux conciergeries du label. Sans abonnement pour les propriétaires, première mission sans frais de plateforme.",
   alternates: { canonical: 'https://full-nevers-conciergerie.fr/application' },
   openGraph: {
     title: "L'application Full Conciergerie",
     description:
-      "Le logiciel qui fait tourner notre conciergerie à Nevers : missions, prestataires, linge, facturation automatique. Ouvert aux propriétaires et aux conciergeries.",
+      "Le logiciel qui fait tourner notre conciergerie à Nevers : missions, prestataires, messagerie, avis voyageurs, extras, linge, facturation automatique. Ouvert aux propriétaires et aux conciergeries du label.",
     url: 'https://full-nevers-conciergerie.fr/application',
   },
 };
@@ -97,6 +97,34 @@ const css = `
 .fca-offer .price em{font-style:italic;color:var(--or)}
 .fca-offer .go{margin-top:auto;padding-top:8px}
 
+.fca-chat{display:flex;flex-direction:column;gap:12px;padding:20px}
+.fca-bubble{max-width:86%;padding:11px 14px;font-size:13.5px;line-height:1.5;border-radius:16px}
+.fca-bubble.in{align-self:flex-start;background:rgba(245,241,232,.08);color:rgba(245,241,232,.86);border-bottom-left-radius:4px}
+.fca-bubble.out{align-self:flex-end;background:var(--or);color:var(--vert-deep);border-bottom-right-radius:4px}
+.fca-bubble .who{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;opacity:.65;margin-bottom:4px}
+.fca-notif{margin:0 20px 20px;padding:12px 14px;border:1px solid rgba(245,241,232,.14);display:flex;gap:12px;align-items:center}
+.fca-notif .ic{width:30px;height:30px;border-radius:8px;background:var(--or);color:var(--vert-deep);display:flex;align-items:center;justify-content:center;font-size:15px;flex:none}
+.fca-notif .t{font-size:12.5px;color:rgba(245,241,232,.82);line-height:1.4}
+.fca-notif .t b{display:block;color:var(--ivoire);font-weight:600}
+
+.fca-rates{display:flex;flex-direction:column;gap:14px}
+.fca-rate{display:grid;grid-template-columns:1fr auto;gap:6px 14px;align-items:center}
+.fca-rate .k{font-size:14px;color:var(--vert-deep)}
+.fca-rate .k.key{font-weight:600}
+.fca-rate .n{font-family:var(--mono);font-size:13px;color:var(--vert-deep);font-variant-numeric:tabular-nums}
+.fca-rate .bar{grid-column:1 / span 2;height:5px;background:var(--ligne)}
+.fca-rate .bar i{display:block;height:100%;background:var(--or)}
+.fca-rate .bar.key i{background:var(--vert-deep)}
+.fca-rank{margin-top:22px;border-top:1px solid var(--ligne);padding-top:16px;display:flex;flex-direction:column;gap:10px}
+.fca-rank .r{display:flex;justify-content:space-between;gap:12px;font-size:14px;color:var(--texte-mute)}
+.fca-rank .r b{color:var(--vert-deep);font-weight:600;font-family:var(--mono);font-size:13px}
+
+.fca-extras{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--ligne)}
+.fca-extra{background:var(--ivoire);padding:16px 18px;display:flex;flex-direction:column;gap:4px}
+.fca-extra .e{font-size:20px}
+.fca-extra .l{font-size:14px;color:var(--vert-deep);font-weight:500}
+.fca-extra .d{font-size:12px;color:var(--texte-mute)}
+
 .fca-note{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--texte-mute);margin-top:22px}
 .bg-charbon .fca-note{color:rgba(245,241,232,.45)}
 `;
@@ -121,8 +149,8 @@ export default function ApplicationPage() {
           </h1>
           <p className="lede">
             Nous ne l&apos;avons pas acheté, nous l&apos;avons construit — pour nos propres logements, nos
-            prestataires et nos deux laveries. Missions, linge, incidents, facturation : tout au même
-            endroit, et tout se calcule tout seul.
+            prestataires et notre linge. Missions, messagerie, avis voyageurs, extras, facturation : tout
+            au même endroit, et tout se calcule tout seul.
           </p>
           <div className="hero-actions">
             <a className="btn btn-gold" href="https://fullconciergerie.fr/login">
@@ -133,7 +161,7 @@ export default function ApplicationPage() {
             </a>
           </div>
           <p className="fca-note">
-            Sans abonnement · Première mission offerte · Livret IA : premier mois offert
+            Sans abonnement · Première mission sans frais de plateforme · Conciergeries du label : 30 jours offerts
           </p>
         </div>
       </section>
@@ -345,9 +373,214 @@ export default function ApplicationPage() {
                 vous ouvrez le rapport. C&apos;est daté, c&apos;est illustré, et ça clôt la conversation.
               </p>
               <p>
-                Six métiers sont gérés — ménage, linge, bricolage, espaces verts, débarras, check-in — et
-                chaque prestataire ne voit que ce qui le concerne.
+                Le prix n&apos;est pas imposé à sens unique : si un logement demande plus de travail, le
+                prestataire fait une <strong>contre-offre motivée</strong>, et le propriétaire l&apos;accepte
+                ou la refuse en un clic. Six métiers sont gérés — ménage, linge, bricolage, espaces verts,
+                débarras, check-in — et chaque prestataire ne voit que ce qui le concerne.
               </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ------------------------------------------- 04 MESSAGERIE & NOTIFS */}
+      <section className="bg-ivoire">
+        <div className="container">
+          <div className="section-head">
+            <p className="eyebrow">
+              04 <span className="or-mark">—</span> Messagerie &amp; notifications
+            </p>
+            <h2 className="title">
+              Une seule messagerie, <em>et rien ne vous échappe.</em>
+            </h2>
+            <span className="gold-rule" />
+          </div>
+
+          <div className="fca-split">
+            <div className="fca-prose">
+              <h3>Fini les groupes WhatsApp à dépouiller le soir.</h3>
+              <p>
+                Gestionnaire, prestataires et propriétaires échangent <strong>dans l&apos;application</strong>,
+                chaque message rattaché à sa mission. L&apos;historique reste, même quand l&apos;équipe change.
+              </p>
+              <p>
+                Les notifications arrivent tout de suite, <strong>dans l&apos;application sur votre téléphone
+                ou sur Telegram</strong> — au choix, ou les deux. Sans SMS payant, sans rien à installer
+                depuis un store.
+              </p>
+              <p>
+                Les questions qui reviennent — où récupérer le linge, qui fournit les produits — reçoivent
+                une <strong>réponse automatique</strong> avec votre procédure. Et la messagerie repère les
+                échanges de coordonnées qui contourneraient la plateforme.
+              </p>
+            </div>
+
+            <div className="fca-phone">
+              <div className="top">Messagerie · Prestataire</div>
+              <div className="fca-chat">
+                <div className="fca-bubble out">
+                  <span className="who">Prestataire</span>
+                  Bonjour, où est-ce que je récupère le linge pour demain ?
+                </div>
+                <div className="fca-bubble in">
+                  <span className="who">Réponse automatique</span>
+                  Le linge propre est à la laverie, dans le sac bleu au nom du logement. Code de la boîte
+                  à clés sur votre fiche mission.
+                </div>
+                <div className="fca-bubble in">
+                  <span className="who">Gestionnaire</span>
+                  Je serai là à 10 h pour vous briefer 👍
+                </div>
+              </div>
+              <div className="fca-notif">
+                <span className="ic">🔔</span>
+                <span className="t">
+                  <b>Nouvelle mission disponible</b>
+                  Le Clos des Tanneurs · demain 11 h
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------ 05 AVIS VOYAGEURS */}
+      <section className="bg-sable">
+        <div className="container">
+          <div className="section-head">
+            <p className="eyebrow">
+              05 <span className="or-mark">—</span> Avis voyageurs
+            </p>
+            <h2 className="title">
+              Chaque note va <em>à la bonne personne.</em>
+            </h2>
+            <span className="gold-rule" />
+          </div>
+
+          <div className="fca-split">
+            <div className="fca-mock">
+              <div className="fca-bar">
+                <span className="fca-dot" />
+                <span className="fca-dot" />
+                <span className="fca-dot" />
+                <span className="fca-bar-t">Avis du mois — septembre</span>
+              </div>
+              <div className="fca-body">
+                <div className="fca-rates">
+                  <div className="fca-rate">
+                    <span className="k key">🧹 Propreté à l&apos;arrivée</span>
+                    <span className="n">4,9</span>
+                    <span className="bar key"><i style={{ width: '98%' }} /></span>
+                  </div>
+                  <div className="fca-rate">
+                    <span className="k">🔑 Arrivée</span>
+                    <span className="n">4,8</span>
+                    <span className="bar"><i style={{ width: '96%' }} /></span>
+                  </div>
+                  <div className="fca-rate">
+                    <span className="k">🏠 Logement et équipements</span>
+                    <span className="n">4,6</span>
+                    <span className="bar"><i style={{ width: '92%' }} /></span>
+                  </div>
+                  <div className="fca-rate">
+                    <span className="k">📍 Emplacement</span>
+                    <span className="n">4,7</span>
+                    <span className="bar"><i style={{ width: '94%' }} /></span>
+                  </div>
+                  <div className="fca-rate">
+                    <span className="k">✨ Autre chose</span>
+                    <span className="n">5,0</span>
+                    <span className="bar"><i style={{ width: '100%' }} /></span>
+                  </div>
+                </div>
+                <div className="fca-rank">
+                  <div className="r">Notes ménage — Camille <b>4,95 · 12 notes</b></div>
+                  <div className="r">Notes ménage — Sofiane <b>4,80 · 9 notes</b></div>
+                </div>
+              </div>
+            </div>
+
+            <div className="fca-prose">
+              <h3>Cinq notes plutôt qu&apos;une, et une prime qui se mérite.</h3>
+              <p>
+                La veille de son départ, le voyageur note <strong>cinq sujets</strong> : la propreté à son
+                arrivée, son arrivée, le logement et ses équipements, l&apos;emplacement, et ce qu&apos;il
+                veut ajouter. Un wifi capricieux ne pénalise plus celle qui a fait le ménage.
+              </p>
+              <p>
+                La note de propreté va au prestataire qui a <strong>préparé le logement pour ce
+                voyageur</strong> — pas à celui qui passera après son départ. Chaque mois, le répertoire
+                des notes ménage par prestataire vous sert de base pour vos <strong>primes</strong>.
+              </p>
+              <p>
+                Une note de propreté basse ? Vous êtes prévenu dans la minute, avec le nom du logement et
+                la remarque du voyageur.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ------------------------------------------------------- 06 EXTRAS */}
+      <section className="bg-charbon">
+        <div className="container">
+          <div className="section-head">
+            <p className="eyebrow">
+              06 <span className="or-mark">—</span> Extras voyageurs
+            </p>
+            <h2 className="title">
+              Vos voyageurs commandent, <em>vous encaissez.</em>
+            </h2>
+            <span className="gold-rule" />
+          </div>
+
+          <div className="fca-split">
+            <div className="fca-prose">
+              <h3>Le petit plus du séjour, payé en ligne avant d&apos;arriver.</h3>
+              <p>
+                Depuis sa page de séjour, le voyageur commande ce que vous proposez :{' '}
+                <strong>arrivée anticipée, départ tardif, petit-déjeuner, planche apéritive, ménage en
+                cours de séjour, location de vélo…</strong>
+              </p>
+              <p>
+                Vous fixez le prix, le délai de prévenance et, si besoin, votre validation avant
+                paiement. Le paiement est en ligne ; vous recevez la commande et, pour ce que vous ne
+                faites pas vous-même, l&apos;application peut prévenir votre partenaire.
+              </p>
+              <p>
+                Des revenus en plus par séjour, sans relance ni encaissement à la main.
+              </p>
+            </div>
+
+            <div className="fca-mock dark">
+              <div className="fca-bar">
+                <span className="fca-dot" />
+                <span className="fca-dot" />
+                <span className="fca-dot" />
+                <span className="fca-bar-t">Page séjour — extras</span>
+              </div>
+              <div className="fca-extras">
+                <div className="fca-extra">
+                  <span className="e">🕐</span>
+                  <span className="l">Arrivée anticipée</span>
+                  <span className="d">Sous réserve de validation</span>
+                </div>
+                <div className="fca-extra">
+                  <span className="e">🕰️</span>
+                  <span className="l">Départ tardif</span>
+                  <span className="d">2 heures de plus</span>
+                </div>
+                <div className="fca-extra">
+                  <span className="e">🥐</span>
+                  <span className="l">Petit-déjeuner</span>
+                  <span className="d">Livré le matin</span>
+                </div>
+                <div className="fca-extra">
+                  <span className="e">🧹</span>
+                  <span className="l">Ménage en cours de séjour</span>
+                  <span className="d">Pour les longs séjours</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -358,7 +591,7 @@ export default function ApplicationPage() {
         <div className="container">
           <div className="section-head">
             <p className="eyebrow">
-              04 <span className="or-mark">—</span> Le contenu
+              07 <span className="or-mark">—</span> Le contenu
             </p>
             <h2 className="title">
               Ce qu&apos;il y a <em>dedans.</em>
@@ -376,7 +609,8 @@ export default function ApplicationPage() {
                 <li>Logements et fiches détaillées</li>
                 <li>Planning et missions</li>
                 <li>Synchronisation channel manager</li>
-                <li>Messagerie</li>
+                <li>Messagerie et notifications</li>
+                <li>Avis voyageurs en 5 catégories</li>
                 <li>Incidents</li>
               </ul>
             </div>
@@ -385,6 +619,7 @@ export default function ApplicationPage() {
               <ul>
                 <li>Prestataires et spécialités</li>
                 <li>Rémunérations et commissions</li>
+                <li>Notes ménage du mois, pour les primes</li>
                 <li>Candidatures</li>
                 <li>Vérification d&apos;identité</li>
                 <li>Invitation par lien sécurisé</li>
@@ -395,6 +630,8 @@ export default function ApplicationPage() {
               <ul>
                 <li>Fiches propriétaires</li>
                 <li>Facturation mensuelle automatique</li>
+                <li>Contre-offres à valider en un clic</li>
+                <li>Extras vendus aux voyageurs</li>
                 <li>Suivi des demandes entrantes</li>
                 <li>Comptabilité</li>
               </ul>
@@ -405,7 +642,7 @@ export default function ApplicationPage() {
                 <li>Packs linge par logement</li>
                 <li>Suivi du linge en circulation</li>
                 <li>Courses et réassorts</li>
-                <li>Blanchisserie</li>
+                <li>Dépôt chez nos partenaires ou en point relais</li>
               </ul>
             </div>
             <div className="fca-cell">
@@ -425,7 +662,7 @@ export default function ApplicationPage() {
         <div className="container">
           <div className="section-head">
             <p className="eyebrow">
-              05 <span className="or-mark">—</span> Ce qui fait la différence
+              08 <span className="or-mark">—</span> Ce qui fait la différence
             </p>
             <h2 className="title">
               Quatre choses absentes <em>des logiciels génériques.</em>
@@ -444,7 +681,8 @@ export default function ApplicationPage() {
               <p>
                 Le voyageur pose sa question à n&apos;importe quelle heure — le code du portail, le
                 fonctionnement du chauffage, le jour des poubelles — et l&apos;assistant répond à partir du
-                livret de ce logement précis. Vous dormez, l&apos;accueil continue. C&apos;est la seule brique payante de l&apos;outil, et le premier mois est offert.
+                livret de ce logement précis. Vous dormez, l&apos;accueil continue. Il est en option, avec
+                30 jours offerts.
               </p>
             </article>
             <article>
@@ -468,23 +706,78 @@ export default function ApplicationPage() {
             </article>
             <article>
               <span className="num">04</span>
-              <h3>Une blanchisserie derrière l&apos;outil</h3>
+              <h3>Le linge, partout en France</h3>
               <p>
-                Nos deux laveries à Nevers traitent le linge de nos logements, et leur logistique vit dans
-                l&apos;application : ce qui part, ce qui revient, ce qui circule. Le linge cesse d&apos;être
-                le point aveugle de votre marge.
+                Le linge sale est <strong>déposé chez nos partenaires ou en point relais</strong>, selon la
+                formule choisie : avec repassage ou sans. Ce qui part, ce qui revient, ce qui circule :
+                tout vit dans l&apos;application, et le linge cesse d&apos;être le point aveugle de votre
+                marge.
               </p>
             </article>
           </div>
         </div>
       </section>
 
-      {/* ----------------------------------------------------- 06 COMMENCER */}
+      {/* ----------------------------------------------- 09 LABEL */}
+      <section className="bg-charbon">
+        <div className="container">
+          <div className="section-head">
+            <p className="eyebrow">
+              09 <span className="or-mark">—</span> Conciergeries du label
+            </p>
+            <h2 className="title">
+              Votre conciergerie, votre marque. <em>Notre outil.</em>
+            </h2>
+            <p className="lede">
+              Le label Full Conciergerie réunit des conciergeries indépendantes qui travaillent avec nos
+              méthodes et notre logiciel, chacune sous son propre nom.
+            </p>
+            <span className="gold-rule" />
+          </div>
+
+          <div className="fca-plus">
+            <article>
+              <span className="num">01</span>
+              <h3>Tout est à votre nom</h3>
+              <p>
+                Livret d&apos;accueil, page voyageur, emails et alertes s&apos;affichent au nom de votre
+                conciergerie, avec votre téléphone. Vos voyageurs et vos propriétaires ne voient que vous.
+              </p>
+            </article>
+            <article>
+              <span className="num">02</span>
+              <h3>Votre espace, vos données</h3>
+              <p>
+                Vos propriétaires, votre équipe invitée par lien, vos logements, vos extras et vos avis
+                voyageurs, séparés de ceux des autres conciergeries. Personne d&apos;autre n&apos;y a accès.
+              </p>
+            </article>
+            <article>
+              <span className="num">03</span>
+              <h3>Un réseau derrière vous</h3>
+              <p>
+                Des prestataires disponibles quand votre équipe ne suffit pas, une solution linge adaptée
+                à votre organisation, et l&apos;accompagnement de ceux qui font tourner la méthode chaque
+                jour à Nevers.
+              </p>
+            </article>
+          </div>
+
+          <div className="hero-actions" style={{ marginTop: 'clamp(32px,4vw,48px)' }}>
+            <Link className="btn btn-gold" href="/lancer-une-conciergerie">
+              Rejoindre le label <span className="arrow">→</span>
+            </Link>
+          </div>
+          <p className="fca-note">30 jours offerts sur tout votre portefeuille · Sans engagement</p>
+        </div>
+      </section>
+
+      {/* ----------------------------------------------------- 10 COMMENCER */}
       <section className="bg-ivoire">
         <div className="container">
           <div className="section-head">
             <p className="eyebrow">
-              06 <span className="or-mark">—</span> Commencer
+              10 <span className="or-mark">—</span> Commencer
             </p>
             <h2 className="title">
               Trois façons <em>d&apos;entrer.</em>
@@ -500,17 +793,17 @@ export default function ApplicationPage() {
           <div className="fca-offers">
             <div className="fca-offer gold">
               <span className="tag">Vous êtes propriétaire</span>
-              <h3>Votre première mission est offerte.</h3>
+              <h3>Votre première mission, sans frais de plateforme.</h3>
               <p>
-                Vous créez votre compte, vous ajoutez votre logement, et nous prenons en charge la première
-                rotation — ménage et linge compris. Vous jugez sur pièce, pas sur une démonstration.
+                Vous créez votre compte, vous ajoutez votre logement, et vous lancez votre première rotation
+                sans frais de plateforme. Vous jugez sur pièce, pas sur une démonstration.
               </p>
               <p>
-                Ensuite, l&apos;outil reste gratuit : seul un léger pourcentage s&apos;ajoute aux missions que
-                vous lancez.
+                Ensuite, l&apos;outil reste sans abonnement : seul un léger pourcentage s&apos;ajoute aux
+                missions que vous lancez, prélevé après la mission seulement.
               </p>
               <p className="price">
-                Première mission <em>offerte</em>
+                Première mission <em>sans frais de plateforme</em>
               </p>
               <div className="go">
                 <a className="btn btn-gold" href="https://fullconciergerie.fr/login">
@@ -521,22 +814,21 @@ export default function ApplicationPage() {
 
             <div className="fca-offer">
               <span className="tag">Vous êtes une conciergerie</span>
-              <h3>Sans abonnement. Vous payez à l&apos;usage.</h3>
+              <h3>Rejoignez le label, gardez votre nom.</h3>
               <p>
-                Vos logements, vos prestataires, vos propriétaires, le planning, la facturation : rien à
-                installer, aucun forfait mensuel. Vous ne réglez qu&apos;un léger pourcentage sur les missions
-                que vous lancez — un mois creux ne vous coûte rien.
+                Votre espace de gestion à votre marque : vos logements, vos prestataires, vos propriétaires,
+                le planning, la messagerie, les avis et la facturation. Rien à installer.
               </p>
               <p>
-                Seul le livret d&apos;accueil à assistance IA est en option, et le premier mois est offert.
+                Vous essayez sur l&apos;ensemble de vos logements avant de vous engager.
               </p>
               <p className="price">
-                Sans <em>abonnement</em>
+                30 jours <em>offerts</em>
               </p>
               <div className="go">
-                <a className="btn btn-gold-outline" href="https://fullconciergerie.fr/login">
-                  Ouvrir mon espace <span className="arrow">→</span>
-                </a>
+                <Link className="btn btn-gold-outline" href="/lancer-une-conciergerie">
+                  Rejoindre le label <span className="arrow">→</span>
+                </Link>
               </div>
             </div>
 
