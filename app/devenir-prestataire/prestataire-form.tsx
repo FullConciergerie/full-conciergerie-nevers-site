@@ -176,8 +176,8 @@ export function PrestataireForm() {
         <div role="status" className="v2-form-alert success">
           <span className="v2-form-alert-icon">✓</span>
           <span>
-            <strong>Candidature envoyée.</strong> Nous revenons vers vous sous 48h, par
-            téléphone ou WhatsApp.
+            <strong>Candidature envoyée.</strong> Vous pouvez dès maintenant créer votre compte sur
+            fullconciergerie.fr pour voir les missions disponibles autour de vous.
           </span>
         </div>
       )}
@@ -195,7 +195,7 @@ export function PrestataireForm() {
         </p>
         <div className="v2-form-submit-row">
           <span style={{ fontFamily: 'var(--mono)', fontSize: '11px', letterSpacing: '0.18em', textTransform: 'uppercase', color: 'var(--texte-mute)' }}>
-            Réponse sous 48h
+            Sans engagement
           </span>
           <button type="submit" disabled={isPending} className="v2-form-submit">
             <span>{isPending ? 'Envoi en cours…' : 'Envoyer ma candidature'}</span>

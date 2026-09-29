@@ -46,7 +46,7 @@ export function Footer() {
               </a>
             </li>
             <li>
-              16 Quai de Mantoue
+              23 faubourg de Lyon
               <br />
               58000 Nevers
             </li>

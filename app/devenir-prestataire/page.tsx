@@ -34,8 +34,12 @@ export default function DevenirPrestatairePage() {
             réseau de prestataires locaux.
           </p>
           <div className="hero-actions" style={{ marginTop: '8px' }}>
-            <a href="#postuler" className="btn btn-gold">
-              <span className="cta-label">Postuler en 3 minutes</span>
+            <a href="https://fullconciergerie.fr/login" className="btn btn-gold">
+              <span className="cta-label">Créer mon compte prestataire</span>
+              <span className="arrow" aria-hidden="true">→</span>
+            </a>
+            <a href="#postuler" className="btn btn-ghost-light">
+              <span className="cta-label">Postuler par formulaire</span>
               <span className="arrow" aria-hidden="true">→</span>
             </a>
             <a href="#comment" className="btn btn-ghost-light">
@@ -145,31 +149,55 @@ export default function DevenirPrestatairePage() {
           <div className="steps" style={{ marginTop: '64px' }}>
             <div className="step">
               <p className="step-num">01</p>
-              <p className="step-meta">Étape 1 — Candidature</p>
-              <h3 className="step-title">Vous postulez en 3 minutes</h3>
+              <p className="step-meta">Étape 1 — Compte</p>
+              <h3 className="step-title">Vous créez votre compte</h3>
               <p className="step-body">
-                Vous remplissez le formulaire ci-dessous. Aucun engagement. On garde votre
-                profil même si on n&apos;a pas de mission tout de suite.
+                Sur fullconciergerie.fr, en quelques minutes. Vous déposez votre attestation URSSAF,
+                votre assurance et votre pièce d&apos;identité.
               </p>
             </div>
             <div className="step">
               <p className="step-num">02</p>
-              <p className="step-meta">Étape 2 — Échange</p>
-              <h3 className="step-title">On vous rappelle sous 48h</h3>
+              <p className="step-meta">Étape 2 — Mission</p>
+              <h3 className="step-title">Vous vous positionnez sur une mission</h3>
               <p className="step-body">
-                Par téléphone ou WhatsApp. On valide votre profil ensemble, vos
-                disponibilités, votre zone d&apos;intervention.
+                Les missions disponibles autour de vous apparaissent dans vos opportunités. Vous
+                choisissez celles qui vous vont, vous acceptez le prix proposé ou vous faites votre
+                propre offre.
               </p>
             </div>
             <div className="step">
               <p className="step-num">03</p>
-              <p className="step-meta">Étape 3 — Mission</p>
-              <h3 className="step-title">Première mission</h3>
+              <p className="step-meta">Étape 3 — Rencontre</p>
+              <h3 className="step-title">On se rencontre sur place</h3>
               <p className="step-body">
-                On vous propose des missions qui collent à vos disponibilités. Vous
-                acceptez, on vous brief, vous y allez. Paiement sous 7 jours.
+                Avant votre première mission, on fait le point ensemble sur le logement. Ensuite,
+                vous êtes autonome.
               </p>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ─────────── Programme ambassadeur (propriétaires apportés) ─────────── */}
+      <section className="bg-charbon">
+        <div className="container">
+          <div className="section-head" style={{ maxWidth: '900px' }}>
+            <p className="eyebrow"><span className="or-mark">◆</span> 03 — Programme ambassadeur</p>
+            <h2 className="title" style={{ fontSize: 'clamp(36px, 4.5vw, 56px)' }}>
+              Devenez{' '}
+              <em style={{ fontStyle: 'italic', color: 'var(--or)' }}>ambassadeur.</em>
+            </h2>
+            <p className="lede" style={{ fontSize: '18px' }}>
+              Vous connaissez des propriétaires qui louent en courte durée&nbsp;? Quand l&apos;un d&apos;eux
+              crée son compte et vous choisit comme prestataire, vous touchez <strong>10&nbsp;% de notre
+              commission</strong> sur tout ce qu&apos;il lance — ses missions, les extras vendus à ses
+              voyageurs, son livret d&apos;accueil. À vie, sans plafond, sans rien avancer.
+            </p>
+            <p className="lede" style={{ fontSize: '18px' }}>
+              Et s&apos;il nous confie la vente de son bien, vous recevez <strong>500&nbsp;€</strong> en plus.
+            </p>
+            <span className="gold-rule" aria-hidden="true" />
           </div>
         </div>
       </section>
@@ -178,7 +206,7 @@ export default function DevenirPrestatairePage() {
       <section className="bg-sable">
         <div className="container">
           <div className="section-head" style={{ maxWidth: '900px' }}>
-            <p className="eyebrow"><span className="or-mark">◆</span> 03 — Programme de parrainage</p>
+            <p className="eyebrow"><span className="or-mark">◆</span> 04 — Parrainage de prestataires</p>
             <h2 className="title" style={{ fontSize: 'clamp(36px, 4.5vw, 56px)' }}>
               50&nbsp;€ offerts
               {' '}
@@ -187,7 +215,7 @@ export default function DevenirPrestatairePage() {
               </em>
             </h2>
             <p className="lede" style={{ fontSize: '18px' }}>
-              Vous connaissez quelqu&apos;un qui pourrait nous rejoindre&nbsp;? Pour chaque
+              Vous connaissez quelqu&apos;un qui pourrait rejoindre l&apos;équipe de prestataires&nbsp;? Pour chaque
               personne que vous nous recommandez et qui valide sa première mission, vous
               touchez <strong>50&nbsp;€ en bon d&apos;achat ou virement</strong>. Cumulable, sans
               limite.
@@ -205,13 +233,13 @@ export default function DevenirPrestatairePage() {
       <section className="bg-ivoire" id="postuler">
         <div className="container">
           <div className="section-head">
-            <p className="eyebrow"><span className="or-mark">◆</span> 04 — Candidature</p>
+            <p className="eyebrow"><span className="or-mark">◆</span> 05 — Candidature</p>
             <h2 className="title" style={{ fontSize: 'clamp(40px, 5vw, 64px)' }}>
               Postulez
               {' '}
               <em style={{ fontStyle: 'italic', color: 'var(--or)' }}>maintenant.</em>
             </h2>
-            <p className="lede">5 à 10 minutes pour remplir. On vous recontacte sous 48h.</p>
+            <p className="lede">Vous préférez nous écrire d&apos;abord&nbsp;? 5 à 10 minutes pour remplir. Le plus rapide reste de créer votre compte directement sur fullconciergerie.fr.</p>
             <span className="gold-rule" aria-hidden="true" />
           </div>
 

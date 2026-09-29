@@ -397,26 +397,28 @@ export default function HomePage() {
         <div className="container hero-content">
           <span className="hero-eyebrow eyebrow">À votre service à Nevers</span>
           <h1 className="serif">
-            Confiez la gestion<br/>
-            de votre Airbnb à<br/>
-            <span className="or-word">des professionnels</span><br/>
-            locaux.
+            Votre Airbnb,<br/>
+            <span className="or-word">géré comme</span><br/>
+            vous l&apos;entendez.
           </h1>
           <p className="lede">
-            De l&apos;accueil voyageur au ménage professionnel, en passant par l&apos;optimisation des tarifs
-            et la communication avec les plateformes — nous prenons tout en charge pour que vous
-            profitiez sereinement de vos revenus locatifs.
+            Une mission quand vous en avez besoin — ménage, linge, pelouse, check-in, petite réparation.
+            Vous la postez, vous fixez votre prix, un prestataire qualifié près de votre logement accepte ou
+            vous fait une contre-proposition. Sans mandat, sans abonnement, sans engagement de durée.
           </p>
           <div className="hero-actions">
-            <a href="/estimation" className="btn btn-gold">
-              Demander un devis gratuit
+            <a href="https://fullconciergerie.fr/login" className="btn btn-gold">
+              Lancer ma première mission
               <span className="arrow" aria-hidden="true">→</span>
             </a>
-            <a href="#services" className="btn btn-ghost-light">
-              Découvrir nos services
+            <a href="/application" className="btn btn-ghost-light">
+              Voir comment ça marche
               <span className="arrow" aria-hidden="true">→</span>
             </a>
           </div>
+          <p style={{ marginTop: '18px', fontSize: '14px', color: 'rgba(245,241,232,.72)' }}>
+            Votre première mission est sans frais de plateforme. Le prestataire, lui, est toujours payé.
+          </p>
         </div>
 
         <div className="hero-meta">
@@ -437,15 +439,15 @@ export default function HomePage() {
           <div className="trust-grid">
             <div className="trust-item reveal">
               <span className="trust-num serif">40<span className="suffix">+</span></span>
-              <span className="trust-label">Logements gérés à Nevers et alentours</span>
+              <span className="trust-label">logements suivis à Nevers et en Nièvre</span>
             </div>
             <div className="trust-item center reveal reveal-delay-1">
-              <span className="trust-num serif">100<span className="suffix">%</span></span>
-              <span className="trust-label">Autonomie pour vous — vous ne touchez à rien</span>
+              <span className="trust-num serif">1 000<span className="suffix">+</span></span>
+              <span className="trust-label">avis voyageurs sur Airbnb et Booking</span>
             </div>
             <div className="trust-item end reveal reveal-delay-2">
-              <span className="trust-num serif">1000<span className="suffix">+</span></span>
-              <span className="trust-label">Commentaires plateformes (Airbnb &amp; Booking)</span>
+              <span className="trust-num serif">4<span className="suffix"> ans</span></span>
+              <span className="trust-label">sur le terrain, à Nevers</span>
             </div>
           </div>
         </div>
@@ -988,7 +990,7 @@ export default function HomePage() {
               <li><a href="tel:+33376150229">03 76 15 02 29</a></li>
               <li><a href="https://wa.me/33661753738">WhatsApp</a></li>
               <li><a href="mailto:contact@full-nevers-conciergerie.fr">contact@full-nevers-conciergerie.fr</a></li>
-              <li>16 Quai de Mantoue<br/>58000 Nevers</li>
+              <li>23 faubourg de Lyon<br/>58000 Nevers</li>
             </ul>
           </div>
           <div className="footer-col">

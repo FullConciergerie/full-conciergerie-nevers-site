@@ -148,9 +148,13 @@ export default function ContactPage() {
                     className="serif"
                     style={{ fontSize: '20px', color: 'var(--vert-deep)' }}
                   >
-                    16 Quai de Mantoue
+                    23 faubourg de Lyon
                     <br />
                     58000 Nevers
+                  </p>
+                  <p style={{ fontSize: '14px', color: 'var(--texte-mute)', marginTop: '8px', lineHeight: 1.55 }}>
+                    Notre bureau se trouve à l&apos;arrière de la Laverie Dupont, au 23 faubourg de Lyon.
+                    Sonnez à l&apos;interphone signalé. Nous sommes joignables 7 jours sur 7, de 9 h à 23 h.
                   </p>
                 </li>
 
