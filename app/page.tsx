@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import { villesLiens } from './components/villes-liens';
 
 /**
  * Structured data Schema.org — LocalBusiness.
@@ -1011,6 +1012,15 @@ export default function HomePage() {
               <li><a href="/lancer-une-conciergerie">Lancer votre conciergerie →</a></li>
               <li><a href="/services">Détail des services</a></li>
               <li><a href="/a-propos">Notre histoire</a></li>
+            </ul>
+          </div>
+          <div className="footer-col">
+            <h4>Autour de Nevers</h4>
+            <ul>
+              <li><a href="/conciergerie-airbnb-nevers">Conciergerie Airbnb à Nevers</a></li>
+              {villesLiens.map((v) => (
+                <li key={v.slug}><a href={`/conciergerie-airbnb-${v.slug}`}>{v.nom}</a></li>
+              ))}
             </ul>
           </div>
         </div>

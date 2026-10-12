@@ -673,8 +673,8 @@ section { padding-top: var(--pad-section); padding-bottom: var(--pad-section); p
   border-top: 1px solid rgba(201,168,104,0.18);
 }
 .footer-grid {
-  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 48px;
+  display: grid; grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 40px;
   padding-bottom: 60px;
   border-bottom: 1px solid rgba(245,241,232,0.08);
 }
@@ -1030,8 +1030,8 @@ section { padding-top: var(--pad-section); padding-bottom: var(--pad-section); p
 }
 .global-footer-grid {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 48px;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 40px;
   padding-bottom: 60px;
   border-bottom: 1px solid rgba(245,241,232,0.08);
   max-width: var(--max-w);
