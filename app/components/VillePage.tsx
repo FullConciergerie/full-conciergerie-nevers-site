@@ -7,7 +7,7 @@ export function villeMetadata(slug: string): Metadata {
   const v = villeBySlug(slug)!;
   const path = `/conciergerie-airbnb-${v.slug}`;
   return {
-    title: `Conciergerie Airbnb ${v.a} : gestion de votre location courte durée`,
+    title: `Conciergerie Airbnb ${v.a}`,
     description: v.metaDescription,
     alternates: { canonical: path },
     openGraph: {

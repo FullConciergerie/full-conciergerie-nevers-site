@@ -2,6 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
+import { villesLiens } from './villes-liens';
 
 /**
  * Footer global du site — version design v2 (vert profond + or, typo serif).
@@ -53,6 +54,16 @@ export function Footer() {
           </ul>
         </div>
 
+        <div className="global-footer-col">
+          <h4>Autour de Nevers</h4>
+          <ul>
+            {villesLiens.map((v) => (
+              <li key={v.slug}>
+                <Link href={`/conciergerie-airbnb-${v.slug}`}>{v.nom}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
         <div className="global-footer-col">
           <h4>Navigation</h4>
           <ul>
