@@ -1,5 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { articles } from './blog/_data/articles';
+import { villes } from './components/villes';
 
 /**
  * sitemap.xml généré dynamiquement par Next.js.
@@ -48,6 +49,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.9,
     },
+    ...villes.map((v) => ({
+      url: `${baseUrl}/conciergerie-airbnb-${v.slug}`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.8,
+    })),
     {
       url: `${baseUrl}/menage-airbnb-nevers`,
       lastModified,

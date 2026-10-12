@@ -60,12 +60,17 @@ export default function Page() {
         { q: 'Faut-il s’engager sur une durée ?', a: "Non. Il n'y a pas d'engagement minimum : vous pouvez arrêter à tout moment avec un préavis d'un mois." },
         { q: 'Puis-je continuer à utiliser mon logement ?', a: "Oui. Prévenez-nous par téléphone, WhatsApp ou email et nous bloquons vos dates sur les plateformes, sans préavis minimum ni pénalité." },
         { q: 'Que se passe-t-il en cas de dégradation ?', a: "Un état des lieux photo est fait après chaque départ. En cas de dégradation, nous déclenchons la garantie Airbnb ou Booking dans les 24 h et suivons le dossier jusqu'au remboursement." },
-        { q: 'Quelles communes couvrez-vous ?', a: "Nevers et son agglomération, et plus largement la Nièvre. Contactez-nous pour vérifier votre secteur." },
+        { q: 'Quelles communes couvrez-vous ?', a: "Nevers et son agglomération, et les villes à environ une heure autour : La Charité-sur-Loire, Magny-Cours, Decize, Pouilly-sur-Loire, Cosne-Cours-sur-Loire, Sancerre, Moulins, Bourges, Saint-Amand-Montrond, Saint-Honoré-les-Bains, Bourbon-Lancy, Clamecy, Vézelay et le lac des Settons. Contactez-nous pour vérifier votre secteur." },
       ]}
       links={[
         { href: '/menage-airbnb-nevers', label: 'Ménage Airbnb à Nevers' },
         { href: '/services', label: 'Tous nos services' },
         { href: '/a-propos', label: 'Notre équipe' },
+        { href: '/conciergerie-airbnb-la-charite-sur-loire', label: 'La Charité-sur-Loire' },
+        { href: '/conciergerie-airbnb-magny-cours', label: 'Magny-Cours' },
+        { href: '/conciergerie-airbnb-sancerre', label: 'Sancerre' },
+        { href: '/conciergerie-airbnb-bourges', label: 'Bourges' },
+        { href: '/conciergerie-airbnb-moulins', label: 'Moulins' },
       ]}
     />
   );

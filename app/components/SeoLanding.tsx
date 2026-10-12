@@ -19,6 +19,11 @@ export function SeoLanding({
   sections,
   faq,
   links,
+  areaServed = [
+    { '@type': 'City', name: 'Nevers' },
+    { '@type': 'AdministrativeArea', name: 'Nièvre' },
+  ],
+  ctaPlace = 'à Nevers',
 }: {
   slug: string;
   breadcrumb: string;
@@ -31,6 +36,10 @@ export function SeoLanding({
   sections: SeoSection[];
   faq: SeoFaq[];
   links: { href: string; label: string }[];
+  /** Zones desservies déclarées à Google (JSON-LD Service). */
+  areaServed?: { '@type': 'City' | 'AdministrativeArea'; name: string }[];
+  /** Lieu cité dans l'appel à l'action final, avec sa préposition (« à Bourges », « au lac des Settons »). */
+  ctaPlace?: string;
 }) {
   const url = `https://full-nevers-conciergerie.fr/${slug}`;
   const jsonLd = [
@@ -49,10 +58,7 @@ export function SeoLanding({
       description: serviceDescription,
       url,
       provider: { '@id': 'https://full-nevers-conciergerie.fr/#business' },
-      areaServed: [
-        { '@type': 'City', name: 'Nevers' },
-        { '@type': 'AdministrativeArea', name: 'Nièvre' },
-      ],
+      areaServed,
     },
     {
       '@context': 'https://schema.org',
@@ -153,7 +159,7 @@ export function SeoLanding({
         <div className="container" style={{ textAlign: 'center', maxWidth: 680 }}>
           <span className="gold-rule" />
           <h2 className="serif reveal" style={{ fontSize: 'clamp(30px, 4vw, 48px)', color: 'var(--vert-deep)', lineHeight: 1.1, margin: '20px 0 16px' }}>
-            Un logement à Nevers à nous confier&nbsp;?
+            Un logement {ctaPlace} à nous confier&nbsp;?
           </h2>
           <p className="reveal" style={{ color: 'var(--texte-mute)', fontSize: 16, lineHeight: 1.7 }}>
             Estimation gratuite de vos revenus, réponse sous 48&nbsp;h, sans engagement.
