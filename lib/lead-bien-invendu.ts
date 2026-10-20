@@ -1,4 +1,5 @@
 import { isSpam } from '@/lib/anti-spam';
+import { saveContactWithTag } from '@/lib/systemeio';
 
 /**
  * Lead « bien invendu » (calculateur + guide), partagé par :
@@ -36,75 +37,6 @@ const num = (v: FormDataEntryValue | null) => {
   return Number.isFinite(n) && n >= 0 ? Math.round(n) : null;
 };
 
-async function systemeio(path: string, init: RequestInit = {}) {
-  const key = process.env.SYSTEMEIO_API_KEY;
-  if (!key) return null;
-  return fetch(`https://api.systeme.io/api${path}`, {
-    ...init,
-    headers: {
-      'X-API-Key': key,
-      'Content-Type': 'application/json',
-      Accept: 'application/json',
-      ...(init.headers ?? {}),
-    },
-    cache: 'no-store',
-  });
-}
-
-async function findOrCreateTag(name: string): Promise<number | null> {
-  const list = await systemeio(`/tags?query=${encodeURIComponent(name)}&limit=50`);
-  if (!list) return null;
-  if (list.ok) {
-    const data = (await list.json()) as { items?: { id: number; name: string }[] };
-    const hit = data.items?.find((t) => t.name === name);
-    if (hit) return hit.id;
-  }
-  const created = await systemeio('/tags', { method: 'POST', body: JSON.stringify({ name }) });
-  if (created?.ok) return ((await created.json()) as { id: number }).id;
-  return null;
-}
-
-async function findOrCreateContact(email: string, firstName: string, postcode: string) {
-  const res = await systemeio('/contacts', {
-    method: 'POST',
-    body: JSON.stringify({
-      email,
-      locale: 'fr',
-      fields: [
-        { slug: 'first_name', value: firstName },
-        { slug: 'postcode', value: postcode },
-      ],
-    }),
-  });
-  if (!res) return null;
-  if (res.ok) return ((await res.json()) as { id: number }).id;
-  // Déjà existant : on le retrouve par e-mail
-  const found = await systemeio(`/contacts?email=${encodeURIComponent(email)}&limit=10`);
-  if (found?.ok) {
-    const data = (await found.json()) as { items?: { id: number; email: string }[] };
-    return data.items?.find((c) => c.email.toLowerCase() === email.toLowerCase())?.id ?? null;
-  }
-  console.error('[lead-bien-invendu] systeme.io contact', res.status, await res.text());
-  return null;
-}
-
-async function saveToSystemeio(source: LeadSource, email: string, firstName: string, postcode: string) {
-  try {
-    const contactId = await findOrCreateContact(email, firstName, postcode);
-    if (!contactId) return false;
-    const tagId = await findOrCreateTag(TAGS[source]);
-    if (!tagId) return false;
-    const res = await systemeio(`/contacts/${contactId}/tags`, {
-      method: 'POST',
-      body: JSON.stringify({ tagId }),
-    });
-    return !!res && (res.ok || res.status === 422);
-  } catch (err) {
-    console.error('[lead-bien-invendu] systeme.io', err);
-    return false;
-  }
-}
-
 export async function handleLead(formData: FormData, source: LeadSource): Promise<LeadResult> {
   const firstName = String(formData.get('firstName') ?? '').trim().slice(0, 80);
   const email = String(formData.get('email') ?? '').trim().slice(0, 160);
@@ -124,7 +56,10 @@ export async function handleLead(formData: FormData, source: LeadSource): Promis
   const prix = num(formData.get('prix'));
   const nuits = num(formData.get('nuits'));
 
-  const saved = await saveToSystemeio(source, email, firstName, postcode);
+  const saved = await saveContactWithTag(email, TAGS[source], [
+    { slug: 'first_name', value: firstName },
+    { slug: 'postcode', value: postcode },
+  ]);
 
   const apiKey = process.env.RESEND_API_KEY;
   if (apiKey) {
