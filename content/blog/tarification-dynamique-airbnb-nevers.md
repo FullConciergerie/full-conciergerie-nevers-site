@@ -22,19 +22,19 @@ Le principe est simple : le prix d'une nuit varie selon l'offre et la demande à
 
 Concrètement, les outils de tarification dynamique (Pricelabs, Beyond, Wheelhouse) collectent en permanence les données d'occupation des logements concurrents sur Airbnb et Booking dans un rayon géographique défini. Quand la demande monte (événement local, week-end de vacances scolaires, annulation de logements concurrents), le prix recommandé monte. Quand la demande est faible, il baisse pour maintenir l'occupation.
 
-Le résultat sur les logements qui passent d'un prix fixe à une tarification dynamique est en moyenne une hausse du revenu annuel de 15 à 25 %, à taux d'occupation comparable, sur des marchés comme Nevers.
+Avant d'adopter notre logiciel, nous l'avons testé sur nos propres logements à Nevers : en passant d'un prix fixe à une tarification dynamique, le revenu annuel a augmenté en moyenne de 15 à 25 %, à taux d'occupation comparable.
 
 ## Les événements locaux qui font monter la demande à Nevers
 
 Nevers a des événements récurrents qui créent des pics de demande significatifs. Les ignorer, c'est louer au prix de base des nuits qui se vendraient deux à trois fois plus.
 
-**Le circuit de Nevers Magny-Cours.** Le Grand Prix de France de Moto GP (généralement début août), les 24 Heures Moto, les Superbike World Championship et les journées de roulage attirent plusieurs dizaines de milliers de visiteurs dans l'agglomération. Les logements à 30 km du circuit se remplissent des semaines à l'avance. Les prix pratiqués ces week-ends peuvent être multipliés par 3 ou 4 par rapport au tarif courant.
+**Le circuit de Nevers Magny-Cours.** La manche française du championnat du monde Superbike, les Classic Days, les rassemblements de motos et de scooters anciens et les journées de roulage attirent plusieurs dizaines de milliers de visiteurs dans l'agglomération. Les logements à 30 km du circuit se remplissent des semaines à l'avance. Les prix pratiqués ces week-ends peuvent être multipliés par 3 ou 4 par rapport au tarif courant.
 
-**Le pèlerinage de Sainte-Bernadette.** La basilique de Nevers accueille des milliers de pèlerins chaque année, avec des pics autour des fêtes mariales (15 août, 11 décembre pour l'anniversaire de la mort de Bernadette). Ces visiteurs cherchent des logements proches du centre-ville, souvent pour des séjours de 2 à 4 nuits.
+**Le pèlerinage de Sainte-Bernadette.** L'Espace Bernadette Soubirous, où repose sainte Bernadette, accueille des pèlerins toute l'année, notamment autour du 18 février, jour de sa fête. Ces visiteurs cherchent des logements proches du centre-ville, souvent pour des séjours de 2 à 4 nuits.
 
-**Les vacances scolaires de zone B.** La Loire (58) est en zone B. Les petites vacances (Toussaint, Noël, hiver, printemps) génèrent une hausse modérée mais réelle de la demande, notamment pour les familles en transit ou les week-ends.
+**Les vacances scolaires.** La Nièvre (58) est en zone A. Les petites vacances (Toussaint, Noël, hiver, printemps) génèrent une hausse modérée mais réelle de la demande, notamment pour les familles en transit ou les week-ends.
 
-**Les événements au Palais Ducal, au Zénith et aux salles de Nevers.** Concerts, salons professionnels, compétitions sportives régionales : ces événements sont moins prévisibles mais mobilisent régulièrement des centaines de visiteurs qui cherchent un hébergement.
+**Les événements culturels.** Expositions au Palais ducal, festival D'Jazz Nevers et spectacles à la Maison de la Culture, concerts au Café Charbon, salons professionnels, compétitions sportives régionales : ces événements sont moins prévisibles mais mobilisent régulièrement des centaines de visiteurs qui cherchent un hébergement.
 
 ## Ce qu'il faut surveiller pour ajuster ses prix manuellement
 
@@ -48,7 +48,7 @@ Si vous ne souhaitez pas passer par un outil automatisé, vous pouvez ajuster vo
 
 ## Ce que nous faisons pour les logements de notre parc
 
-Nous utilisons un outil de tarification dynamique couplé à une révision manuelle hebdomadaire. L'outil ajuste les prix automatiquement en fonction des données de marché. Nous intervenons manuellement pour les événements connus (Magny-Cours, pèlerinages) en anticipant la hausse plusieurs semaines à l'avance, avant que les logements concurrents ne soient tous réservés.
+Nous utilisons un logiciel de tarification dynamique qui ajuste les prix chaque jour selon l'offre et la demande, événements locaux compris. Il fonctionne avec nos autres outils : notre application interne pour la gestion opérationnelle, et un channel manager qui synchronise les calendriers des plateformes pour éviter les doubles réservations et gère la facturation. Chaque outil couvre une partie du travail, pour un service complet.
 
 Chaque propriétaire reçoit dans son espace un résumé mensuel avec les nuits louées, le prix moyen pratiqué et le taux d'occupation. Ces données permettent de comparer les performances d'un mois sur l'autre et de valider si la stratégie de prix fonctionne.
 

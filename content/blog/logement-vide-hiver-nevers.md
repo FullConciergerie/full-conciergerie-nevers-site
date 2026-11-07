@@ -20,9 +20,13 @@ Nevers reçoit plusieurs types de visiteurs qui ne sont pas saisonniers :
 
 **Les voyageurs d'affaires.** La proximité de l'axe Paris-Lyon, la présence d'entreprises industrielles dans l'agglomération et les déplacements liés au réseau hospitalier génèrent une demande régulière de logements à la semaine ou à la quinzaine. Ces voyageurs cherchent du confort, une cuisine équipée et une connexion fiable. Ils réservent souvent à la dernière minute et apprécient les conditions d'accueil professionnelles.
 
-**Les pèlerins de Sainte-Bernadette.** La basilique Sainte-Bernadette de Nevers attire des visiteurs toute l'année. Les pics sont plus marqués en été, mais les arrivées se maintiennent en automne et en hiver, notamment de novembre à avril pour les groupes religieux qui évitent les hautes saisons.
+**Les pèlerins de sainte Bernadette.** L'Espace Bernadette Soubirous, où repose sainte Bernadette, attire des visiteurs toute l'année. Les pics sont plus marqués en été, mais les arrivées se maintiennent en automne et en hiver, notamment de novembre à avril pour les groupes religieux qui évitent les hautes saisons.
 
-**Les familles en déplacement.** Mutations professionnelles, successions, visites médicales au CHU : des gens ont besoin de dormir à Nevers pour des raisons pratiques. Ils préfèrent un appartement à un hôtel pour des séjours de plusieurs jours.
+**Les familles en déplacement.** Mutations professionnelles, successions : des gens ont besoin de dormir à Nevers pour des raisons pratiques. Ils préfèrent un appartement à un hôtel pour des séjours de plusieurs jours.
+
+**Les ouvriers et techniciens en mission.** Chantiers, maintenance industrielle, interventions de plusieurs semaines : les équipes en déplacement cherchent un logement équipé où elles peuvent cuisiner et se reposer, souvent à plusieurs.
+
+**Les touristes.** Le centre historique, les bords de Loire et les vignobles voisins de Pouilly-sur-Loire et de Sancerre attirent des visiteurs hors saison, surtout le week-end.
 
 **Les amateurs de Magny-Cours.** Le circuit de Nevers Magny-Cours organise des événements de novembre à mars : journées de roulage, essais privés, formations. Ce n'est pas comparable aux grands week-ends de mai ou septembre, mais ça remplit des nuits que d'autres logements laissent vides.
 
@@ -42,7 +46,7 @@ Avant de chercher des solutions, il faut comprendre pourquoi certains logements 
 
 Les logements de notre parc qui maintiennent un taux d'occupation correct en hiver partagent quelques caractéristiques :
 
-Ils acceptent des séjours courts, à partir de deux nuits, même en semaine. Ils ont un bureau ou un espace de travail clairement visible sur les photos. Leur annonce mentionne explicitement la fibre, l'accès autonome et la cuisine équipée. Leurs tarifs sont révisés toutes les deux semaines en fonction des événements locaux et du calendrier.
+Ils acceptent des séjours courts, à partir de deux nuits, même en semaine. Ils ont un bureau ou un espace de travail clairement visible sur les photos. Leur annonce mentionne explicitement la fibre, l'accès autonome et la cuisine équipée. Leurs tarifs sont ajustés chaque jour selon l'offre et la demande, grâce à notre logiciel de tarification dynamique.
 
 Ils sont aussi bien notés — 4,8 ou plus — ce qui les positionne haut dans les résultats Airbnb même quand la demande est plus faible.
 

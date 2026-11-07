@@ -28,7 +28,7 @@ La mauvaise surprise, c'est que les voyageurs ne se plaignent pas toujours de to
 
 La difficulté principale du ménage Airbnb n'est pas le ménage lui-même, c'est le ménage sous contrainte de temps. Entre le départ d'un voyageur à 11h et l'arrivée du suivant à 15h, il faut déshabiller, laver, sécher, refaire les lits, nettoyer l'intégralité du logement et vérifier chaque recoin.
 
-Un prestataire peu expérimenté ou mal équipé va prioriser ce qui se voit vite (sol, plans de travail) et négliger ce qui prend du temps (nettoyage de l'intérieur des appareils, joints, derrière la cuvette des toilettes). Le résultat est un logement qui paraît propre à première vue et qui décoit dès que le voyageur regarde de plus près.
+Un prestataire peu expérimenté ou mal équipé va prioriser ce qui se voit vite (sol, plans de travail) et négliger ce qui prend du temps (nettoyage de l'intérieur des appareils, joints, derrière la cuvette des toilettes). Le résultat est un logement qui paraît propre à première vue et qui déçoit dès que le voyageur regarde de plus près.
 
 Chez Full Conciergerie, chaque rotation suit une checklist fixe. Les prestataires ont le temps nécessaire planifié en amont en fonction de la taille du logement. Une rotation bâclée est détectée via le rapport de passage et les photos, pas via l'avis du voyageur.
 
@@ -52,6 +52,6 @@ Une communication directe entre le prestataire et l'équipe de coordination. Si 
 
 ## Ce qu'un mauvais avis coûte vraiment
 
-Un avis 3 étoiles en propreté ne disparaît pas. Il reste visible pendant des années et peut être le seul avis négatif qui apparaît dans la liste déroulante quand un futur voyageur hésite. Selon les études internes d'Airbnb, une note globale qui passe de 4,9 à 4,7 peut réduire le taux d'occupation de 10 à 15 % sur le long terme.
+Un avis 3 étoiles en propreté ne disparaît pas. Il reste visible pendant des années et peut être le seul avis négatif qui apparaît dans la liste déroulante quand un futur voyageur hésite. Une note globale qui passe de 4,9 à 4,7 suffit à faire reculer l'annonce dans les résultats de recherche, avec moins de réservations à la clé.
 
 Investir dans un ménage sérieux n'est pas un coût, c'est ce qui protège le revenu locatif.
