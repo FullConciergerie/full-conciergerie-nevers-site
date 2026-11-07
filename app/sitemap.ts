@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { articles } from './blog/_data/articles';
 import { villes } from './components/villes';
+import { getPublishedMarkdownArticles } from '@/lib/blog';
 
 /**
  * sitemap.xml généré dynamiquement par Next.js.
@@ -73,7 +74,15 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'weekly',
       priority: 0.7,
     },
+    // Articles codés (slugs statiques) — toujours publiés (dates passées)
     ...articles.map((a) => ({
+      url: `${baseUrl}/blog/${a.slug}`,
+      lastModified: new Date(a.date),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
+    // Articles markdown — seulement ceux dont la date est atteinte
+    ...getPublishedMarkdownArticles().map((a) => ({
       url: `${baseUrl}/blog/${a.slug}`,
       lastModified: new Date(a.date),
       changeFrequency: 'monthly' as const,
