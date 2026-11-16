@@ -117,18 +117,6 @@ export default function BookingWidget() {
           </span>
           Voir tous les logements
         </button>
-
-        <span
-          style={{
-            fontSize: 11,
-            letterSpacing: '0.1em',
-            textTransform: 'uppercase',
-            color: 'var(--texte-mute)',
-            fontFamily: 'var(--mono)',
-          }}
-        >
-          Réservation directe · -10% vs Airbnb
-        </span>
       </div>
 
       {/* Widget SuperHote */}

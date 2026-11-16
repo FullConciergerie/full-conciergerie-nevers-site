@@ -5,12 +5,12 @@ import BookingWidget from '../components/BookingWidget';
 export const metadata: Metadata = {
   title: 'Nos logements à Nevers — Réservez en direct',
   description:
-    "Découvrez et réservez directement nos logements à Nevers et en Nièvre. Appartements et maisons de standing, -10% par rapport à Airbnb, paiement sécurisé, contact direct avec l'équipe.",
+    "Découvrez et réservez directement nos logements à Nevers et en Nièvre. Appartements et maisons de standing, paiement sécurisé, contact direct avec l'équipe.",
   alternates: { canonical: '/logements' },
   openGraph: {
     title: 'Nos logements à Nevers — Réservation directe',
     description:
-      'Réservez directement nos logements à Nevers. Meilleur prix garanti, sans commission plateforme.',
+      'Réservez directement nos logements à Nevers, sans commission plateforme.',
     url: '/logements',
   },
 };
@@ -38,7 +38,7 @@ export default function LogementsPage() {
             {/* Titre */}
             <div>
               <p className="eyebrow" style={{ marginBottom: 10 }}>
-                <span className="or-mark">✦</span>&nbsp; Réservation directe · -10% vs Airbnb
+                <span className="or-mark">✦</span>&nbsp; Nos logements à Nevers
               </p>
               <h1
                 className="serif"
@@ -63,7 +63,6 @@ export default function LogementsPage() {
               }}
             >
               {[
-                { icon: '🏷️', label: 'Meilleur prix garanti' },
                 { icon: '🔒', label: 'Paiement sécurisé' },
                 { icon: '💬', label: 'Contact direct' },
                 { icon: '✅', label: 'Confirmation immédiate' },
