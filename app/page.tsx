@@ -56,7 +56,14 @@ const localBusinessJsonLd = {
     'Location de linge',
     'Blanchisserie',
   ],
-  openingHours: 'Mo-Su 09:00-23:00',
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+      opens: '09:00',
+      closes: '21:00',
+    },
+  ],
   sameAs: [
     'https://www.instagram.com/full_nevers_conciergerie/',
     'https://www.instagram.com/delil.torgursul/',

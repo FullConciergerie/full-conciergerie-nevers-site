@@ -167,7 +167,7 @@ export const villes: Ville[] = [
     },
     faqLocale: [
       { q: 'Est-ce rentable de louer en courte durée à Cosne ?', a: "La demande professionnelle en semaine et touristique le week-end permet de bons taux de remplissage. Demandez une estimation gratuite : nous vous répondons sous 48 h avec des chiffres adaptés à votre logement." },
-      { q: 'Qui intervient en cas de problème ?', a: "Notre équipe est joignable 7j/7 de 9 h à 23 h. Selon le problème, nous guidons le voyageur à distance ou envoyons un prestataire local." },
+      { q: 'Qui intervient en cas de problème ?', a: "Notre équipe est joignable 7j/7 de 9 h à 21 h. Selon le problème, nous guidons le voyageur à distance ou envoyons un prestataire local." },
     ],
     voisines: ['pouilly-sur-loire', 'sancerre', 'la-charite-sur-loire'],
   },
@@ -341,7 +341,7 @@ export const villes: Ville[] = [
     },
     faqLocale: [
       { q: 'Un logement à Clamecy peut-il se louer à la nuit ?', a: "Oui, c'est même le cas le plus fréquent avec les plaisanciers et cyclistes. Nous organisons le ménage pour enchaîner les courts séjours." },
-      { q: 'Clamecy est loin de Nevers, comment intervenez-vous ?', a: "Avec des prestataires locaux sélectionnés et suivis dans notre application, et une équipe joignable 7j/7 de 9 h à 23 h pour les voyageurs." },
+      { q: 'Clamecy est loin de Nevers, comment intervenez-vous ?', a: "Avec des prestataires locaux sélectionnés et suivis dans notre application, et une équipe joignable 7j/7 de 9 h à 21 h pour les voyageurs." },
     ],
     voisines: ['vezelay', 'lac-des-settons', 'cosne-cours-sur-loire'],
   },

@@ -40,7 +40,7 @@ export default function Page() {
           title: 'Pourquoi une conciergerie locale à Nevers',
           body: "Nous ne sommes pas une plateforme nationale : nos équipes sont à Nevers, connaissent les quartiers, les copropriétés et les voyageurs qui viennent dans la Nièvre (déplacements professionnels, Circuit de Nevers Magny-Cours, familles, tourisme sur la Loire).",
           items: [
-            { label: 'Une équipe sur place 7j/7', detail: 'Bureau au 23 faubourg de Lyon, joignable de 9 h à 23 h, tous les jours.' },
+            { label: 'Une équipe sur place 7j/7', detail: 'Bureau au 23 faubourg de Lyon, joignable de 9 h à 21 h, tous les jours.' },
             { label: 'Nos propres laveries', detail: 'Café Laverie et Laverie Dupont lavent le linge de nos logements : qualité constante et pas de rupture en haute saison.' },
             { label: 'Une application de suivi', detail: 'Chaque mission (ménage, check-in, intervention) est tracée avec photos : vous voyez ce qui a été fait, et quand.' },
           ],

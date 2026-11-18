@@ -154,7 +154,7 @@ export default function ContactPage() {
                   </p>
                   <p style={{ fontSize: '14px', color: 'var(--texte-mute)', marginTop: '8px', lineHeight: 1.55 }}>
                     Notre bureau se trouve à l&apos;arrière de la Laverie Dupont, au 23 faubourg de Lyon.
-                    Sonnez à l&apos;interphone signalé. Nous sommes joignables 7 jours sur 7, de 9 h à 23 h.
+                    Sonnez à l&apos;interphone signalé. Nous sommes joignables 7 jours sur 7, de 9 h à 21 h.
                   </p>
                 </li>
 

@@ -52,7 +52,7 @@ export function VillePage({ slug }: { slug: string }) {
           body: `Vous gardez la main sur vos dates et vos revenus, nous nous occupons du quotidien de votre location ${v.a}, à ${v.trajet} de notre bureau de Nevers.`,
           items: [
             { label: 'Annonces Airbnb et Booking', detail: 'Photos, textes, prix ajustés à la saison, calendriers synchronisés pour éviter les doubles réservations.' },
-            { label: 'Communication avec les voyageurs', detail: 'Réponses aux messages 7j/7 de 9 h à 23 h, instructions d’arrivée, livret d’accueil numérique.' },
+            { label: 'Communication avec les voyageurs', detail: 'Réponses aux messages 7j/7 de 9 h à 21 h, instructions d’arrivée, livret d’accueil numérique.' },
             { label: 'Arrivées autonomes', detail: 'Boîte à clés sécurisée et consignes claires : les voyageurs arrivent à l’heure qui leur convient.' },
             lingeItem(v),
             { label: 'Suivi dans notre application', detail: 'Rapport photo horodaté après chaque ménage, réassort des consommables, signalement des petites réparations.' },
