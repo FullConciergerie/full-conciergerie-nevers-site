@@ -15,6 +15,12 @@ export default function robots(): MetadataRoute.Robots {
         // Bloque les pages utilitaires éventuelles (formulaires d'envoi, API…)
         disallow: ['/api/'],
       },
+      // Moteurs de recherche et assistants IA explicitement autorisés
+      {
+        userAgent: ['OAI-SearchBot', 'PerplexityBot', 'Google-Extended', 'Bingbot'],
+        allow: '/',
+        disallow: ['/api/'],
+      },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
     host: baseUrl,

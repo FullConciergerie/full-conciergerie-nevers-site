@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { villesLiens } from './components/villes-liens';
 
 /**
- * Structured data Schema.org — LocalBusiness.
+ * Structured data Schema.org — ProfessionalService (sous-type de LocalBusiness).
  * Permet à Google d'afficher la fiche "business card" dans les résultats
  * de recherche (adresse, téléphone, horaires, note, image…).
  *
@@ -13,7 +13,7 @@ import { villesLiens } from './components/villes-liens';
  */
 const localBusinessJsonLd = {
   '@context': 'https://schema.org',
-  '@type': 'LocalBusiness',
+  '@type': 'ProfessionalService',
   '@id': 'https://full-nevers-conciergerie.fr/#business',
   name: 'Full Conciergerie - Nevers',
   legalName: 'Full Nevers Conciergerie',
@@ -37,6 +37,13 @@ const localBusinessJsonLd = {
     addressRegion: 'Bourgogne-Franche-Comté',
     addressCountry: 'FR',
   },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: 46.9802776,
+    longitude: 3.1598255,
+  },
+  foundingDate: '2022-07-08',
+  hasMap: 'https://www.google.com/maps?cid=2631342799729688241',
   areaServed: [
     {
       '@type': 'City',
@@ -64,10 +71,54 @@ const localBusinessJsonLd = {
       closes: '21:00',
     },
   ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Prestations de conciergerie Airbnb',
+    itemListElement: [
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Gestion complète',
+          description:
+            'Gestion complète de la location courte durée : annonces, calendrier, communication et accueil des voyageurs, ménage, linge et suivi du logement.',
+        },
+        description:
+          '20 % HT, calculés sur le montant net encaissé par le propriétaire (après commissions des plateformes), et non sur le prix brut affiché. Sans engagement.',
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Ménage',
+          description: 'Ménage hôtelier entre chaque séjour, avec rapport photo après chaque passage.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Gestion du linge',
+          description: 'Linge à la carte : fourni en location ou lavé à partir du linge du propriétaire, dans nos laveries à Nevers.',
+        },
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: 'Services ponctuels',
+          description: 'Petites interventions, dépannages, entretien des espaces verts et extras pour les voyageurs.',
+        },
+      },
+    ],
+  },
   sameAs: [
     'https://www.instagram.com/full_nevers_conciergerie/',
     'https://www.instagram.com/delil.torgursul/',
     'https://www.youtube.com/@DelilTorgursul',
+    'https://www.google.com/maps?cid=2631342799729688241',
+    'https://www.facebook.com/FNConciergerie/',
+    'https://www.linkedin.com/company/renaissance12',
   ],
 };
 
@@ -403,7 +454,7 @@ export default function HomePage() {
         </div>
 
         <div className="container hero-content">
-          <span className="hero-eyebrow eyebrow">À votre service à Nevers</span>
+          <span className="hero-eyebrow eyebrow">Conciergerie Airbnb à Nevers et dans la Nièvre</span>
           <h1 className="serif">
             Votre Airbnb,<br/>
             <span className="or-word">géré comme</span><br/>
