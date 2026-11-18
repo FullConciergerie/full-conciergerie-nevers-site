@@ -1034,7 +1034,8 @@ export default function HomePage() {
         <div className="footer-bot">
           <small>
             © 2026 SAS Full Nevers Conciergerie · SIREN 915&nbsp;379&nbsp;226 · RCS Nevers ·{' '}
-            <a href="/cgv" style={{ textDecoration: 'underline' }}>Mentions légales / CGV</a>
+            <a href="/mentions-legales" style={{ textDecoration: 'underline' }}>Mentions légales</a> ·{' '}
+            <a href="/cgv" style={{ textDecoration: 'underline' }}>CGV</a>
           </small>
           <small className="made">— Des services Full Options</small>
         </div>

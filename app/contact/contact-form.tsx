@@ -112,7 +112,7 @@ export function ContactForm() {
       <div className="v2-form-footer">
         <p className="v2-form-footer-note">
           Vos données restent confidentielles. Voir nos{' '}
-          <a href="/cgv" style={{ textDecoration: 'underline' }}>
+          <a href="/mentions-legales" style={{ textDecoration: 'underline' }}>
             mentions légales
           </a>
           .
