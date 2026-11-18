@@ -54,25 +54,23 @@ const SERVICES = [
   {
     num: '04',
     title: 'Blanchisserie & linge',
-    tagline: 'Pas de stock à gérer. Du linge premium, toujours prêt.',
-    body: 'Nous vous louons du linge de qualité hôtelière et gérons tout le cycle : récupération, lavage en interne, livraison propre. Vous n\'achetez plus de linge, vous ne le stockez plus.',
+    tagline: 'Le linge à la carte, selon votre choix.',
+    body: 'Le linge est à la carte : nous vous le fournissons en location, ou nous lavons le vôtre. Dans les deux cas, il est lavé dans nos locaux entre chaque séjour.',
     items: [
-      { label: 'Linge de qualité hôtelière', detail: 'Draps coton percale, serviettes éponge épaisses — renouvellement inclus.' },
+      { label: 'Linge fourni en location', detail: 'Linge de qualité hôtelière : draps coton percale, serviettes éponge épaisses.' },
+      { label: 'Ou lavage de votre propre linge', detail: 'Vous gardez votre linge, nous le lavons entre chaque séjour.' },
       { label: 'Blanchisserie en interne', detail: 'Lavage à 60°C dans nos locaux. Coûts maîtrisés, qualité constante.' },
-      { label: 'Récupération et livraison incluses', detail: 'Entre chaque séjour, sans surcoût caché.' },
-      { label: 'Aucun stock à gérer', detail: 'Plus de placards qui débordent, plus de linge à racheter.' },
     ],
   },
   {
     num: '05',
     title: 'Photos professionnelles',
-    tagline: 'Un logement bien photographié se loue 30% plus cher.',
+    tagline: 'Des photos qui donnent envie de réserver.',
     body: 'Shooting photo HDR + retouche professionnelle. Mise en valeur de chaque pièce et mise en ligne sur toutes vos plateformes.',
     items: [
       { label: 'Shooting complet toutes les pièces', detail: 'Reflex full-frame, trépied, éclairage si besoin.' },
       { label: 'Retouche professionnelle', detail: 'Balance des blancs, exposition, perspective — finition magazine.' },
       { label: 'Mise en ligne sur Airbnb, Booking…', detail: 'Avec descriptions optimisées pour la recherche.' },
-      { label: 'Mise à jour annuelle incluse', detail: 'Vos photos restent fraîches, votre logement aussi.' },
     ],
   },
   {
@@ -171,6 +169,27 @@ export default function ServicesPage() {
                 </div>
               ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ TARIF ══ */}
+      <section
+        id="tarif"
+        style={{ background: 'var(--vert-sauge)', paddingTop: 'clamp(48px, 7vw, 80px)', paddingBottom: 'clamp(48px, 7vw, 80px)' }}
+      >
+        <div className="container">
+          <div className="reveal" style={{ maxWidth: 780 }}>
+            <p className="eyebrow">
+              <span className="or-mark">✦</span>&nbsp; Notre tarif
+            </p>
+            <p className="serif" style={{ fontSize: 'clamp(30px, 4vw, 48px)', color: 'var(--vert-deep)', lineHeight: 1.1, marginTop: 16 }}>
+              Gestion complète : <em>20 % HT</em>,
+            </p>
+            <p style={{ marginTop: 16, fontSize: 'clamp(16px, 1.3vw, 19px)', color: 'var(--vert-deep)', lineHeight: 1.65, maxWidth: '60ch' }}>
+              calculés sur le montant net encaissé par le propriétaire (après commissions des plateformes),
+              et non sur le prix brut affiché. Sans engagement.
+            </p>
           </div>
         </div>
       </section>

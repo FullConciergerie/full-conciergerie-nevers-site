@@ -84,7 +84,7 @@ const faqJsonLd = {
       "name": "Combien ça coûte ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Nous nous rémunérons uniquement sur les nuitées effectivement réalisées. Pas d'abonnement, pas de frais cachés. Si votre logement ne se loue pas, on ne facture rien. Le pourcentage exact dépend de votre logement — on vous le confirme après la visite."
+        "text": "Nous nous rémunérons uniquement sur les nuitées effectivement réalisées. Pas d'abonnement, pas de frais cachés. Si votre logement ne se loue pas, on ne facture rien. Gestion complète : 20 % HT, calculés sur le montant net encaissé par le propriétaire (après commissions des plateformes), et non sur le prix brut affiché. Sans engagement."
       }
     },
     {
@@ -140,7 +140,7 @@ const faqJsonLd = {
       "name": "Le contrat est sur quelle durée ?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Sans engagement minimum. Vous pouvez arrêter à tout moment avec un préavis d'un mois. On préfère que vous restiez parce que vous êtes satisfait, pas parce que vous êtes coincé."
+        "text": "Sans engagement : vous pouvez arrêter quand vous voulez. On préfère que vous restiez parce que vous êtes satisfait, pas parce que vous êtes coincé."
       }
     }
   ]
@@ -451,7 +451,7 @@ export default function HomePage() {
             </div>
             <div className="trust-item center reveal reveal-delay-1">
               <span className="trust-num serif">1 000<span className="suffix">+</span></span>
-              <span className="trust-label">avis voyageurs sur Airbnb et Booking</span>
+              <span className="trust-label">avis voyageurs sur Airbnb</span>
             </div>
             <div className="trust-item end reveal reveal-delay-2">
               <span className="trust-num serif">4<span className="suffix"> ans</span></span>
@@ -846,8 +846,9 @@ export default function HomePage() {
                 <div className="faq-a"><div className="faq-a-inner">
                   Nous nous rémunérons uniquement sur les nuitées effectivement réalisées. Pas
                   d&apos;abonnement, pas de frais cachés. Si votre logement ne se loue pas, on ne
-                  facture rien. Le pourcentage exact dépend de votre logement — on vous le
-                  confirme après la visite.
+                  facture rien. Gestion complète : 20 % HT, calculés sur le montant net encaissé
+                  par le propriétaire (après commissions des plateformes), et non sur le prix brut
+                  affiché. Sans engagement.
                 </div></div>
               </div>
 
@@ -928,9 +929,8 @@ export default function HomePage() {
                   <span className="faq-icon" aria-hidden="true"></span>
                 </button>
                 <div className="faq-a"><div className="faq-a-inner">
-                  Sans engagement minimum. Vous pouvez arrêter à tout moment avec un préavis d&apos;un
-                  mois. On préfère que vous restiez parce que vous êtes satisfait, pas parce que vous
-                  êtes coincé.
+                  Sans engagement : vous pouvez arrêter quand vous voulez. On préfère que vous restiez
+                  parce que vous êtes satisfait, pas parce que vous êtes coincé.
                 </div></div>
               </div>
             </div>

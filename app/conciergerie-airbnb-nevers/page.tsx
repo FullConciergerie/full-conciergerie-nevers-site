@@ -37,6 +37,11 @@ export default function Page() {
           ],
         },
         {
+          title: 'Notre tarif',
+          body: 'Gestion complète : 20 % HT, calculés sur le montant net encaissé par le propriétaire (après commissions des plateformes), et non sur le prix brut affiché. Sans engagement.',
+          items: [],
+        },
+        {
           title: 'Pourquoi une conciergerie locale à Nevers',
           body: "Nous ne sommes pas une plateforme nationale : nos équipes sont à Nevers, connaissent les quartiers, les copropriétés et les voyageurs qui viennent dans la Nièvre (déplacements professionnels, Circuit de Nevers Magny-Cours, familles, tourisme sur la Loire).",
           items: [
@@ -56,8 +61,8 @@ export default function Page() {
         },
       ]}
       faq={[
-        { q: 'Combien coûte une conciergerie Airbnb à Nevers ?', a: "Nous nous rémunérons uniquement sur les nuitées effectivement réalisées, sans abonnement ni frais cachés : si votre logement ne se loue pas, nous ne facturons rien. Le pourcentage dépend de votre logement et vous est confirmé après la visite." },
-        { q: 'Faut-il s’engager sur une durée ?', a: "Non. Il n'y a pas d'engagement minimum : vous pouvez arrêter à tout moment avec un préavis d'un mois." },
+        { q: 'Combien coûte une conciergerie Airbnb à Nevers ?', a: "Nous nous rémunérons uniquement sur les nuitées effectivement réalisées, sans abonnement ni frais cachés : si votre logement ne se loue pas, nous ne facturons rien. Gestion complète : 20 % HT, calculés sur le montant net encaissé par le propriétaire (après commissions des plateformes), et non sur le prix brut affiché. Sans engagement." },
+        { q: 'Faut-il s’engager sur une durée ?', a: "Non. Sans engagement : vous pouvez arrêter quand vous voulez." },
         { q: 'Puis-je continuer à utiliser mon logement ?', a: "Oui. Prévenez-nous par téléphone, WhatsApp ou email et nous bloquons vos dates sur les plateformes, sans préavis minimum ni pénalité." },
         { q: 'Que se passe-t-il en cas de dégradation ?', a: "Un état des lieux photo est fait après chaque départ. En cas de dégradation, nous déclenchons la garantie Airbnb ou Booking dans les 24 h et suivons le dossier jusqu'au remboursement." },
         { q: 'Quelles communes couvrez-vous ?', a: "Nevers et son agglomération, et les villes à environ une heure autour : La Charité-sur-Loire, Magny-Cours, Decize, Pouilly-sur-Loire, Cosne-Cours-sur-Loire, Sancerre, Moulins, Bourges, Saint-Amand-Montrond, Saint-Honoré-les-Bains, Bourbon-Lancy, Clamecy, Vézelay et le lac des Settons. Contactez-nous pour vérifier votre secteur." },
