@@ -70,8 +70,8 @@ export function VillePage({ slug }: { slug: string }) {
       ]}
       faq={[
         ...v.faqLocale,
-        { q: `Combien coûte une conciergerie Airbnb ${v.a} ?`, a: "Nous nous rémunérons uniquement sur les nuitées effectivement réalisées, sans abonnement ni frais cachés : si votre logement ne se loue pas, nous ne facturons rien. Le pourcentage dépend de votre logement et vous est confirmé après la visite." },
-        { q: 'Faut-il s’engager sur une durée ?', a: "Non. Il n'y a pas d'engagement minimum : vous pouvez arrêter à tout moment avec un préavis d'un mois." },
+        { q: `Combien coûte une conciergerie Airbnb ${v.a} ?`, a: "Nous nous rémunérons uniquement sur les nuitées effectivement réalisées, sans abonnement ni frais cachés : si votre logement ne se loue pas, nous ne facturons rien. Gestion complète : 20 % HT, calculés sur le montant net encaissé par le propriétaire (après commissions des plateformes), et non sur le prix brut affiché. Sans engagement." },
+        { q: 'Faut-il s’engager sur une durée ?', a: "Non. Sans engagement : vous pouvez arrêter quand vous voulez." },
         { q: 'Puis-je continuer à utiliser mon logement ?', a: "Oui. Prévenez-nous par téléphone, WhatsApp ou email et nous bloquons vos dates sur les plateformes, sans préavis minimum ni pénalité." },
       ]}
       links={[

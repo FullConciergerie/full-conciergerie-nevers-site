@@ -197,8 +197,8 @@ export default function Article() {
             <li>Puis-je bloquer des dates pour moi quand je le souhaite ?</li>
           </ol>
           <P>
-            Chez Full Conciergerie - Nevers, les réponses sont simples : rémunération uniquement sur les nuitées louées, pas d&apos;engagement minimum
-            (préavis d&apos;un mois), état des lieux photo après chaque départ, et vous bloquez vos dates quand vous voulez.
+            Chez Full Conciergerie - Nevers, les réponses sont simples : rémunération uniquement sur les nuitées louées, pas d&apos;engagement minimum,
+            état des lieux photo après chaque départ, et vous bloquez vos dates quand vous voulez.
             Le détail est sur notre page <Link href="/conciergerie-airbnb-nevers" style={{ textDecoration: 'underline' }}>conciergerie Airbnb à Nevers</Link>.
             Et si vous gérez vous-même vos voyageurs, nous proposons aussi le <Link href="/menage-airbnb-nevers" style={{ textDecoration: 'underline' }}>ménage Airbnb seul</Link>.
           </P>
