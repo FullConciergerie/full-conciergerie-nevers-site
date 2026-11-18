@@ -110,8 +110,12 @@ export function Footer() {
         <small>
           © {new Date().getFullYear()} SAS Full Nevers Conciergerie · SIREN
           915&nbsp;379&nbsp;226 · RCS Nevers ·{' '}
+          <Link href="/mentions-legales" style={{ textDecoration: 'underline' }}>
+            Mentions légales
+          </Link>{' '}
+          ·{' '}
           <Link href="/cgv" style={{ textDecoration: 'underline' }}>
-            Mentions légales / CGV
+            CGV
           </Link>
         </small>
         <small className="made">— Des services Full Options</small>
