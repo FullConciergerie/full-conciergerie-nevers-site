@@ -20,7 +20,7 @@ const PAGE_UPDATED: Record<string, string> = {
   '/devenir-prestataire': '2026-09-29',
   '/lancer-une-conciergerie': '2026-09-28',
   '/bien-invendu': '2026-10-20',
-  '/mentions-legales': '2026-11-18',
+  '/mentions-legales': '2026-11-20',
   '/cgv': '2026-05-17'
 };
 const updated = (path: string) => new Date(PAGE_UPDATED[path]);

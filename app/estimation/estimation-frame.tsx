@@ -1,21 +1,30 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { EVENTS, track } from '@/lib/analytics';
 
 const ORIGIN = 'https://fullconciergerie.systeme.io';
 const SRC = `${ORIGIN}/estimation-gratuite?embed=1`;
+/** Page systeme.io affichée après l'envoi réussi du formulaire d'estimation. */
+const THANK_YOU_PATH = '/estimation-merci';
 
 export function EstimationFrame() {
   const ref = useRef<HTMLIFrameElement>(null);
   const [height, setHeight] = useState(2600);
 
   useEffect(() => {
+    let sent = false;
     function onMessage(e: MessageEvent) {
       if (e.origin !== ORIGIN) return;
       const d = e.data;
       if (!d || typeof d !== 'object') return;
       if (d.type === 'fc-embed-height' && typeof d.height === 'number' && d.height > 300) {
         setHeight(Math.ceil(d.height));
+      }
+      // Arrivée sur la page de remerciement = formulaire envoyé (compté une seule fois par visite).
+      if (d.type === 'fc-embed-nav' && d.path === THANK_YOU_PATH && !sent) {
+        sent = true;
+        track(EVENTS.estimationEnvoyee);
       }
       // Changement de page dans l'iframe (ex. après l'envoi du formulaire) : on remonte en haut.
       if (d.type === 'fc-embed-nav' && ref.current) {

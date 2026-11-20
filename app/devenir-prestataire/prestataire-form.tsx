@@ -3,6 +3,7 @@
 import { useState, useTransition } from 'react';
 import { AntiSpamFields } from '@/app/components/anti-spam-fields';
 import { submitPrestataireForm, type PrestataireResult } from './actions';
+import { EVENTS, track } from '@/lib/analytics';
 
 const PROFILES = [
   'Ménage / Entretien',
@@ -27,6 +28,7 @@ export function PrestataireForm() {
           const res = await submitPrestataireForm(formData);
           setResult(res);
           if ('success' in res) {
+            track(EVENTS.candidaturePrestataireEnvoyee);
             (document.getElementById('prestataire-form') as HTMLFormElement)?.reset();
           }
         });

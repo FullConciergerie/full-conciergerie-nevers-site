@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { villesLiens } from './components/villes-liens';
 
 /**
@@ -377,21 +378,21 @@ export default function HomePage() {
           </span>
         </a>
         <div className="nav-menu" role="navigation">
-          <a href="/logements">Nos logements</a>
+          <Link href="/logements">Nos logements</Link>
           <a href="#services">Services</a>
           <a href="#histoire">À propos</a>
           <a href="#temoignages">Avis</a>
           <a href="#faq">FAQ</a>
-          <a href="/devenir-prestataire">Recrutement</a>
-          <a href="/lancer-une-conciergerie">Entrepreneurs</a>
-          <a href="/application">Application</a>
+          <Link href="/devenir-prestataire">Recrutement</Link>
+          <Link href="/lancer-une-conciergerie">Entrepreneurs</Link>
+          <Link href="/application">Application</Link>
           <a href="#contact">Contact</a>
         </div>
         <div className="nav-cta">
-          <a href="/estimation" className="btn btn-gold-outline">
+          <Link href="/estimation" className="btn btn-gold-outline">
             <span className="cta-label">Devis gratuit</span>
             <span className="arrow" aria-hidden="true">→</span>
-          </a>
+          </Link>
           <button
             className="nav-burger"
             aria-label={mobileOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
@@ -470,10 +471,10 @@ export default function HomePage() {
               Lancer ma première mission
               <span className="arrow" aria-hidden="true">→</span>
             </a>
-            <a href="/application" className="btn btn-ghost-light">
+            <Link href="/application" className="btn btn-ghost-light">
               Voir comment ça marche
               <span className="arrow" aria-hidden="true">→</span>
-            </a>
+            </Link>
           </div>
           <p style={{ marginTop: '18px', fontSize: '14px', color: 'rgba(245,241,232,.72)' }}>
             Votre première mission est sans frais de plateforme. Le prestataire, lui, est toujours payé.
@@ -1014,10 +1015,10 @@ export default function HomePage() {
             Devis gratuit et sans engagement. Réponse sous 24 h.
           </p>
           <div className="actions reveal reveal-delay-3">
-            <a href="/estimation" className="btn btn-gold">
+            <Link href="/estimation" className="btn btn-gold">
               Demander un devis
               <span className="arrow">→</span>
-            </a>
+            </Link>
             <a href="tel:+33376150229" className="btn btn-ghost-light">
               03 76 15 02 29
               <span className="arrow">↗</span>
@@ -1055,29 +1056,29 @@ export default function HomePage() {
           <div className="footer-col">
             <h4>Navigation</h4>
             <ul>
-              <li><a href="/logements">Nos logements →</a></li>
+              <li><Link href="/logements">Nos logements →</Link></li>
               <li><a href="#services">Nos services</a></li>
               <li><a href="#histoire">À propos</a></li>
               <li><a href="#temoignages">Avis</a></li>
               <li><a href="#faq">FAQ</a></li>
-              <li><a href="/estimation">Devis gratuit</a></li>
+              <li><Link href="/estimation">Devis gratuit</Link></li>
             </ul>
           </div>
           <div className="footer-col">
             <h4>Autres services</h4>
             <ul>
-              <li><a href="/devenir-prestataire">Devenir prestataire →</a></li>
-              <li><a href="/lancer-une-conciergerie">Lancer votre conciergerie →</a></li>
-              <li><a href="/services">Détail des services</a></li>
-              <li><a href="/a-propos">Notre histoire</a></li>
+              <li><Link href="/devenir-prestataire">Devenir prestataire →</Link></li>
+              <li><Link href="/lancer-une-conciergerie">Lancer votre conciergerie →</Link></li>
+              <li><Link href="/services">Détail des services</Link></li>
+              <li><Link href="/a-propos">Notre histoire</Link></li>
             </ul>
           </div>
           <div className="footer-col">
             <h4>Autour de Nevers</h4>
             <ul>
-              <li><a href="/conciergerie-airbnb-nevers">Conciergerie Airbnb à Nevers</a></li>
+              <li><Link href="/conciergerie-airbnb-nevers">Conciergerie Airbnb à Nevers</Link></li>
               {villesLiens.map((v) => (
-                <li key={v.slug}><a href={`/conciergerie-airbnb-${v.slug}`}>{v.nom}</a></li>
+                <li key={v.slug}><Link href={`/conciergerie-airbnb-${v.slug}`}>{v.nom}</Link></li>
               ))}
             </ul>
           </div>
@@ -1085,8 +1086,8 @@ export default function HomePage() {
         <div className="footer-bot">
           <small>
             © 2026 SAS Full Nevers Conciergerie · SIREN 915&nbsp;379&nbsp;226 · RCS Nevers ·{' '}
-            <a href="/mentions-legales" style={{ textDecoration: 'underline' }}>Mentions légales</a> ·{' '}
-            <a href="/cgv" style={{ textDecoration: 'underline' }}>CGV</a>
+            <Link href="/mentions-legales" style={{ textDecoration: 'underline' }}>Mentions légales</Link> ·{' '}
+            <Link href="/cgv" style={{ textDecoration: 'underline' }}>CGV</Link>
           </small>
           <small className="made">— Des services Full Options</small>
         </div>

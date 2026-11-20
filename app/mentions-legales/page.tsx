@@ -5,7 +5,7 @@ import type { ReactNode } from 'react';
 export const metadata: Metadata = {
   title: 'Mentions légales',
   description:
-    "Mentions légales du site full-nevers-conciergerie.fr : éditeur, directeur de la publication, hébergeur et protection des données personnelles.",
+    "Mentions légales du site full-nevers-conciergerie.fr : éditeur, directeur de la publication, hébergeur, protection des données personnelles et mesure d'audience.",
   alternates: { canonical: '/mentions-legales' },
   openGraph: {
     title: 'Mentions légales — Full Conciergerie - Nevers',
@@ -127,6 +127,31 @@ export default function MentionsLegalesPage() {
         <p style={{ ...text, marginBottom: 0 }}>
           Les conditions de vente de nos prestations figurent dans nos{' '}
           <Link href="/cgv" style={{ color: 'var(--vert-deep)', textDecoration: 'underline' }}>conditions générales</Link>.
+        </p>
+      </Block>
+
+      <Block num="05" title="Mesure d'audience">
+        <p style={text}>
+          Pour savoir d&apos;où viennent nos visiteurs et quelles pages sont consultées, le site utilise
+          l&apos;outil de mesure d&apos;audience PostHog, dont les données sont hébergées dans l&apos;Union
+          européenne, ainsi que les statistiques de fréquentation de notre hébergeur Vercel.
+        </p>
+        <p style={text}>
+          <strong style={{ color: 'var(--vert-deep)', fontWeight: 600 }}>Sans cookie.</strong> Cette mesure ne
+          dépose aucun cookie et n&apos;enregistre rien sur votre appareil. Vous n&apos;êtes pas reconnu
+          d&apos;une visite à l&apos;autre, ni suivi sur d&apos;autres sites.
+        </p>
+        <p style={text}>
+          <strong style={{ color: 'var(--vert-deep)', fontWeight: 600 }}>Ce qui est mesuré.</strong> Les pages
+          consultées, le site d&apos;où vous venez, le type d&apos;appareil et de navigateur, une
+          localisation approximative (pays, ville), les clics vers notre application et le fait
+          qu&apos;un formulaire a bien été envoyé. Le contenu des formulaires n&apos;est jamais transmis à
+          l&apos;outil de mesure, et votre navigation n&apos;est pas enregistrée en vidéo.
+        </p>
+        <p style={{ ...text, marginBottom: 0 }}>
+          <strong style={{ color: 'var(--vert-deep)', fontWeight: 600 }}>Adresse IP.</strong> Votre adresse IP
+          sert uniquement, à la réception, à estimer cette localisation approximative. Elle n&apos;est
+          pas conservée. Ces statistiques ne servent ni à la publicité ni à la revente de données.
         </p>
       </Block>
     </>

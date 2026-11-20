@@ -1,8 +1,10 @@
 'use client';
 
 import { useState, useTransition } from 'react';
+import Link from 'next/link';
 import { AntiSpamFields } from '@/app/components/anti-spam-fields';
 import { submitContactForm, type ContactResult } from './actions';
+import { EVENTS, track } from '@/lib/analytics';
 
 export function ContactForm() {
   const [isPending, startTransition] = useTransition();
@@ -16,6 +18,7 @@ export function ContactForm() {
           const res = await submitContactForm(formData);
           setResult(res);
           if ('success' in res && res.success) {
+            track(EVENTS.contactEnvoye);
             (document.getElementById('contact-form') as HTMLFormElement)?.reset();
           }
         });
@@ -112,9 +115,9 @@ export function ContactForm() {
       <div className="v2-form-footer">
         <p className="v2-form-footer-note">
           Vos données restent confidentielles. Voir nos{' '}
-          <a href="/mentions-legales" style={{ textDecoration: 'underline' }}>
+          <Link href="/mentions-legales" style={{ textDecoration: 'underline' }}>
             mentions légales
-          </a>
+          </Link>
           .
         </p>
         <div className="v2-form-submit-row">
