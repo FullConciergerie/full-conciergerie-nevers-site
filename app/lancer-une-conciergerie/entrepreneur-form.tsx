@@ -6,6 +6,7 @@ import {
   submitEntrepreneurForm,
   type EntrepreneurResult,
 } from './actions';
+import { EVENTS, track } from '@/lib/analytics';
 
 export function EntrepreneurForm() {
   const [isPending, startTransition] = useTransition();
@@ -19,6 +20,7 @@ export function EntrepreneurForm() {
           const res = await submitEntrepreneurForm(formData);
           setResult(res);
           if ('success' in res) {
+            track(EVENTS.lancerConciergerieEnvoye);
             (document.getElementById('entrepreneur-form') as HTMLFormElement)?.reset();
           }
         });

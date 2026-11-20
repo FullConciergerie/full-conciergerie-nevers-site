@@ -11,6 +11,10 @@ export const EVENTS = {
   contactEnvoye: 'contact_envoye',
   /** Candidature prestataire envoyée avec succès. */
   candidaturePrestataireEnvoyee: 'candidature_prestataire_envoyee',
+  /** Formulaire « bien invendu » envoyé avec succès (guide demandé). */
+  bienInvenduEnvoye: 'bien_invendu_envoye',
+  /** Formulaire « lancer une conciergerie » envoyé avec succès. */
+  lancerConciergerieEnvoye: 'lancer_conciergerie_envoye',
   /** Clic sur un lien vers l'application (fullconciergerie.fr). */
   clicApplication: 'clic_application',
 } as const;

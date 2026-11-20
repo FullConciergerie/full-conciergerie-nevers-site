@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { HONEYPOT_FIELD, STARTED_AT_FIELD } from '@/lib/anti-spam';
 import { submitBienInvendu } from './actions';
+import { EVENTS, track } from '@/lib/analytics';
 
 const PLATEFORME = 0.15;
 const FRAIS = 0.12;
@@ -153,6 +154,7 @@ function Formulaire({ simulation }: { simulation: { charges: number; net: number
     const res = await submitBienInvendu(fd);
     setPending(false);
     if ('error' in res) return setError(res.error);
+    track(EVENTS.bienInvenduEnvoye);
     setDone({ prenom, guideUrl: res.guideUrl });
   }
 
